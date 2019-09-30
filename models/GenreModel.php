@@ -13,6 +13,12 @@ class GenreModel
         );
     }
 
+    function getGenre($id) {
+        $sentence = $this->db->prepare('select * from genero where id_genero = ?');
+        $sentence->execute([$id]);
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     function getGenres() {
         $sentence = $this->db->prepare('select * from genero');
         $sentence->execute();
@@ -30,4 +36,5 @@ class GenreModel
         $sentence->execute([$id]);
         header("Location: " . BASE_URL);
     }
+
 }

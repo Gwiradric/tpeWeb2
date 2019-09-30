@@ -23,8 +23,19 @@ class GenreController
         $this->model->deleteGenre($id);
     }
 
+    public function showGenre($id) {
+        $genres = $this->model->getGenre($id);
+        $this->view->Home($this->title, $genres);
+    }
+
+    function editGenre($id) {
+        $genre = $this->model->getGenre($id);
+        $this->view->Home($this->title, $genres);
+    }
+
     public function showGenres() {
         $genres = $this->model->getGenres();
         $this->view->Home($this->title, $genres);
     }
+
 }

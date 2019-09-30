@@ -11,6 +11,6 @@ class GenreView
         $smarty->assign('title', $title);
         $smarty->assign('genres', $genres);
 
-        $smarty->display('templates/home.tpl');
+        $smarty->display('templates/genrForm.tpl');
     }
 }
