@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 30-09-2019 a las 01:40:18
+-- Tiempo de generación: 04-10-2019 a las 16:10:15
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,21 +42,6 @@ INSERT INTO `genero` (`id_genero`, `nombre`, `descripcion`) VALUES
 (2, 'Terror', 'Provoca miedo, se recomienda precaución'),
 (4, 'Aventuras', 'Un mundo heroico donde predomina la acción');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pelicula`
---
-
-CREATE TABLE `pelicula` (
-  `id_pelicula` int(11) NOT NULL,
-  `id_genero` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `descripcion` varchar(50) NOT NULL,
-  `año` int(11) NOT NULL,
-  `rating` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Índices para tablas volcadas
 --
@@ -68,13 +53,6 @@ ALTER TABLE `genero`
   ADD PRIMARY KEY (`id_genero`);
 
 --
--- Indices de la tabla `pelicula`
---
-ALTER TABLE `pelicula`
-  ADD PRIMARY KEY (`id_pelicula`),
-  ADD KEY `FK_id_genero` (`id_genero`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -82,23 +60,7 @@ ALTER TABLE `pelicula`
 -- AUTO_INCREMENT de la tabla `genero`
 --
 ALTER TABLE `genero`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `pelicula`
---
-ALTER TABLE `pelicula`
-  MODIFY `id_pelicula` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `pelicula`
---
-ALTER TABLE `pelicula`
-  ADD CONSTRAINT `pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id_genero`);
+  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

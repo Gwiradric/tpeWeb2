@@ -15,15 +15,15 @@ class GenreController
         $this->model = new GenreModel();
     }
 
-    public function insertGenre($name, $description) {
+    function insertGenre($name, $description) {
         $this->model->insertGenre($name, $description);
     }
 
-    public function deleteGenre($id) {
+    function deleteGenre($id) {
         $this->model->deleteGenre($id);
     }
 
-    public function showGenre($id) {
+    function showGenre($id) {
         $genres = $this->model->getGenre($id);
         $this->view->Home($this->title, $genres);
     }
@@ -33,7 +33,7 @@ class GenreController
         $this->view->Home($this->title, $genres);
     }
 
-    public function showGenres() {
+    function showGenres() {
         $genres = $this->model->getGenres();
         $this->view->Home($this->title, $genres);
     }
