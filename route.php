@@ -9,6 +9,7 @@ $action = $_GET['action'];
 $partsURL = explode('/', $action);
 
 $controller = new GenreController();
+$mcontroller = new MovieController();
 
 if ($partsURL[0] == '') {
     $controller->showGenres();
@@ -19,8 +20,9 @@ if ($partsURL[0] == '') {
         } elseif ($partsURL[0] == 'delete') {
             $controller->deleteGenre($partsURL[1]);
         } elseif ($partsURL[0] == 'movies') {
-            $mcontroller = new MovieController();
             $mcontroller->showMoviesGenre($partsURL[1]);
+        } elseif ($partesURL[0] == 'addMovie') {
+            # code...
         }
     }
 }

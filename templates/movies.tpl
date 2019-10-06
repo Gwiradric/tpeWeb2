@@ -9,12 +9,30 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h3>List of Movies</h3>
-                <ul class="list-group">
-                    {foreach from=$movies item=movie}
-                        <li class="list-group-item">{$movie["nombre"]}: {$movie["descripcion"]}</li>
-                    {/foreach}
-                </ul>
+                <h3>Movies</h3>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Admin options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach from=$movies item=movie}
+                            <tr>
+                            <th scope="row">{$movie["name"]}</th>
+                            <td>{$movie["description"]}</td>
+                            <td>{$movie["year"]}</td>
+                            <td>{$movie["rating"]}</td>
+                            </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>

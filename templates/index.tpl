@@ -12,7 +12,7 @@
                 <h3>List of Genres</h3>
                 <ul class="list-group">
                     {foreach from=$genres item=genre}
-                        <li class="list-group-item"><a href="movies/{$genre["id_genero"]}">{$genre["nombre"]}</a>: {$genre["descripcion"]} | <a href="delete/{$genre["id_genero"]}">Delete</a></li>
+                        <li class="list-group-item"><a href="movies/{$genre["id_genre"]}">{$genre["name"]}</a>: {$genre["description"]} | <a href="delete/{$genre["id_genre"]}">Delete</a></li>
                     {/foreach}
                 </ul>
             </div>

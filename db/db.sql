@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-10-2019 a las 16:10:15
+-- Tiempo de generación: 06-10-2019 a las 21:25:56
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -19,48 +19,61 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `db_peliculas`
+-- Base de datos: `db_movies`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `genero`
+-- Estructura de tabla para la tabla `movies`
 --
 
-CREATE TABLE `genero` (
-  `id_genero` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `descripcion` varchar(50) NOT NULL
+CREATE TABLE `movies` (
+  `id_movie` int(11) NOT NULL,
+  `id_genre` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `year` int(11) NOT NULL,
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `genero`
+-- Volcado de datos para la tabla `movies`
 --
 
-INSERT INTO `genero` (`id_genero`, `nombre`, `descripcion`) VALUES
-(2, 'Terror', 'Provoca miedo, se recomienda precaución'),
-(4, 'Aventuras', 'Un mundo heroico donde predomina la acción');
+INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
+(1, 1, 'Silent Hill', 'Pelicula basasa en el famoso juego de terror', 2005, 4);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `genero`
+-- Indices de la tabla `movies`
 --
-ALTER TABLE `genero`
-  ADD PRIMARY KEY (`id_genero`);
+ALTER TABLE `movies`
+  ADD PRIMARY KEY (`id_movie`),
+  ADD KEY `FK_id_genre` (`id_genre`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `genero`
+-- AUTO_INCREMENT de la tabla `movies`
 --
-ALTER TABLE `genero`
-  MODIFY `id_genero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `movies`
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `movies`
+--
+ALTER TABLE `movies`
+  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`id_genre`) REFERENCES `genres` (`id_genre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

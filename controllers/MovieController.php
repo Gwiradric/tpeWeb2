@@ -37,5 +37,4 @@ class MovieController
         $movies = $this->model->getMoviesGenre($id_genre);
         $this->view->showMovies($this->title, $movies);
     }
-
 }
