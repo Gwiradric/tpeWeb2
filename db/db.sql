@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-10-2019 a las 21:25:56
+-- Tiempo de generación: 12-10-2019 a las 02:34:53
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_movies`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `genres`
+--
+
+CREATE TABLE `genres` (
+  `id_genre` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `genres`
+--
+
+INSERT INTO `genres` (`id_genre`, `name`, `description`) VALUES
+(1, 'Terror', 'Provoca miedo, se recomienda precaución'),
+(2, 'Aventuras', 'Un mundo heroico donde predomina la acción');
 
 -- --------------------------------------------------------
 
@@ -49,6 +69,12 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 --
 
 --
+-- Indices de la tabla `genres`
+--
+ALTER TABLE `genres`
+  ADD PRIMARY KEY (`id_genre`);
+
+--
 -- Indices de la tabla `movies`
 --
 ALTER TABLE `movies`
@@ -58,6 +84,12 @@ ALTER TABLE `movies`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `genres`
+--
+ALTER TABLE `genres`
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
