@@ -28,13 +28,13 @@ class GenreModel
     function insertGenre($name, $description) {
         $sentence = $this->db->prepare('INSERT INTO genres (name, description) VALUES (?, ?)');
         $sentence->execute([$name, $description]);
-        header("Location: " . BASE_URL);
+        header(HOME);
     }
 
     function deleteGenre($id) {
         $sentence = $this->db->prepare("delete from genres where id_genre = ?");
-        $sentence->execute([$id]);
-        header("Location: " . BASE_URL);
+        $sentence->execute($id);
+        header(HOME);
     }
 
 }

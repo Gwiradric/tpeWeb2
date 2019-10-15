@@ -37,9 +37,9 @@ class MovieModel
         header("Location: " . BASE_URL);
     }
 
-    function getMoviesGenre($id_genre) {
+    function getMoviesGenre($params) {
         $sentence = $this->db->prepare('select * from movies where id_genre = ?');
-        $sentence->execute([$id_genre]);
+        $sentence->execute($params);
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 

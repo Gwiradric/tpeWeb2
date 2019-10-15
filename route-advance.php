@@ -1,15 +1,8 @@
 <?php
 
 require_once "config/ConfigApp.php";
-require_once "controller/TemporadaController.php";
-require_once "controller/EpisodiosController.php";
-require_once "controller/LoginController.php";
-require_once "controller/safeController.php";
-require_once "controller/RegistroController.php";
-require_once "controller/AdminController.php";
-require_once "controller/ComentariosController.php";
-
-
+require_once "controllers/GenreController.php";
+require_once "controllers/MovieController.php";
 
 function parseURL($url) {
   $urlExploded = explode('/', $url);
@@ -34,7 +27,6 @@ if(isset($_GET['action'])) {
           echo $controller->$metodo();
         }
       } else {
-        $controller =  new TemporadaController();
+        $controller =  new GenreController();
       }
 }
- ?>
