@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-10-2019 a las 02:34:53
+-- Tiempo de generación: 16-10-2019 a las 22:38:23
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -40,7 +40,7 @@ CREATE TABLE `genres` (
 
 INSERT INTO `genres` (`id_genre`, `name`, `description`) VALUES
 (1, 'Terror', 'Provoca miedo, se recomienda precaución'),
-(2, 'Aventuras', 'Un mundo heroico donde predomina la acción');
+(5, 'Aventuras', 'Suceso extraño o poco frecuente que vive una persona, especialmente el que es emocionante');
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,9 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
-(1, 1, 'Silent Hill', 'Pelicula basasa en el famoso juego de terror', 2005, 4);
+(1, 1, 'Silent Hill', 'Pelicula basasa en el famoso juego de terror', 2005, 4),
+(2, 1, 'Resident Evil', 'Un peligroso virus se ha propagado intencionalmente por la Corporación Umbrella', 2000, 10),
+(3, 5, 'Tarzan', 'Película estadounidense de animación tradicional de 1999. Se basa en Tarzán de Edgar Rice Burroughs', 1996, 20);
 
 --
 -- Índices para tablas volcadas
@@ -89,13 +91,13 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
