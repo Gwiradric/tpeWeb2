@@ -6,6 +6,9 @@
         <h1 class="mainTitle">{$title}</h1>
     </header>
 
+    <div>
+        <a class="btn btn-primary" href="showGenreForm" role="button">Add Genre</a>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12">

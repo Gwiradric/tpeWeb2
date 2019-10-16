@@ -15,8 +15,12 @@ class GenreController
         $this->model = new GenreModel();
     }
 
-    function insertGenre($name, $description) {
-        $this->model->insertGenre($name, $description);
+    function insertGenre() {
+        if ((isset($_POST['name']) && (isset($_POST['description'])))) {
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $this->model->insertGenre($name, $description);
+        }
     }
 
     function deleteGenre($params) {
@@ -37,6 +41,11 @@ class GenreController
     function home() {
         $genres = $this->model->getGenres();
         $this->view->home($this->title, $genres);
+    }
+
+    function showGenreForm() {
+        $genres = $this->model->getGenres();
+        $this->view->genreForm($this->title, $genres);
     }
 
 }

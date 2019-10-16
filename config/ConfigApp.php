@@ -9,8 +9,10 @@ class ConfigApp {
     public static $PARAMS = 'params';
     public static $ACTIONS = [
          '' => 'GenreController#home',
-         'home' => 'GenreController#Home',
+         'home' => 'GenreController#home',
          'deleteGenre' => 'GenreController#deleteGenre',
+         'insertGenre' => 'GenreController#insertGenre',
+         'showGenreForm' => 'GenreController#showGenreForm',
          'showMovies' => 'MovieController#showMoviesGenre',
          'deleteMovie' => 'MovieController#deleteMovie',
     ];
