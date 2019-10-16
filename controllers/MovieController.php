@@ -19,8 +19,9 @@ class MovieController
         $this->model->insertMovie($name, $description, $year, $rating);
     }
 
-    function deleteMovie($id) {
-        $this->model->deleteMovie($id);
+    function deleteMovie($params) {
+        $this->model->deleteMovie($params[0]);
+        header(HOME);
     }
 
     function showMovie($id) {
@@ -33,8 +34,8 @@ class MovieController
         $this->view->showMovies($this->title, $movies);
     }
 
-    function showMoviesGenre($id_genre) {
-        $movies = $this->model->getMoviesGenre($id_genre);
+    function showMoviesGenre($params) {
+        $movies = $this->model->getMoviesGenre($params[0]);
         $this->view->showMovies($this->title, $movies);
     }
 }

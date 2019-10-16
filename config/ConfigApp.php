@@ -10,7 +10,8 @@ class ConfigApp {
     public static $ACTIONS = [
          '' => 'GenreController#home',
          'home' => 'GenreController#Home',
+         'deleteGenre' => 'GenreController#deleteGenre',
          'showMovies' => 'MovieController#showMoviesGenre',
-         'delete' => 'GenreController#deleteGenre',
+         'deleteMovie' => 'MovieController#deleteMovie',
     ];
 }

@@ -34,12 +34,11 @@ class MovieModel
     function deleteMovie($id) {
         $sentence = $this->db->prepare("delete from movies where id_movie = ?");
         $sentence->execute([$id]);
-        header("Location: " . BASE_URL);
     }
 
-    function getMoviesGenre($params) {
+    function getMoviesGenre($id) {
         $sentence = $this->db->prepare('select * from movies where id_genre = ?');
-        $sentence->execute($params);
+        $sentence->execute([$id]);
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 

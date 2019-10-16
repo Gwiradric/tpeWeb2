@@ -21,6 +21,7 @@ class GenreController
 
     function deleteGenre($params) {
         $this->model->deleteGenre($params);
+        header(HOME);
     }
 
     function showGenre($id) {

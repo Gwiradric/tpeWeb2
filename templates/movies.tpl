@@ -28,6 +28,7 @@
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>
+                            <td><a href="../deleteMovie/{$movie['id_movie']}">Delete</a></td>
                             </tr>
                         {/foreach}
                     </tbody>

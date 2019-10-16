@@ -34,7 +34,6 @@ class GenreModel
     function deleteGenre($id) {
         $sentence = $this->db->prepare("delete from genres where id_genre = ?");
         $sentence->execute($id);
-        header(HOME);
     }
 
 }
