@@ -10,10 +10,12 @@ class ConfigApp {
     public static $ACTIONS = [
          '' => 'GenreController#home',
          'home' => 'GenreController#home',
-         'deleteGenre' => 'GenreController#deleteGenre',
-         'insertGenre' => 'GenreController#insertGenre',
-         'showGenreForm' => 'GenreController#showGenreForm',
-         'showMovies' => 'MovieController#showMoviesGenre',
-         'deleteMovie' => 'MovieController#deleteMovie',
+         'form' => 'GenreController#addGenreForm',
+         'add' => 'GenreController#insertGenre',
+         'delete' => 'GenreController#deleteGenre',
+         'movies' => 'MovieController#showMoviesGenre',
+         'form-movies' => 'MovieController#addMovieForm',
+         'add-movie' => 'MovieController#insertMovie',
+         'delete-movie' => 'MovieController#deleteMovie',
     ];
 }

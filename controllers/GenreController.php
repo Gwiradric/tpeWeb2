@@ -44,9 +44,9 @@ class GenreController
         $this->view->home($this->title, $genres);
     }
 
-    function showGenreForm() {
+    function addGenreForm() {
         $genres = $this->model->getGenres();
-        $this->view->genreForm($this->title, $genres);
+        $this->view->addGenreForm($this->title, $genres);
     }
 
 }

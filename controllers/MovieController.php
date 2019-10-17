@@ -15,8 +15,16 @@ class MovieController
         $this->model = new MovieModel();
     }
 
-    function insertMovie($name, $description, $year, $rating) {
-        $this->model->insertMovie($name, $description, $year, $rating);
+    function insertMovie() {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $id_genre = $_POST['id_genre'];
+        $year = $_POST['year'];
+        $rating = $_POST['rating'];
+        var_dump($name, $description, $id_genre, $year, $rating);
+        if (isset($name, $description, $id_genre, $year, $rating))
+            $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
+        header(HOME);
     }
 
     function deleteMovie($params) {
@@ -37,5 +45,10 @@ class MovieController
     function showMoviesGenre($params) {
         $movies = $this->model->getMoviesGenre($params[0]);
         $this->view->showMovies($this->title, $movies);
+    }
+
+    function addMovieForm() {
+        $genres = $this->model->getDropDrown();
+        $this->view->showAddMovieForm($this->title, $genres);
     }
 }

@@ -7,7 +7,8 @@
     </header>
 
     <div>
-        <a class="btn btn-primary" href="showGenreForm" role="button">Add Genre</a>
+        <a class="btn btn-primary" href="form" role="button">Add Genre</a>
+        <a class="btn btn-primary" href="form-movies" role="button">Add Movie</a>
     </div>
     <div class="container">
         <div class="row">
@@ -25,11 +26,11 @@
                     <tbody>
                         {foreach from=$genres item=genre}
                             <tr>
-                            <th scope="row"><a href="showMovies/{$genre["id_genre"]}">{$genre["name"]}</a></th>
+                            <th scope="row"><a href="movies/{$genre["id_genre"]}">{$genre["name"]}</a></th>
                             <td>{$genre["description"]}</td>
                             <td>
-                                <a href='./deleteGenre/{$genre["id_genre"]}'>Delete</a> | 
-                                <a href='./editGenre/{$genre['id_genre']}'>Edit</a>
+                                <a href='./delete/{$genre["id_genre"]}'>Delete</a> | 
+                                <a href='./edit/{$genre['id_genre']}'>Edit</a>
                             </td>
                             </tr>
                         {/foreach}

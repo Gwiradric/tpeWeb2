@@ -25,9 +25,9 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function insertMovie($name, $description, $year, $rating) {
-        $sentence = $this->db->prepare('INSERT INTO movies (name, description, year, rating) VALUES (?, ?, ?, ?)');
-        $sentence->execute([$name, $description, $year, $rating]);
+    function insertMovie($name, $id_genre, $description, $year, $rating) {
+        $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating) VALUES (?, ?, ?, ?, ?)');
+        $sentence->execute([$name,$id_genre, $description, $year, $rating]);
         header("Location: " . BASE_URL);
     }
 
@@ -43,9 +43,10 @@ class MovieModel
     }
 
     function getDropDrown() {
-        $sentence = $this->db->prepare('SELECT name from genres');
+        $sentence = $this->db->prepare('SELECT id_genre, name from genres');
         $sentence->execute();
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
+
 
 }

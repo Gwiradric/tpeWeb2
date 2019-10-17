@@ -7,7 +7,7 @@
 </header>
 
 <div class="container">
-        <form method="post" action="./insertGenre">
+        <form method="post" action="./add">
             <div class="form-group">
                 <input type="text" class="form-control" id="name" aria-describedby="name"
                     placeholder="Name" name="name">
