@@ -1,24 +1,18 @@
 {include file="header.tpl"}
 
-<body>
+{include file="navbar.tpl"}
 
-<header>
-    <h1 class="mainTitle">{$title}</h1>
-</header>
+<div class="container mt-3">
+    <form method="post" action="./add">
+        <div class="form-group">
+            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+        </div>
 
-<div class="container">
-        <form method="post" action="./add">
-            <div class="form-group">
-                <input type="text" class="form-control" id="name" aria-describedby="name"
-                    placeholder="Name" name="name">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" id="description" placeholder="Description" name="description">
-            </div>
-            
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
-</body>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
 {include file="footer.tpl"}
