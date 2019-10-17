@@ -30,7 +30,7 @@
                             <td>{$genre["description"]}</td>
                             <td>
                                 <a href='./delete/{$genre["id_genre"]}'>Delete</a> | 
-                                <a href='./edit/{$genre['id_genre']}'>Edit</a>
+                                <a href='./edit/{$genre["id_genre"]}'>Edit</a>
                             </td>
                             </tr>
                         {/foreach}

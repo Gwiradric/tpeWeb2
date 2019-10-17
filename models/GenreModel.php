@@ -36,4 +36,9 @@ class GenreModel
         $sentence->execute($id);
     }
 
+    function editGenre($id_genre, $name, $description) {
+        $sentence = $this->db->prepare('UPDATE genres SET name = ?, description = ? WHERE id_genre = ?');
+        $sentence->execute([$name, $description, $id_genre]);
+    }
+
 }

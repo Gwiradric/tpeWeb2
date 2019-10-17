@@ -10,6 +10,8 @@ class ConfigApp {
     public static $ACTIONS = [
          '' => 'GenreController#home',
          'home' => 'GenreController#home',
+         'edit' => 'GenreController#editGenreForm',
+         'edit-genre' => 'GenreController#editGenre',
          'form' => 'GenreController#addGenreForm',
          'add' => 'GenreController#insertGenre',
          'delete' => 'GenreController#deleteGenre',

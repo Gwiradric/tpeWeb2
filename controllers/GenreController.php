@@ -34,9 +34,15 @@ class GenreController
         $this->view->Home($this->title, $genres);
     }
 
-    function editGenre($id) {
-        $genre = $this->model->getGenre($id);
-        $this->view->Home($this->title, $genres);
+    function editGenre() {
+        if ((isset($_POST['name']) && (isset($_POST['description'])))) {
+            $id_genre = $_POST['id_genre'];
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            var_dump($id_genre, $name, $description);
+            $this->model->editGenre($id_genre, $name, $description);
+        }
+        header(HOME);
     }
 
     function home() {
@@ -47,6 +53,11 @@ class GenreController
     function addGenreForm() {
         $genres = $this->model->getGenres();
         $this->view->addGenreForm($this->title, $genres);
+    }
+
+    function editGenreForm($id) {
+        $genres = $this->model->getGenres();
+        $this->view->editGenreForm($this->title, $genres, $id);
     }
 
 }
