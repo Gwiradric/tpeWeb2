@@ -20,7 +20,7 @@
                         <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Admin options</th>
+                        <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>

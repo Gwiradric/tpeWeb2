@@ -1,7 +1,8 @@
 {include file="header.tpl"}
 
 <div class="container">
-        <form method="post" action="./add-movie">
+        <form method="post" action="../edit-movies">
+            <input type="hidden" name="id_movie" value={$id[0]}>
             <div class="form-group">
                 <input type="text" class="form-control" id="name"
                     placeholder="Name" name="name">

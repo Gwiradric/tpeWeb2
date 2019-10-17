@@ -51,4 +51,22 @@ class MovieController
         $genres = $this->model->getDropDrown();
         $this->view->showAddMovieForm($this->title, $genres);
     }
+
+    function editMovieForm($id_movie) {
+        $genres = $this->model->getDropDrown();
+        $this->view->editMovieForm($this->title, $genres, $id_movie);
+    }
+
+    function editMovie() {
+        $name = $_POST['name'];
+        $id_movie = $_POST['id_movie'];
+        $description = $_POST['description'];
+        $id_genre = $_POST['id_genre'];
+        $year = $_POST['year'];
+        $rating = $_POST['rating'];
+        if (isset($name, $description, $id_genre, $year, $rating)) {
+            $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+        }
+        header(HOME);
+    }
 }

@@ -18,7 +18,7 @@
                         <th scope="col">Description</th>
                         <th scope="col">Year</th>
                         <th scope="col">Rating</th>
-                        <th scope="col">Admin options</th>
+                        <th scope="col">Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +28,10 @@
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>
-                            <td><a href="../delete-movie/{$movie['id_movie']}">Delete</a></td>
+                            <td>
+                                <a href="../delete-movie/{$movie['id_movie']}">Delete</a>
+                                <a href="../edit-movie/{$movie['id_movie']}">Edit</a>
+                            </td>
                             </tr>
                         {/foreach}
                     </tbody>

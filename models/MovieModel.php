@@ -48,5 +48,8 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-
+    function editMovie($id_movie, $id_genre, $name, $description, $year, $rating) {
+        $sentence = $this->db->prepare('UPDATE movies SET id_genre = ?, name = ?, description = ?, year = ?, rating = ? WHERE id_movie = ?');
+        $sentence->execute(array($id_genre, $name, $description, $year, $rating, $id_movie));
+    }
 }
