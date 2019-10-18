@@ -3,6 +3,9 @@
 {include file="navbar.tpl"}
 
 <div class="container mt-3">
+
+    <h1>Add new genre</h1>
+    
     <form method="post" action="./add">
         <div class="form-group">
             <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name">

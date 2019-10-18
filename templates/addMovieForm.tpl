@@ -3,6 +3,9 @@
 {include file="navbar.tpl"}
 
 <div class="container mt-3">
+    
+    <h1>Add new movie</h1>
+
     <form method="post" action="./add-movie">
         <div class="form-group">
             <input type="text" class="form-control" id="name" placeholder="Name" name="name">
