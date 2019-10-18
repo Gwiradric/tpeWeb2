@@ -25,7 +25,7 @@
                         <td>{$movie["year"]}</td>
                         <td>{$movie["rating"]}</td>
                         <td>
-                            <a href="../delete-movie/{$movie['id_movie']}">Delete</a>
+                            <a href="../delete-movie/{$movie['id_movie']}">Delete</a> |
                             <a href="../edit-movie/{$movie['id_movie']}">Edit</a>
                         </td>
                     </tr>
