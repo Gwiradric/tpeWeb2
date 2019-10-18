@@ -4,6 +4,9 @@
 {include file="navbar.tpl"}
 
 <div class="container mt-3">
+
+    <h1>Edit movie</h1>
+
     <form method="post" action="../edit-movies">
         <input type="hidden" name="id_movie" value={$id[0]}>
         <div class="form-group">

@@ -3,6 +3,9 @@
 {include file="navbar.tpl"}
 
 <div class="container mt-3">
+
+    <h1>Edit Genre</h1>
+
     <form method="post" action="../edit-genre">
         <input type="hidden" name="id_genre" value={$id[0]}>
         <div class="form-group">
