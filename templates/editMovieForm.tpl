@@ -7,10 +7,10 @@
     <form method="post" action="../edit-movies">
         <input type="hidden" name="id_movie" value={$id[0]}>
         <div class="form-group">
-            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}'>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}'>
         </div>
 
         <div class="form-group">
@@ -25,10 +25,10 @@
 
 
         <div class="form-group">
-            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year">
+            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" value='{$movie["year"]}'>
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" id="rating" placeholder="Rating" name="rating">
+            <input type="number" class="form-control" id="rating" placeholder="Rating" name="rating" value='{$movie["rating"]}'>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

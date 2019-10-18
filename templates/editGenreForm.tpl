@@ -6,10 +6,10 @@
     <form method="post" action="../edit-genre">
         <input type="hidden" name="id_genre" value={$id[0]}>
         <div class="form-group">
-            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name">
+            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name" value="{$genre['name']}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="{$genre['description']}">
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>

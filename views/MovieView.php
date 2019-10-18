@@ -22,11 +22,12 @@ class MovieView
         $smarty->display('templates/addMovieForm.tpl');
     }
 
-    function editMovieForm($title, $genres, $id_movie) {
+    function editMovieForm($title, $genres, $id_movie, $movie) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('genres', $genres);
         $smarty->assign('id', $id_movie);
+        $smarty->assign('movie', $movie);
 
         $smarty->display('templates/editMovieForm.tpl');
     }

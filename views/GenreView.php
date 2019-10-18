@@ -22,10 +22,10 @@ class GenreView
         $smarty->display('templates/addGenreForm.tpl');
     }
 
-    public function editGenreForm($title, $genres, $id) {
+    public function editGenreForm($title, $genre, $id) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
-        $smarty->assign('genres', $genres);
+        $smarty->assign('genre', $genre);
         $smarty->assign('id', $id);
 
         $smarty->display('templates/editGenreForm.tpl');

@@ -53,8 +53,9 @@ class MovieController
     }
 
     function editMovieForm($id_movie) {
+        $movie = $this->model->getMovie($id_movie[0]);
         $genres = $this->model->getDropDrown();
-        $this->view->editMovieForm($this->title, $genres, $id_movie);
+        $this->view->editMovieForm($this->title, $genres, $id_movie, $movie[0]);
     }
 
     function editMovie() {

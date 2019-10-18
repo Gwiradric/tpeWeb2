@@ -24,7 +24,6 @@ class GenreController
     }
 
     function deleteGenre($params) {
-        var_dump(entro);
         $this->model->deleteGenre($params);
         header(HOME);
     }
@@ -56,8 +55,8 @@ class GenreController
     }
 
     function editGenreForm($id) {
-        $genres = $this->model->getGenres();
-        $this->view->editGenreForm($this->title, $genres, $id);
+        $genre = $this->model->getGenre($id[0]);
+        $this->view->editGenreForm($this->title, $genre[0], $id);
     }
 
 }
