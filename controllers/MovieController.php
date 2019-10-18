@@ -37,7 +37,7 @@ class MovieController
         $this->view->showMovies($this->title, $movies);
     }
 
-    function showMovies() {
+    function showMovies($params) {
         $movies = $this->model->getMovies();
         $this->view->showMovies($this->title, $movies);
     }

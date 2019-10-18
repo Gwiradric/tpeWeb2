@@ -6,8 +6,14 @@
 
     <div class="container mt-3">
         <div class="row">
-            
-            <div class="col-sm-12">
+            <div>
+                <a class="btn btn-primary" href="all-movies/" role="button">All movies</a>
+                <a class="btn btn-primary" href="form" role="button">Add Genre</a>
+                <a class="btn btn-primary" href="form-movies" role="button">Add Movie</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 mt-2">
                 <h3>List of Genres</h3>
                 <ul class="list-group">
                     <table class="table table-striped">
@@ -32,10 +38,6 @@
                         </tbody>
                     </table>
                 </ul>
-            <div>
-                <a class="btn btn-primary" href="form" role="button">Add Genre</a>
-                <a class="btn btn-primary" href="form-movies" role="button">Add Movie</a>
-            </div>
             </div>
         </div>
     </div>
