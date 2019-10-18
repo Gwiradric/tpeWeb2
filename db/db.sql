@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-10-2019 a las 22:38:23
+-- Tiempo de generación: 18-10-2019 a las 21:34:40
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -39,8 +39,9 @@ CREATE TABLE `genres` (
 --
 
 INSERT INTO `genres` (`id_genre`, `name`, `description`) VALUES
-(1, 'Terror', 'Provoca miedo, se recomienda precaución'),
-(5, 'Aventuras', 'Suceso extraño o poco frecuente que vive una persona, especialmente el que es emocionante');
+(1, 'Terror', 'El horror o terror es un género literario que se define por la sensación que causa: miedo'),
+(5, 'Aventuras', 'Suceso extraño o poco frecuente que vive una persona, especialmente el que es emocionante'),
+(12, 'Comedia', 'Da alegría y algo más');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,8 @@ CREATE TABLE `movies` (
 INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
 (1, 1, 'Silent Hill', 'Pelicula basasa en el famoso juego de terror', 2005, 4),
 (2, 1, 'Resident Evil', 'Un peligroso virus se ha propagado intencionalmente por la Corporación Umbrella', 2000, 10),
-(3, 5, 'Tarzan', 'Película estadounidense de animación tradicional de 1999. Se basa en Tarzán de Edgar Rice Burroughs', 1996, 20);
+(3, 5, 'Tarzan', 'Película estadounidense de animación tradicional de 1999. Se basa en Tarzán de Edgar Rice Burroughs', 1996, 20),
+(12, 12, 'Hercules', 'Es una película de comedia estadounidense protagonizada por Dwayne Johnson', 2015, 50);
 
 --
 -- Índices para tablas volcadas
@@ -91,13 +93,13 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
