@@ -19,15 +19,15 @@ class UserController
         $username = $_POST['username'];
         $password = $_POST['password'];
         if ((isset($username, $password))) {
-            $this->model->insertUser($username, $password);
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $this->model->insertUser($username, $hash);
         }
         header(HOME);
     }
 
     function addUser(){
-        $id = -1;
         $user = array('username' => '', 'password' =>'');
         $action = "./insert-user";
-        $this->view->userForm($this->title, $user, $action, $id);
+        $this->view->userForm($this->title, $user, $action);
     } 
 }
