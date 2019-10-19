@@ -23,4 +23,10 @@ class UserModel
         $sentence->execute();
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
+
+    function getUserUsername($username) {
+        $sentence = $this->db->prepare('SELECT * FROM users WHERE username = ?');
+        $sentence->execute(array($username));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
 }

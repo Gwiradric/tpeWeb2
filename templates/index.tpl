@@ -9,6 +9,7 @@
             <a class="btn btn-primary" href="add-genre" role="button">Add Genre</a>
             <a class="btn btn-primary" href="add-movie" role="button">Add Movie</a>
             <a class="btn btn-primary" href="add-user" role="button">Add User</a>
+            <a class="btn btn-primary" href="login" role="button">Login</a>
         </div>
     </div>
     <div class="row">
