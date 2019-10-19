@@ -20,7 +20,10 @@
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
+                        {if $login}
                         <th scope="col">Options</th>
+                            
+                        {/if}
                     </tr>
                 </thead>
                 <tbody>
@@ -28,10 +31,13 @@
                     <tr>
                         <th scope="row"><a href='movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
                         <td>{$genre["description"]}</td>
-                        <td>
-                            <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
-                            <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
-                        </td>
+                        {if $login}
+                            <td>
+                                <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
+                                <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
+                            </td>
+                        {/if}
+                        
                     </tr>
                     {/foreach}
                 </tbody>

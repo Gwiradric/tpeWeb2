@@ -30,7 +30,8 @@ class GenreController
 
     function showGenre($id) {
         $genres = $this->model->getGenre($id);
-        $this->view->Home($this->title, $genres);
+        session_start();
+        $this->view->Home($this->title, $genres, (isset($_SESSION["username"])));
     }
 
     function editGenre() {
@@ -45,7 +46,8 @@ class GenreController
 
     function home() {
         $genres = $this->model->getGenres();
-        $this->view->home($this->title, $genres);
+        session_start();
+        $this->view->home($this->title, $genres, (isset($_SESSION["username"])));
     }
 
     function addGenreForm() {

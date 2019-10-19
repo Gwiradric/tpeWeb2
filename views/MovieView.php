@@ -5,11 +5,12 @@ require_once('libs/Smarty.class.php');
 class MovieView
 {
 
-    public function showMovies($title, $movies)
+    public function showMovies($title, $movies, $login)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('movies', $movies);
+        $smarty->assign('login', $login);
 
         $smarty->display('templates/movies.tpl');
     }

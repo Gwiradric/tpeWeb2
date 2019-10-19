@@ -14,7 +14,10 @@
                             <th scope="col">Description</th>
                             <th scope="col">Year</th>
                             <th scope="col">Rating</th>
+                            {if $login}
                             <th scope="col">Options</th>
+                                
+                            {/if}
                         </tr>
                     </thead>
                     <tbody>
@@ -24,10 +27,13 @@
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>
-                            <td>
+                            {if $login}
+                               <td>
                                 <a href="../delete-movie/{$movie['id_movie']}">Delete</a> | 
                                 <a href="../edit-movie/{$movie['id_movie']}">Edit</a>
-                            </td>
+                            </td> 
+                            {/if}
+                            
                         </tr>
                         {/foreach}
                     </tbody>

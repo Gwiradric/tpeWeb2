@@ -26,9 +26,11 @@ class LoginController
         $user = $this->model->getUserUsername($username);
 
         if (isset($user[0])) {
-            if (password_verify($password, $user[0]['password']))
+            if (password_verify($password, $user[0]['password'])) {
+                session_start();
+                $_SESSION["username"] = $username;
                 header(HOME);
-            else
+           } else
                 $this->view->showLogin($this->title, "Username or password are incorrect");
         } else {
             $this->view->showLogin($this->title, "User not found");

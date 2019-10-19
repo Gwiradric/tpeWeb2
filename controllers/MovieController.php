@@ -38,12 +38,14 @@ class MovieController
 
     function showMovies($params) {
         $movies = $this->model->getMovies();
-        $this->view->showMovies($this->title, $movies);
+        session_start();
+        $this->view->showMovies($this->title, $movies, (isset($_SESSION["username"])));
     }
 
     function showMoviesGenre($params) {
         $movies = $this->model->getMoviesGenre($params[0]);
-        $this->view->showMovies($this->title, $movies);
+        session_start();
+        $this->view->showMovies($this->title, $movies, (isset($_SESSION["username"])));
     }
 
     function addMovieForm() {
