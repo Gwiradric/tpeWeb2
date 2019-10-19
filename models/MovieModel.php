@@ -28,7 +28,6 @@ class MovieModel
     function insertMovie($name, $id_genre, $description, $year, $rating) {
         $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating) VALUES (?, ?, ?, ?, ?)');
         $sentence->execute([$name,$id_genre, $description, $year, $rating]);
-        header("Location: " . BASE_URL);
     }
 
     function deleteMovie($id) {

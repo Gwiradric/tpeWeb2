@@ -1,6 +1,5 @@
 {include file="header.tpl"}
 
-<body>
 
     {include file="navbar.tpl"}
 
@@ -8,8 +7,9 @@
         <div class="row">
             <div>
                 <a class="btn btn-primary" href="all-movies/" role="button">All movies</a>
-                <a class="btn btn-primary" href="form" role="button">Add Genre</a>
-                <a class="btn btn-primary" href="form-movies" role="button">Add Movie</a>
+                <a class="btn btn-primary" href="add-genre" role="button">Add Genre</a>
+                <a class="btn btn-primary" href="add-movie" role="button">Add Movie</a>
+                <a class="btn btn-primary" href="add-user" role="button">Add User</a>
             </div>
         </div>
         <div class="row">
@@ -29,8 +29,8 @@
                                 <th scope="row"><a href='movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
                                 <td>{$genre["description"]}</td>
                                 <td>
-                                    <a href='./delete/{$genre["id_genre"]}'>Delete</a> |
-                                    <a href='./edit/{$genre["id_genre"]}'>Edit</a>
+                                    <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
+                                    <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
                                 </td>
                             </tr>
                             {/foreach}

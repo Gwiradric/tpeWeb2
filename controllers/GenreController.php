@@ -51,13 +51,13 @@ class GenreController
     function addGenreForm() {
         $id = -1;
         $genre = array("name" => '', "description" => '');
-        $action = "./add";
+        $action = "./insert-genre";
         $this->view->genreForm($this->title, $action, $genre, $id);
     }
 
     function editGenreForm($id) {
         $genre = $this->model->getGenre($id[0]);
-        $action = "../edit-genre";
+        $action = "../update-genre";
         $this->view->genreForm($this->title, $action, $genre[0], $id[0]);
     }
 

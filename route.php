@@ -3,6 +3,7 @@
 require_once "config/ConfigApp.php";
 require_once "controllers/GenreController.php";
 require_once "controllers/MovieController.php";
+require_once "controllers/UserController.php";
 
 function parseURL($url) {
   $urlExploded = explode('/', $url);
