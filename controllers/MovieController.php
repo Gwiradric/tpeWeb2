@@ -21,7 +21,6 @@ class MovieController
         $id_genre = $_POST['id_genre'];
         $year = $_POST['year'];
         $rating = $_POST['rating'];
-        var_dump($name, $description, $id_genre, $year, $rating);
         if (isset($name, $description, $id_genre, $year, $rating))
             $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
         header(HOME);

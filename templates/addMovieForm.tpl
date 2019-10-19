@@ -23,8 +23,6 @@
 
         </div>
 
-
-
         <div class="form-group">
             <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year">
         </div>

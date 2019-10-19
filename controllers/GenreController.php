@@ -50,7 +50,7 @@ class GenreController
 
     function addGenreForm() {
         $id = -1;
-        $genre = null;
+        $genre = array("name" => '', "description" => '');
         $action = "./add";
         $this->view->genreForm($this->title, $action, $genre, $id);
     }
