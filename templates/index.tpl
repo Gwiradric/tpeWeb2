@@ -10,6 +10,7 @@
             <a class="btn btn-primary" href="add-movie" role="button">Add Movie</a>
             <a class="btn btn-primary" href="add-user" role="button">Add User</a>
             <a class="btn btn-primary" href="login" role="button">Login</a>
+            <a class="btn btn-primary" href="logout" role="button">Logout</a>
         </div>
     </div>
     <div class="row">
@@ -22,7 +23,6 @@
                         <th scope="col">Description</th>
                         {if $login}
                         <th scope="col">Options</th>
-                            
                         {/if}
                     </tr>
                 </thead>

@@ -36,4 +36,10 @@ class LoginController
             $this->view->showLogin($this->title, "User not found");
         }
     }
+
+    function logout() {
+        session_start();
+        session_destroy();
+        header(HOME);
+    }
 }
