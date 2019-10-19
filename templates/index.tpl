@@ -15,7 +15,6 @@
         <div class="row">
             <div class="col-sm-12 mt-2">
                 <h3>List of Genres</h3>
-                <ul class="list-group">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -37,7 +36,6 @@
                             {/foreach}
                         </tbody>
                     </table>
-                </ul>
             </div>
         </div>
     </div>

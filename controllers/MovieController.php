@@ -47,14 +47,18 @@ class MovieController
     }
 
     function addMovieForm() {
+        $movie = array("id_movie" => "", "id_genre" => "",	"name" => "", "description" => "", "year" => "", "rating" => "");
         $genres = $this->model->getDropDrown();
-        $this->view->showAddMovieForm($this->title, $genres);
+        $id_movie = -1;
+        $action = "./add-movie";
+        $this->view->movieForm($this->title, $genres, $id_movie, $movie, $action);
     }
 
     function editMovieForm($id_movie) {
         $movie = $this->model->getMovie($id_movie[0]);
         $genres = $this->model->getDropDrown();
-        $this->view->editMovieForm($this->title, $genres, $id_movie, $movie[0]);
+        $action = "../edit-movies";
+        $this->view->movieForm($this->title, $genres, $id_movie[0], $movie[0], $action);
     }
 
     function editMovie() {

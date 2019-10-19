@@ -14,21 +14,14 @@ class MovieView
         $smarty->display('templates/movies.tpl');
     }
 
-    public function showAddMovieForm($title, $genres) {
-        $smarty = new Smarty();
-        $smarty->assign('title', $title);
-        $smarty->assign('genres', $genres);
-
-        $smarty->display('templates/addMovieForm.tpl');
-    }
-
-    function editMovieForm($title, $genres, $id_movie, $movie) {
+    public function movieForm($title, $genres, $id_movie, $movie, $action) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('genres', $genres);
         $smarty->assign('id', $id_movie);
         $smarty->assign('movie', $movie);
+        $smarty->assign('action', $action);
 
-        $smarty->display('templates/editMovieForm.tpl');
+        $smarty->display('templates/movieForm.tpl');
     }
 }

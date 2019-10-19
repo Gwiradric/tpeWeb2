@@ -1,14 +1,11 @@
 {include file="header.tpl"}
 
-
 {include file="navbar.tpl"}
 
 <div class="container mt-3">
 
-    <h1>Edit movie</h1>
-
-    <form method="post" action="../edit-movies">
-        <input type="hidden" name="id_movie" value={$id[0]}>
+    <form method="post" action={$action}>
+        <input type="hidden" name="id_movie" value={$id}>
         <div class="form-group">
             <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}'>
         </div>
@@ -22,10 +19,7 @@
                 <option value={$genre["id_genre"]}>{$genre['name']}</option>
                 {/foreach}
             </select>
-
         </div>
-
-
 
         <div class="form-group">
             <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" value='{$movie["year"]}'>
