@@ -14,20 +14,13 @@ class GenreView
         $smarty->display('templates/index.tpl');
     }
 
-    public function addGenreForm($title, $genres) {
+    public function genreForm($title, $action, $genre, $id) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
-        $smarty->assign('genres', $genres);
-
-        $smarty->display('templates/addGenreForm.tpl');
-    }
-
-    public function editGenreForm($title, $genre, $id) {
-        $smarty = new Smarty();
-        $smarty->assign('title', $title);
+        $smarty->assign('action', $action);
         $smarty->assign('genre', $genre);
         $smarty->assign('id', $id);
 
-        $smarty->display('templates/editGenreForm.tpl');
+        $smarty->display('templates/genreForm.tpl');
     }
 }

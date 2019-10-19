@@ -16,7 +16,7 @@ class GenreController
     }
 
     function insertGenre() {
-        if ((isset($_POST['name']) && (isset($_POST['description'])))) {
+        if ((isset($_POST['name'])) && (isset($_POST['description']))) {
             $name = $_POST['name'];
             $description = $_POST['description'];
             $this->model->insertGenre($name, $description);
@@ -38,7 +38,6 @@ class GenreController
             $id_genre = $_POST['id_genre'];
             $name = $_POST['name'];
             $description = $_POST['description'];
-            var_dump($id_genre, $name, $description);
             $this->model->editGenre($id_genre, $name, $description);
         }
         header(HOME);
@@ -50,13 +49,16 @@ class GenreController
     }
 
     function addGenreForm() {
-        $genres = $this->model->getGenres();
-        $this->view->addGenreForm($this->title, $genres);
+        $id = -1;
+        $genre = null;
+        $action = "./add";
+        $this->view->genreForm($this->title, $action, $genre, $id);
     }
 
     function editGenreForm($id) {
         $genre = $this->model->getGenre($id[0]);
-        $this->view->editGenreForm($this->title, $genre[0], $id);
+        $action = "../edit-genre";
+        $this->view->genreForm($this->title, $action, $genre[0], $id[0]);
     }
 
 }
