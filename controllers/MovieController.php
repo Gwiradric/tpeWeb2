@@ -28,7 +28,6 @@ class MovieController extends SecuredController
         if (isset($name, $description, $id_genre, $year, $rating)) {
             $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
         }
-
         header(HOME);
     }
 
@@ -53,7 +52,6 @@ class MovieController extends SecuredController
     public function showMoviesGenre($params)
     {
         $movies = $this->model->getMoviesGenre($params[0]);
-        session_start();
         $this->view->showMovies($this->title, $movies, $this->isAdmin);
     }
 

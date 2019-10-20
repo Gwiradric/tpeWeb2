@@ -11,13 +11,11 @@ function parseURL($url)
 {
     $urlExploded = explode('/', $url);
     $arrayReturn[ConfigApp::$ACTION] = $urlExploded[0];
-
     $arrayReturn[ConfigApp::$PARAMS] = isset($urlExploded[1]) ? array_slice($urlExploded, 1) : null;
     return $arrayReturn;
 }
 
 if (isset($_GET['action'])) {
-
     $urlData = parseURL($_GET['action']);
     $action = $urlData[ConfigApp::$ACTION];
     if (array_key_exists($action, ConfigApp::$ACTIONS)) {
