@@ -2,68 +2,80 @@
 
 require_once "./views/MovieView.php";
 require_once "./models/MovieModel.php";
+require_once "SecuredController.php";
 
-class MovieController
+class MovieController extends SecuredController
 {
     private $title;
     private $view;
     private $model;
 
-    function __construct() {
+    public function __construct()
+    {
+        parent::__construct();
         $this->title = "Movies";
         $this->view = new MovieView();
         $this->model = new MovieModel();
     }
 
-    function insertMovie() {
+    public function insertMovie()
+    {
         $name = $_POST['name'];
         $description = $_POST['description'];
         $id_genre = $_POST['id_genre'];
         $year = $_POST['year'];
         $rating = $_POST['rating'];
-        if (isset($name, $description, $id_genre, $year, $rating))
+        if (isset($name, $description, $id_genre, $year, $rating)) {
             $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
+        }
+
         header(HOME);
     }
 
-    function deleteMovie($params) {
+    public function deleteMovie($params)
+    {
         $this->model->deleteMovie($params[0]);
         header(HOME);
     }
 
-    function showMovie($id) {
+    public function showMovie($id)
+    {
         $movies = $this->model->getMovie($id);
         $this->view->showMovies($this->title, $movies);
     }
 
-    function showMovies($params) {
+    public function showMovies($params)
+    {
         $movies = $this->model->getMovies();
-        session_start();
-        $this->view->showMovies($this->title, $movies, (isset($_SESSION["username"])));
+        $this->view->showMovies($this->title, $movies, $this->isAdmin);
     }
 
-    function showMoviesGenre($params) {
+    public function showMoviesGenre($params)
+    {
         $movies = $this->model->getMoviesGenre($params[0]);
         session_start();
-        $this->view->showMovies($this->title, $movies, (isset($_SESSION["username"])));
+        $this->view->showMovies($this->title, $movies, $this->isAdmin);
     }
 
-    function addMovieForm() {
-        $movie = array("id_movie" => "", "id_genre" => "",	"name" => "", "description" => "", "year" => "", "rating" => "");
+    public function addMovieForm()
+    {
+        $movie = array("id_movie" => "", "id_genre" => "", "name" => "", "description" => "", "year" => "", "rating" => "");
         $genres = $this->model->getDropDrown();
         $id_movie = -1;
         $action = "./insert-movie";
         $this->view->movieForm($this->title, $genres, $id_movie, $movie, $action);
     }
 
-    function editMovieForm($id_movie) {
+    public function editMovieForm($id_movie)
+    {
         $movie = $this->model->getMovie($id_movie[0]);
         $genres = $this->model->getDropDrown();
         $action = "../edit-movies";
         $this->view->movieForm($this->title, $genres, $id_movie[0], $movie[0], $action);
     }
 
-    function editMovie() {
+    public function editMovie()
+    {
         $name = $_POST['name'];
         $id_movie = $_POST['id_movie'];
         $description = $_POST['description'];

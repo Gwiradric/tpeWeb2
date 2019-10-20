@@ -2,20 +2,24 @@
 
 require_once "./views/GenreView.php";
 require_once "./models/GenreModel.php";
+require_once "SecuredController.php";
 
-class GenreController
+class GenreController extends SecuredController
 {
     private $title;
     private $view;
     private $model;
 
-    function __construct() {
+    public function __construct()
+    {
+        parent::__construct();
         $this->title = "Movies";
         $this->view = new GenreView();
         $this->model = new GenreModel();
     }
 
-    function insertGenre() {
+    public function insertGenre()
+    {
         if ((isset($_POST['name'])) && (isset($_POST['description']))) {
             $name = $_POST['name'];
             $description = $_POST['description'];
@@ -23,18 +27,20 @@ class GenreController
         }
     }
 
-    function deleteGenre($params) {
+    public function deleteGenre($params)
+    {
         $this->model->deleteGenre($params);
         header(HOME);
     }
 
-    function showGenre($id) {
+    public function showGenre($id)
+    {
         $genres = $this->model->getGenre($id);
-        session_start();
-        $this->view->Home($this->title, $genres, (isset($_SESSION["username"])));
+        $this->view->Home($this->title, $genres, $this->isAdmin);
     }
 
-    function editGenre() {
+    public function editGenre()
+    {
         if ((isset($_POST['name']) && (isset($_POST['description'])))) {
             $id_genre = $_POST['id_genre'];
             $name = $_POST['name'];
@@ -44,20 +50,22 @@ class GenreController
         header(HOME);
     }
 
-    function home() {
+    public function home()
+    {
         $genres = $this->model->getGenres();
-        session_start();
-        $this->view->home($this->title, $genres, (isset($_SESSION["username"])));
+        $this->view->home($this->title, $genres, $this->isAdmin);
     }
 
-    function addGenreForm() {
+    public function addGenreForm()
+    {
         $id = -1;
         $genre = array("name" => '', "description" => '');
         $action = "./insert-genre";
         $this->view->genreForm($this->title, $action, $genre, $id);
     }
 
-    function editGenreForm($id) {
+    public function editGenreForm($id)
+    {
         $genre = $this->model->getGenre($id[0]);
         $action = "../update-genre";
         $this->view->genreForm($this->title, $action, $genre[0], $id[0]);

@@ -9,16 +9,18 @@ class UserController
     private $view;
     private $model;
 
-    function __construct() {
+    public function __construct()
+    {
         $this->title = "Users";
         $this->model = new UserModel();
         $this->view = new UserView();
     }
 
-    function insertUser() {
+    public function insertUser()
+    {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        
+
         $user = $this->model->getUserUsername($username);
 
         if (empty($user[0]) && (isset($username, $password))) {
@@ -28,9 +30,10 @@ class UserController
         header(HOME);
     }
 
-    function addUser(){
-        $user = array('username' => '', 'password' =>'');
+    public function addUser()
+    {
+        $user = array('username' => '', 'password' => '');
         $action = "./insert-user";
         $this->view->userForm($this->title, $user, $action);
-    } 
+    }
 }

@@ -9,17 +9,20 @@ class LoginController
     private $model;
     private $view;
 
-    function __construct() {
+    public function __construct()
+    {
         $this->title = "Login";
         $this->model = new UserModel();
         $this->view = new LoginView();
     }
 
-    function login() {
+    public function login()
+    {
         $this->view->showLogin($this->title);
     }
 
-    function checkLogin() {
+    public function checkLogin()
+    {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -29,15 +32,19 @@ class LoginController
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
                 $_SESSION["username"] = $username;
+                $_SESSION["id_user"] = $user[0]['id_user'];
                 header(HOME);
-           } else
+            } else {
                 $this->view->showLogin($this->title, "Username or password are incorrect");
+            }
+
         } else {
             $this->view->showLogin($this->title, "User not found");
         }
     }
 
-    function logout() {
+    public function logout()
+    {
         session_start();
         session_destroy();
         header(HOME);
