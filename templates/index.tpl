@@ -9,13 +9,11 @@
             {if $login}
             <a class="btn btn-primary" href="add-genre" role="button">Add Genre</a>
             <a class="btn btn-primary" href="add-movie" role="button">Add Movie</a>
-            {/if}
-            <a class="btn btn-primary" href="add-user" role="button">Add User</a>
-            {if $login}
             <a class="btn btn-primary" href="logout" role="button">Logout</a>
             {else}
+            <a class="btn btn-primary" href="add-user" role="button">Register</a>
             <a class="btn btn-primary" href="login" role="button">Login</a>
-            {{/if}}
+            {/if}
         </div>
     </div>
     <div class="row">

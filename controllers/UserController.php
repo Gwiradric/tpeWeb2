@@ -18,7 +18,10 @@ class UserController
     function insertUser() {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        if ((isset($username, $password))) {
+        
+        $user = $this->model->getUserUsername($username);
+
+        if (empty($user[0]) && (isset($username, $password))) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $this->model->insertUser($username, $hash);
         }

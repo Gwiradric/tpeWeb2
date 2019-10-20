@@ -6,8 +6,6 @@
 
     <form method="post" action={$action}>
         
-        <input type="hidden" name="id_user" value={$id}>
-        
         <div class="form-group">
             <input type="text" class="form-control" id="user" aria-describedby="user" placeholder="Username" name="username" value="{$user['username']}">
         </div>
