@@ -9,6 +9,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+        <!-- Footer -->
+        <footer class="page-footer font-small bg-primary mt-3">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright: {$title}
+        </div>
+        <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
 </body>
+        
 
 </html>
