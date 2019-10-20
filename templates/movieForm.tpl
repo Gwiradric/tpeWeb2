@@ -10,7 +10,7 @@
             <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}'>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}'>
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}' maxlength='100'>
         </div>
 
         <div class="form-group">

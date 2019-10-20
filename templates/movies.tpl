@@ -14,9 +14,9 @@
                             <th scope="col">Description</th>
                             <th scope="col">Year</th>
                             <th scope="col">Rating</th>
+
                             {if $login}
-                            <th scope="col">Options</th>
-                                
+                                <th scope="col">Options</th>
                             {/if}
                         </tr>
                     </thead>
