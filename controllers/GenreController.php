@@ -20,17 +20,21 @@ class GenreController extends SecuredController
 
     public function insertGenre()
     {
-        if ((isset($_POST['name'])) && (isset($_POST['description']))) {
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $this->model->insertGenre($name, $description);
+        if ($this->isAdmin) {
+            if ((isset($_POST['name'])) && (isset($_POST['description']))) {
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $this->model->insertGenre($name, $description);
+            }
         }
     }
 
     public function deleteGenre($params)
     {
-        $this->model->deleteGenre($params);
-        header(HOME);
+        if ($this->isAdmin) {
+            $this->model->deleteGenre($params);
+            header(HOME);
+        }
     }
 
     public function showGenre($id)
@@ -41,13 +45,15 @@ class GenreController extends SecuredController
 
     public function editGenre()
     {
-        if ((isset($_POST['name']) && (isset($_POST['description'])))) {
-            $id_genre = $_POST['id_genre'];
-            $name = $_POST['name'];
-            $description = $_POST['description'];
-            $this->model->editGenre($id_genre, $name, $description);
+        if ($this->isAdmin) {
+            if ((isset($_POST['name']) && (isset($_POST['description'])))) {
+                $id_genre = $_POST['id_genre'];
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $this->model->editGenre($id_genre, $name, $description);
+            }
+            header(HOME);
         }
-        header(HOME);
     }
 
     public function home()
@@ -58,17 +64,22 @@ class GenreController extends SecuredController
 
     public function addGenreForm()
     {
-        $id = -1;
-        $genre = array("name" => '', "description" => '');
-        $action = "./insert-genre";
-        $this->view->genreForm($this->title, $action, $genre, $id);
+        if ($this->isAdmin) {
+            $id = -1;
+            $genre = array("name" => '', "description" => '');
+            $action = "./insert-genre";
+            $this->view->genreForm($this->title, $action, $genre, $id);
+        }
     }
 
     public function editGenreForm($id)
     {
-        $genre = $this->model->getGenre($id[0]);
-        $action = "../update-genre";
-        $this->view->genreForm($this->title, $action, $genre[0], $id[0]);
+        if ($this->isAdmin) {
+            $genre = $this->model->getGenre($id[0]);
+            $action = "../update-genre";
+            $this->view->genreForm($this->title, $action, $genre[0], $id[0]);
+        }
+
     }
 
 }
