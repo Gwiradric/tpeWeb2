@@ -64,7 +64,7 @@ class MovieController extends SecuredController
             $movie = array("id_movie" => "", "id_genre" => "", "name" => "", "description" => "", "year" => "", "rating" => "");
             $genres = $this->model->getDropDrown();
             $action = "./insert-movie";
-            $this->view->movieForm($this->title, $genres, $movie, $action, $id_movie);
+            $this->view->movieForm($this->title, $genres, $movie, $action);
         }
     }
 
@@ -74,7 +74,7 @@ class MovieController extends SecuredController
             $movie = $this->model->getMovie($id_movie[0]);
             $genres = $this->model->getDropDrown();
             $action = "../edit-movies";
-            $this->view->movieForm($this->title, $genres, $id_movie[0], $movie[0], $action);
+            $this->view->movieForm($this->title, $genres, $movie[0], $action, $id_movie[0]);
         }
 
     }
