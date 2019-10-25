@@ -38,11 +38,8 @@
             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
 
-<<<<<<< HEAD
         <p class='text-danger'>{$message}</p>
 
-=======
->>>>>>> 7d20803455c046275006418303117280398e31a0
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
