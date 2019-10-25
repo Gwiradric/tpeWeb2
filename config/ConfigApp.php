@@ -22,7 +22,7 @@ class ConfigApp
         'add-movie' => 'MovieController#addMovieForm',
         'insert-movie' => 'MovieController#insertMovie',
         'delete-movie' => 'MovieController#deleteMovie',
-        'add-user' => 'UserController#addUser',
+        'register' => 'UserController#addUser',
         'insert-user' => 'UserController#insertUser',
         'login' => 'LoginController#login',
         'check-login' => 'LoginController#checkLogin',
