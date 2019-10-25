@@ -26,14 +26,13 @@ class UserController
         if (empty($user[0]) && (isset($username, $password))) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $this->model->insertUser($username, $hash);
+        } else {
+            $this->view->userForm($this->title, 'Username is already used, please try use another one');
         }
-        header(HOME);
     }
 
     public function addUser()
     {
-        $user = array('username' => '', 'password' => '');
-        $action = "./insert-user";
-        $this->view->userForm($this->title, $user, $action);
+        $this->view->userForm($this->title);
     }
 }

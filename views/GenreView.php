@@ -15,7 +15,7 @@ class GenreView
         $smarty->display('templates/index.tpl');
     }
 
-    public function genreForm($title, $action, $genre, $id) {
+    public function genreForm($title, $action, $genre, $id = -1) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('action', $action);
