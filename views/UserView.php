@@ -4,12 +4,11 @@ require_once "./libs/Smarty.class.php";
 
 class UserView
 {
-    function userForm($title, $user, $action) {
+    function userForm($title, $message = '') {
         $smarty = new Smarty();
 
         $smarty->assign('title', $title);
-        $smarty->assign('user', $user);
-        $smarty->assign('action', $action);
+        $smarty->assign('message', $message);
 
         $smarty->display('templates/userForm.tpl');
         

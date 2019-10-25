@@ -65,10 +65,8 @@ class GenreController extends SecuredController
     public function addGenreForm()
     {
         if ($this->isAdmin) {
-            $id = -1;
             $genre = array("name" => '', "description" => '');
-            $action = "./insert-genre";
-            $this->view->genreForm($this->title, $action, $genre, $id);
+            $this->view->genreForm($this->title, "./insert-genre", $genre, $id);
         }
     }
 
@@ -76,8 +74,7 @@ class GenreController extends SecuredController
     {
         if ($this->isAdmin) {
             $genre = $this->model->getGenre($id[0]);
-            $action = "../update-genre";
-            $this->view->genreForm($this->title, $action, $genre[0], $id[0]);
+            $this->view->genreForm($this->title, "../update-genre", $genre[0], $id[0]);
         }
 
     }

@@ -30,6 +30,7 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+        <p class="text-danger">{$message}</p>
 </div>
 
 {include file="footer.tpl"}

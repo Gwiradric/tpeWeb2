@@ -16,12 +16,9 @@
             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
 
-        <div>
-            <h5>{$message}</h5>
-        </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <p class="text-danger">{$message}</p>
 </div>
 
 {include file="footer.tpl"}

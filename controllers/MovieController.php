@@ -63,9 +63,8 @@ class MovieController extends SecuredController
         if ($this->isAdmin) {
             $movie = array("id_movie" => "", "id_genre" => "", "name" => "", "description" => "", "year" => "", "rating" => "");
             $genres = $this->model->getDropDrown();
-            $id_movie = -1;
             $action = "./insert-movie";
-            $this->view->movieForm($this->title, $genres, $id_movie, $movie, $action);
+            $this->view->movieForm($this->title, $genres, $movie, $action, $id_movie);
         }
     }
 
