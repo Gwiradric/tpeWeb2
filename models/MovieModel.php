@@ -25,9 +25,9 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function insertMovie($name, $id_genre, $description, $year, $rating) {
-        $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating) VALUES (?, ?, ?, ?, ?)');
-        $sentence->execute([$name,$id_genre, $description, $year, $rating]);
+    function insertMovie($name, $id_genre, $description, $year, $rating, $img) {
+        $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating, img) VALUES (?, ?, ?, ?, ?, ?)');
+        $sentence->execute([$name,$id_genre, $description, $year, $rating, $img]);
     }
 
     function deleteMovie($id) {

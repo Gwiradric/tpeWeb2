@@ -26,10 +26,12 @@ class MovieController extends SecuredController
             $id_genre = $_POST['id_genre'];
             $year = $_POST['year'];
             $rating = $_POST['rating'];
-            if (isset($name, $description, $id_genre, $year, $rating)) {
-                $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
+            $img = $_POST['img'];
+            if (isset($name, $description, $id_genre, $year, $rating, $img)) {
+                $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $img);
             }
-            header(HOME);}
+            header(HOME);
+        }
     }
 
     public function deleteMovie($params)
@@ -61,7 +63,7 @@ class MovieController extends SecuredController
     public function addMovieForm()
     {
         if ($this->isAdmin) {
-            $movie = array("id_movie" => "", "id_genre" => "", "name" => "", "description" => "", "year" => "", "rating" => "");
+            $movie = array("id_movie" => "", "id_genre" => "", "name" => "", "description" => "", "year" => "", "rating" => "", "img" => "");
             $genres = $this->model->getDropDrown();
             $action = "./insert-movie";
             $this->view->movieForm($this->title, $genres, $movie, $action);
@@ -74,7 +76,7 @@ class MovieController extends SecuredController
             $movie = $this->model->getMovie($id_movie[0]);
             $genres = $this->model->getDropDrown();
             $action = "../edit-movies";
-            $this->view->movieForm($this->title, $genres, $movie[0], $action, $id_movie[0]);
+            $this->view->movieForm($this->title, $genres, $movie[0], $action, $id_movie[0], $movie[0]['img']);
         }
 
     }

@@ -27,12 +27,13 @@
 <div class="container mt-3">
 
     <form method="post" action={$action}>
+        <input type='hidden' name="img" value={$img}>
         <input type="hidden" name="id_movie" value={$id}>
         <div class="form-group">
             <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}'>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}' maxlength='100'>
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}' maxlength="600">
         </div>
 
         <div class="form-group">
