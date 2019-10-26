@@ -16,6 +16,7 @@ class ConfigApp
         'insert-genre' => 'GenreController#insertGenre',
         'delete-genre' => 'GenreController#deleteGenre',
         'all-movies' => 'MovieController#showMovies',
+        'movie' => 'MovieController#showMovie',
         'movies' => 'MovieController#showMoviesGenre',
         'edit-movie' => 'MovieController#editMovieForm',
         'edit-movies' => 'MovieController#editMovie',

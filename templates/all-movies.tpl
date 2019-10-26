@@ -45,7 +45,7 @@
                     <tbody>
                         {foreach from=$movies item=movie}
                         <tr>
-                            <th scope="row">{$movie["name"]}</th>
+                            <th scope="row"><a href="../movie/{$movie['id_movie']}">{$movie["name"]}</a></th>
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>

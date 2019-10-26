@@ -42,8 +42,8 @@ class MovieController extends SecuredController
 
     public function showMovie($id)
     {
-        $movies = $this->model->getMovie($id);
-        $this->view->showMovies($this->title, $movies);
+        $movie = $this->model->getMovie($id[0]);
+        $this->view->showMovie($this->title, $movie[0]);
     }
 
     public function showMovies($params)
