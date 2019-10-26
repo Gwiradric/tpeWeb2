@@ -3,6 +3,7 @@
 class SecuredController
 {
     protected $isAdmin;
+    protected $username;
 
     function __construct()
     {
@@ -12,8 +13,10 @@ class SecuredController
     function checkLogin()
     {
         session_start();
-        if (isset($_SESSION['username'], $_SESSION['id_user']))
+        if (isset($_SESSION['username'], $_SESSION['id_user'])) {
+            $this->username = $_SESSION['username'];
             return true;
+        }
         return false;
     }
 }

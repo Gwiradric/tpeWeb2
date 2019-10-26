@@ -6,69 +6,88 @@
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        {* <div class="collapse navbar-collapse" id="navbarText">
+        <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="all-movies/">All Movies</a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                Navbar text with an inline element
-            </span>
-        </div> *}
-    </nav>
-
-<div class="container mt-3">
-    <div class="row">
-        <div>
-            <a class="btn btn-primary" href="all-movies/" role="button">All movies</a>
+            
             {if $login}
-            <a class="btn btn-primary" href="add-genre" role="button">Add Genre</a>
-            <a class="btn btn-primary" href="add-movie" role="button">Add Movie</a>
-            <a class="btn btn-primary" href="logout" role="button">Logout</a>
-            {else}
-            <a class="btn btn-primary" href="register" role="button">Register</a>
-            <a class="btn btn-primary" href="login" role="button">Login</a>
+                <span class="navbar-text">
+                    Welcome {$username}
+                </span>
+                <a class="btn btn-primary" href="logout" role="button">Logout</a>
+                {else}
+                    <div>
+                        <a class="btn btn-primary" href="login" role="button">Login</a>
+                        <a class="btn btn-primary" href="register" role="button">Register</a>
+                    </div>
             {/if}
         </div>
-    </div>
+</nav>
+
+
+<div class="container mt-3">
+
+    <h3>List of Genres</h3>
+    
     <div class="row">
-        <div class="col-sm-12 mt-2">
-            <h3>List of Genres</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        {if $login}
-                        <th scope="col">Options</th>
-                        {/if}
-                    </tr>
-                </thead>
-                <tbody>
-                    {foreach from=$genres item=genre}
-                    <tr>
-                        <th scope="row"><a href='movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
-                        <td>{$genre["description"]}</td>
-                        {if $login}
-                            <td>
-                                <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
-                                <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
-                            </td>
-                        {/if}
-                        
-                    </tr>
-                    {/foreach}
-                </tbody>
-            </table>
-        </div>
+            {if $login}
+                <div class="col-sm-10 mt-2">
+            {else}
+                <div class="col-sm-12 mt-2">
+            {/if}
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                {if $login}
+                                <th scope="col">Options</th>
+                                {/if}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach from=$genres item=genre}
+                            <tr>
+                                <th scope="row"><a href='movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
+                                <td>{$genre["description"]}</td>
+                                {if $login}
+                                    <td>
+                                        <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
+                                        <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
+                                    </td>
+                                {/if}
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            {if $login}
+                <div class="col-sm-2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Admin panel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="add-genre">Add Genre</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href="add-movie">Add Movie</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {/if}
     </div>
+</div>
 </div>
 
 {include file="footer.tpl"}

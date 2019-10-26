@@ -4,26 +4,29 @@ require_once('libs/Smarty.class.php');
 
 class MovieView
 {
-    public function showMovie($title, $movie)
+    public function showMovie($title, $movie, $login, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('movie', $movie);
+        $smarty->assign('login', $login);
+        $smarty->assign('username', $username);
 
         $smarty->display('templates/movie.tpl');
     }
 
-    public function showMovies($title, $movies, $login)
+    public function showMovies($title, $movies, $login, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('movies', $movies);
         $smarty->assign('login', $login);
+        $smarty->assign('username', $username);
 
         $smarty->display('templates/all-movies.tpl');
     }
 
-    public function movieForm($title, $genres, $movie, $action, $id_movie = -1, $img = 0) {
+    public function movieForm($title, $login, $username, $genres, $movie, $action, $id_movie = -1, $img = 0) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('genres', $genres);
@@ -31,6 +34,8 @@ class MovieView
         $smarty->assign('movie', $movie);
         $smarty->assign('action', $action);
         $smarty->assign('img', $img);
+        $smarty->assign('login', $login);
+        $smarty->assign('username', $username);
 
         $smarty->display('templates/movieForm.tpl');
     }
