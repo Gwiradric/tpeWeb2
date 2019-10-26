@@ -25,6 +25,12 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
+    function getGenreId($id) {
+        $sentence = $this->db->prepare('SELECT name FROM genres WHERE id_genre = ?');
+        $sentence->execute(array($id));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     function insertMovie($name, $id_genre, $description, $year, $rating, $img) {
         $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating, img) VALUES (?, ?, ?, ?, ?, ?)');
         $sentence->execute([$name,$id_genre, $description, $year, $rating, $img]);

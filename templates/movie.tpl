@@ -48,6 +48,7 @@
         <h1>{$movie['name']}</h1> 
       
       <ul>
+        <li>Genre: {$genre}</li>
         <li>Year: {$movie['year']}</li>
         <li>Rating: {$movie['rating']} / 100</li>
       </ul>
