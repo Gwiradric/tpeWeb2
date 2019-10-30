@@ -36,6 +36,8 @@
 
 <div class="container mt-3">
 
+    <h2>{$subtitle}</h2>
+
     <form method="post" action={$action}>
         <input type='hidden' name="img" value={$img}>
         <input type="hidden" name="id_movie" value={$id}>

@@ -7,6 +7,7 @@ require_once "SecuredController.php";
 class GenreController extends SecuredController
 {
     private $title;
+    private $subtitle;
     private $view;
     private $model;
 
@@ -66,7 +67,8 @@ class GenreController extends SecuredController
     {
         if ($this->isAdmin) {
             $genre = array("name" => '', "description" => '');
-            $this->view->genreForm($this->title, $this->isAdmin, $this->username, "./insert-genre", $genre);
+            $this->subtitle = "Add Genre form";
+            $this->view->genreForm($this->title, $this->subtitle, $this->isAdmin, $this->username, "./insert-genre", $genre);
         }
     }
 
@@ -74,7 +76,8 @@ class GenreController extends SecuredController
     {
         if ($this->isAdmin) {
             $genre = $this->model->getGenre($id[0]);
-            $this->view->genreForm($this->title, $this->isAdmin, $this->username, "../update-genre", $genre[0], $id[0]);
+            $this->subtitle = "Edit genre form";
+            $this->view->genreForm($this->title, $this->subtitle, $this->isAdmin, $this->username, "../update-genre", $genre[0], $id[0]);
         }
 
     }
