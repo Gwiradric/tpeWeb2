@@ -8,17 +8,19 @@ class LoginController
     private $title;
     private $model;
     private $view;
+    private $subtitle;
 
     public function __construct()
     {
-        $this->title = "Login";
+        $this->title = "Movies";
         $this->model = new UserModel();
         $this->view = new LoginView();
     }
 
     public function login()
     {
-        $this->view->showLogin($this->title);
+        $this->subtitle = 'Login';
+        $this->view->showLogin($this->title, $this->subtitle);
     }
 
     public function checkLogin()

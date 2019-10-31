@@ -6,6 +6,7 @@ require_once "./models/UserModel.php";
 class UserController
 {
     private $title;
+    private $subtitle;
     private $view;
     private $model;
 
@@ -28,12 +29,14 @@ class UserController
             $this->model->insertUser($username, $hash);
             header(HOME);
         } else {
-            $this->view->userForm($this->title, 'Username is already used, please try use another one');
+            $this->subtitle = 'Register';
+            $this->view->userForm($this->title, $this->subtitle, 'Username is already used, please try use another one');
         }
     }
 
     public function addUser()
     {
-        $this->view->userForm($this->title);
+        $this->subtitle = 'Register';
+        $this->view->userForm($this->title, $this->subtitle);
     }
 }

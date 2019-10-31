@@ -22,6 +22,8 @@
 
 <div class="container mt-3">
 
+    <h2>{$subtitle}</h2>
+
     <form method="post" action="./insert-user">
         
         <div class="form-group">

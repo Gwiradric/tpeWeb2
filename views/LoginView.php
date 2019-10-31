@@ -4,8 +4,9 @@ require_once "./libs/Smarty.class.php";
 
 class LoginView
 {
-    function showLogin($title, $message = '') {
+    function showLogin($title, $subtitle, $message = '') {
         $smarty = new Smarty();
+        $smarty->assign('subtitle', $subtitle);
         $smarty->assign('title', $title);
         $smarty->assign('message', $message);
         
