@@ -46,6 +46,8 @@
             <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="{$genre['description']}" required>
         </div>
 
+        <p class='text-danger'>{$message}</p>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

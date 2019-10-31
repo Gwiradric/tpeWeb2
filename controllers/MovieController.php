@@ -22,15 +22,24 @@ class MovieController extends SecuredController
     public function insertMovie()
     {
         if ($this->isAdmin) {
+            
             $name = $_POST['name'];
             $description = $_POST['description'];
             $id_genre = $_POST['id_genre'];
             $year = $_POST['year'];
             $rating = $_POST['rating'];
             $img = $_POST['img'];
+            
             if (isset($name, $description, $id_genre, $year, $rating, $img)) {
-                $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $img);
+
+                $movie = $this->model->getMovieName($name);
+                
+                if (empty($movie[0])) {
+                    $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $img);
+                }
+
             }
+            
             header(HOME);
         }
     }
@@ -97,7 +106,13 @@ class MovieController extends SecuredController
             $year = $_POST['year'];
             $rating = $_POST['rating'];
             if (isset($name, $description, $id_genre, $year, $rating)) {
-                $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+
+                $movie = $this->model->getMovieName($name);
+
+                if (empty($movie[0])) {
+                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                }
+
             }
             header(HOME);
         }

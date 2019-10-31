@@ -13,6 +13,12 @@ class MovieModel
         );
     }
 
+    function getMovieName($name) {
+        $sentence = $this->db->prepare('SELECT * FROM movies WHERE name = ?');
+        $sentence->execute(array($name));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     function getMovie($id) {
         $sentence = $this->db->prepare('select * from movies where id_movie = ?');
         $sentence->execute([$id]);

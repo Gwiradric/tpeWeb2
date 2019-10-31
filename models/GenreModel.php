@@ -13,14 +13,20 @@ class GenreModel
         );
     }
 
+    function getGenreName($name) {
+        $sentence = $this->db->prepare('SELECT * FROM genres WHERE name = ?');
+        $sentence->execute(array($name));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     function getGenre($id) {
-        $sentence = $this->db->prepare('select * from genres where id_genre = ?');
+        $sentence = $this->db->prepare('SELECT * FROM genres WHERE id_genre = ?');
         $sentence->execute([$id]);
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
     function getGenres() {
-        $sentence = $this->db->prepare('select * from genres');
+        $sentence = $this->db->prepare('SELECT * FROM genres');
         $sentence->execute();
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
@@ -32,7 +38,7 @@ class GenreModel
     }
 
     function deleteGenre($id) {
-        $sentence = $this->db->prepare("delete from genres where id_genre = ?");
+        $sentence = $this->db->prepare("DELETE FROM genres WHERE id_genre = ?");
         $sentence->execute($id);
     }
 
