@@ -12,7 +12,7 @@ class UserController
 
     public function __construct()
     {
-        $this->title = "Users";
+        $this->title = "Movies";
         $this->model = new UserModel();
         $this->view = new UserView();
     }
