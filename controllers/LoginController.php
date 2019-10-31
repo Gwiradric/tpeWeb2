@@ -13,13 +13,13 @@ class LoginController
     public function __construct()
     {
         $this->title = "Movies";
+        $this->subtitle = 'Login';
         $this->model = new UserModel();
         $this->view = new LoginView();
     }
 
     public function login()
     {
-        $this->subtitle = 'Login';
         $this->view->showLogin($this->title, $this->subtitle);
     }
 
@@ -35,10 +35,10 @@ class LoginController
                 $_SESSION["id_user"] = $user[0]['id_user'];
                 header(HOME);
             } else {
-                $this->view->showLogin($this->title, "Username or password are incorrect");
+                $this->view->showLogin($this->title, $this->subtitle, "Username or password are incorrect");
             }
         } else {
-            $this->view->showLogin($this->title, "User not found");
+            $this->view->showLogin($this->title, $this->subtitle, "User not found");
         }
     }
 

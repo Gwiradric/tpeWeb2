@@ -39,11 +39,11 @@
         <input type="hidden" name="id_genre" value={$id}>
         
         <div class="form-group">
-            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name" value="{$genre['name']}">
+            <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name" value="{$genre['name']}" required>
         </div>
         
         <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="{$genre['description']}">
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="{$genre['description']}" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Submit</button>
