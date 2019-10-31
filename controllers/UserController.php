@@ -7,12 +7,14 @@ class UserController
 {
     private $title;
     private $subtitle;
+    private $action;
     private $view;
     private $model;
 
     public function __construct()
     {
         $this->title = "Movies";
+        $this->action = './insert-user';
         $this->model = new UserModel();
         $this->view = new UserView();
     }
@@ -30,13 +32,13 @@ class UserController
             header(HOME);
         } else {
             $this->subtitle = 'Register';
-            $this->view->userForm($this->title, $this->subtitle, 'Username is already used, please try use another one');
+            $this->view->userForm($this->title, $this->subtitle, $this->action, 'Username is already used, please try use another one');
         }
     }
 
     public function addUser()
     {
         $this->subtitle = 'Register';
-        $this->view->userForm($this->title, $this->subtitle);
+        $this->view->userForm($this->title, $this->subtitle, $this->action);
     }
 }

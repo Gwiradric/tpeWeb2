@@ -16,7 +16,11 @@
                 </li>
             </ul>
             
-            <a class="btn btn-primary" href="./login" role="button">Login</a>
+            {if $subtitle eq "Register"}
+                <a class="btn btn-primary" href="./login" role="button">Login</a>
+            {else}
+                <a class="btn btn-primary" href="./register" role="button">Register</a>
+            {/if}
         </div>
     </nav>
 
@@ -24,7 +28,7 @@
 
     <h2>{$subtitle}</h2>
 
-    <form method="post" action="./insert-user">
+    <form method="post" action={$action}>
         
         <div class="form-group">
             <input type="text" class="form-control" id="user" aria-describedby="user" placeholder="Username" name="username" required>
@@ -33,10 +37,11 @@
         <div class="form-group">
             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
         </div>
+        
+        <p class='text-danger'>{$message}</p>
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <p class="text-danger">{$message}</p>
 </div>
 
 {include file="footer.tpl"}

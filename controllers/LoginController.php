@@ -6,6 +6,7 @@ require_once "./models/UserModel.php";
 class LoginController
 {
     private $title;
+    private $action;
     private $model;
     private $view;
     private $subtitle;
@@ -14,13 +15,14 @@ class LoginController
     {
         $this->title = "Movies";
         $this->subtitle = 'Login';
+        $this->action = "./check-login";
         $this->model = new UserModel();
-        $this->view = new LoginView();
+        $this->view = new UserView();
     }
 
     public function login()
     {
-        $this->view->showLogin($this->title, $this->subtitle);
+        $this->view->userForm($this->title, $this->subtitle, $this->action);
     }
 
     public function checkLogin()
@@ -35,10 +37,10 @@ class LoginController
                 $_SESSION["id_user"] = $user[0]['id_user'];
                 header(HOME);
             } else {
-                $this->view->showLogin($this->title, $this->subtitle, "Username or password are incorrect");
+                $this->view->userForm($this->title, $this->subtitle, $this->action, "Username or password are incorrect");
             }
         } else {
-            $this->view->showLogin($this->title, $this->subtitle, "User not found");
+            $this->view->userForm($this->title, $this->subtitle, $this->action, "User not found");
         }
     }
 
