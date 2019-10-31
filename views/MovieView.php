@@ -27,12 +27,13 @@ class MovieView
         $smarty->display('templates/all-movies.tpl');
     }
 
-    public function movieForm($title, $subtitle, $login, $username, $genres, $movie, $action, $id_movie = -1, $img = 0) {
+    public function movieForm($title, $subtitle, $login, $username, $link, $genres, $movie, $action, $id_movie = -1, $img = 0) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('subtitle', $subtitle);
         $smarty->assign('genres', $genres);
         $smarty->assign('id', $id_movie);
+        $smarty->assign('link', $link);
         $smarty->assign('movie', $movie);
         $smarty->assign('action', $action);
         $smarty->assign('img', $img);

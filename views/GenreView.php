@@ -16,12 +16,13 @@ class GenreView
         $smarty->display('templates/index.tpl');
     }
 
-    public function genreForm($title, $subtitle, $login, $username, $action, $genre, $id = -1) {
+    public function genreForm($title, $subtitle, $login, $username, $link, $action, $genre, $id = -1) {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('subtitle', $subtitle);
         $smarty->assign('action', $action);
         $smarty->assign('genre', $genre);
+        $smarty->assign('link', $link);
         $smarty->assign('id', $id);
         $smarty->assign('username', $username);
         $smarty->assign('login', $login);
