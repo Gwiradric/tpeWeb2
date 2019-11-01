@@ -61,9 +61,13 @@ class GenreController extends SecuredController
                 $description = $_POST['description'];
 
                 $genre = $this->model->getGenreName($name);
-
+                
                 if (empty($genre[0])) {
                     $this->model->editGenre($id_genre, $name, $description);
+                } else {
+                    if (($genre[0]["id_genre"] == $id_genre)) {
+                        $this->model->editGenre($id_genre, $name, $description);
+                    }
                 }
                 header(HOME);
             }

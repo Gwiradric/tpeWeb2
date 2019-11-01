@@ -111,6 +111,10 @@ class MovieController extends SecuredController
 
                 if (empty($movie[0])) {
                     $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                } else {
+                    if ($movie[0]['id_movie'] == $id_movie) {
+                        $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                    }
                 }
 
             }
