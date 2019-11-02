@@ -10,11 +10,12 @@ class MovieController extends SecuredController
     private $subtitle;
     private $view;
     private $model;
+    private $link;
 
     public function __construct()
     {
         parent::__construct();
-        $this->title = "Movies";
+        $this->title = "Movie Club";
         $this->view = new MovieView();
         $this->model = new MovieModel();
     }
@@ -56,19 +57,22 @@ class MovieController extends SecuredController
     {
         $movie = $this->model->getMovie($id[0]);
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
-        $this->view->showMovie($this->title, $movie[0], $this->isAdmin, $this->username, $genre[0]['name']);
+        $this->link = "../";
+        $this->view->showMovie($this->title, $this->link, $movie[0], $this->isAdmin, $this->username, $genre[0]['name']);
     }
 
     public function showMovies($params)
     {
         $movies = $this->model->getMovies();
-        $this->view->showMovies($this->title, $movies, $this->isAdmin, $this->username);
+        $this->link = "../";
+        $this->view->showMovies($this->title, $this->link, $movies, $this->isAdmin, $this->username);
     }
 
     public function showMoviesGenre($params)
     {
         $movies = $this->model->getMoviesGenre($params[0]);
-        $this->view->showMovies($this->title, $movies, $this->isAdmin, $this->username);
+        $this->link = "../";
+        $this->view->showMovies($this->title, $this->link, $movies, $this->isAdmin, $this->username);
     }
 
     public function addMovieForm()
@@ -99,12 +103,14 @@ class MovieController extends SecuredController
     public function editMovie()
     {
         if ($this->isAdmin) {
+            
             $name = $_POST['name'];
             $id_movie = $_POST['id_movie'];
             $description = $_POST['description'];
             $id_genre = $_POST['id_genre'];
             $year = $_POST['year'];
             $rating = $_POST['rating'];
+
             if (isset($name, $description, $id_genre, $year, $rating)) {
 
                 $movie = $this->model->getMovieName($name);
@@ -118,6 +124,7 @@ class MovieController extends SecuredController
                 }
 
             }
+            
             header(HOME);
         }
 

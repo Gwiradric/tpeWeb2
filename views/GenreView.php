@@ -5,10 +5,11 @@ require_once('libs/Smarty.class.php');
 class GenreView
 {
 
-    public function home($title, $genres, $login, $username)
+    public function home($title, $link, $genres, $login, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
+        $smarty->assign('link', $link);
         $smarty->assign('genres', $genres);
         $smarty->assign('login', $login);
         $smarty->assign('username', $username);

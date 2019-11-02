@@ -4,10 +4,11 @@ require_once('libs/Smarty.class.php');
 
 class MovieView
 {
-    public function showMovie($title, $movie, $login, $username, $genre)
+    public function showMovie($title, $link, $movie, $login, $username, $genre)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
+        $smarty->assign('link', $link);
         $smarty->assign('movie', $movie);
         $smarty->assign('login', $login);
         $smarty->assign('username', $username);
@@ -16,10 +17,11 @@ class MovieView
         $smarty->display('templates/movie.tpl');
     }
 
-    public function showMovies($title, $movies, $login, $username)
+    public function showMovies($title, $link, $movies, $login, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
+        $smarty->assign('link', $link);
         $smarty->assign('movies', $movies);
         $smarty->assign('login', $login);
         $smarty->assign('username', $username);

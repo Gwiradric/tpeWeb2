@@ -1,28 +1,6 @@
 {include file="header.tpl"}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" href='./'><h1>{$title}</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./all-movies/">All Movies <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            
-            {if $subtitle eq "Register"}
-                <a class="btn btn-primary" href="./login" role="button">Login</a>
-            {else}
-                <a class="btn btn-primary" href="./register" role="button">Register</a>
-            {/if}
-        </div>
-    </nav>
+{include file="navbar.tpl"}
 
 <div class="container mt-3">
 

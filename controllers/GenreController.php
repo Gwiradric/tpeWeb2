@@ -10,28 +10,31 @@ class GenreController extends SecuredController
     private $subtitle;
     private $view;
     private $model;
+    private $link;
 
     public function __construct()
     {
         parent::__construct();
-        $this->title = "Movies";
+        $this->title = "Movie Club";
         $this->view = new GenreView();
         $this->model = new GenreModel();
+        $this->link = "./";
     }
 
     public function insertGenre()
     {
         if ($this->isAdmin) {
-            if ((isset($_POST['name'])) && (isset($_POST['description']))) {
-                
-                $name = $_POST['name'];
-                $description = $_POST['description'];
-                
+
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+
+            if (isset($name, $description)) {
                 $genre = $this->model->getGenreName($name);
-                
+
                 if (empty($genre[0])) {
                     $this->model->insertGenre($name, $description);
                 }
+
                 header(HOME);
             }
         }
@@ -45,23 +48,18 @@ class GenreController extends SecuredController
         }
     }
 
-    public function showGenre($id)
-    {
-        $genres = $this->model->getGenre($id);
-        $this->view->Home($this->title, $genres, $this->isAdmin);
-    }
-
     public function editGenre()
     {
         if ($this->isAdmin) {
-            if ((isset($_POST['name']) && (isset($_POST['description'])))) {
-                
-                $id_genre = $_POST['id_genre'];
-                $name = $_POST['name'];
-                $description = $_POST['description'];
+
+            $id_genre = $_POST['id_genre'];
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+
+            if (isset($name, $description)) {
 
                 $genre = $this->model->getGenreName($name);
-                
+
                 if (empty($genre[0])) {
                     $this->model->editGenre($id_genre, $name, $description);
                 } else {
@@ -77,7 +75,7 @@ class GenreController extends SecuredController
     public function home()
     {
         $genres = $this->model->getGenres();
-        $this->view->home($this->title, $genres, $this->isAdmin, $this->username);
+        $this->view->home($this->title, $this->link, $genres, $this->isAdmin, $this->username);
     }
 
     public function addGenreForm()

@@ -3,7 +3,7 @@
 require_once "./views/UserView.php";
 require_once "./models/UserModel.php";
 
-class UserController
+class UserController extends SecuredController
 {
     private $title;
     private $subtitle;
@@ -13,8 +13,9 @@ class UserController
 
     public function __construct()
     {
-        $this->title = "Movies";
-        $this->action = './insert-user';
+        $this->title = "Movie Club";
+        $this->action = "insert-user";
+        $this->link = "./";
         $this->model = new UserModel();
         $this->view = new UserView();
     }
@@ -32,13 +33,13 @@ class UserController
             header(HOME);
         } else {
             $this->subtitle = 'Register';
-            $this->view->userForm($this->title, $this->subtitle, $this->action, 'Username is already used, please try use another one');
+            $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, 'Username is already used, please try use another one');
         }
     }
 
     public function addUser()
     {
         $this->subtitle = 'Register';
-        $this->view->userForm($this->title, $this->subtitle, $this->action);
+        $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 }

@@ -2,3 +2,18 @@ img {
     width: 100%;
 }
 
+/*Lo primero, todo el cuerpo que ocupe el 100%*/
+html, body {    
+    height: 100%;
+ }
+  
+ /*Lo segundo, el container, con algura mínima del 100% y un margen inferior negativo igual al alto que queramos darle al pie*/
+ .container {
+    min-height: 100%;
+    position: relative;
+ }
+  
+ /*Lo tercero, el pie con la altura deseada (igual al margen negativo de antes)*/
+ footer {
+    position: relative;
+ }

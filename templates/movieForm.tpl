@@ -1,49 +1,21 @@
 {include file="header.tpl"}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" href={$link}><h1>{$title}</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href={$link}>Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{$link}all-movies/">All Movies <span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            
-            {if $login}
-                <span class="navbar-text">
-                    Welcome {$username}
-                </span>
-                <a class="btn btn-primary" href="{$link}logout" role="button">Logout</a>
-                {else}
-                    <div>
-                        <a class="btn btn-primary" href="{$link}login" role="button">Login</a>
-                        <a class="btn btn-primary" href="{$link}register" role="button">Register</a>
-                    </div>
-            {/if}
-        </div>
-    </nav>
+{include file="navbar.tpl"}
 
 <div class="container mt-3">
 
     <h2>{$subtitle}</h2>
 
     <form method="post" action={$link}{$action}>
+
         <input type='hidden' name="img" value={$img}>
+
         <input type="hidden" name="id_movie" value={$id}>
+
         <div class="form-group">
             <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}' required>
         </div>
+
         <div class="form-group">
             <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}' maxlength="600" required>
         </div>
@@ -59,6 +31,7 @@
         <div class="form-group">
             <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" value='{$movie["year"]}' required>
         </div>
+        
         <div class="form-group">
             <input type="number" class="form-control" id="rating" placeholder="Rating" name="rating" value='{$movie["rating"]}' required>
         </div>
