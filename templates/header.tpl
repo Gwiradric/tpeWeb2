@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="{$link}css/style.css">
 
+    <link rel="icon" type="image/png" href="{$link}img/favicon.png">
+
     <title>{$title}</title>
 </head>
 
