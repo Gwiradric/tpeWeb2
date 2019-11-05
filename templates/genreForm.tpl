@@ -14,9 +14,7 @@
             <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Name" name="name" value="{$genre['name']}" required>
         </div>
         
-        <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value="{$genre['description']}" required>
-        </div>
+        <textarea class="form-control" id="description" placeholder="Description" name="description" required>{$genre['description']}</textarea>
 
         <p class='text-danger'>{$message}</p>
 

@@ -16,11 +16,9 @@
             <input type="text" class="form-control" id="name" placeholder="Name" name="name" value='{$movie["name"]}' required>
         </div>
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="description" placeholder="Description" name="description" value='{$movie["description"]}' maxlength="600" required>
-        </div>
+        <textarea class="form-control" aria-label="With textarea" placeholder="Description" name="description" maxlength="600" required>{$movie["description"]}</textarea>
 
-        <div class="form-group">
+        <div class="mt-2 form-group">
             <select class="custom-select" id="genre" name="id_genre">
                 {foreach from=$genres item=genre}
                 <option value={$genre["id_genre"]}>{$genre['name']}</option>
