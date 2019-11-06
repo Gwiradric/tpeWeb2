@@ -15,7 +15,7 @@
                             <th scope="col">Year</th>
                             <th scope="col">Rating</th>
 
-                            {if $login}
+                            {if $isAdmin}
                                 <th scope="col">Options</th>
                             {/if}
                         </tr>
@@ -23,14 +23,14 @@
                     <tbody>
                         {foreach from=$movies item=movie}
                         <tr>
-                            <th scope="row"><a href="../movie/{$movie['id_movie']}">{$movie["name"]}</a></th>
+                            <th scope="row"><a href="{$link}movie/{$movie['id_movie']}">{$movie["name"]}</a></th>
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>
-                            {if $login}
+                            {if $isAdmin}
                                <td>
-                                <a href="../delete-movie/{$movie['id_movie']}">Delete</a> | 
-                                <a href="../edit-movie/{$movie['id_movie']}">Edit</a>
+                                <a href="{$link}delete-movie/{$movie['id_movie']}">Delete</a> | 
+                                <a href="{$link}edit-movie/{$movie['id_movie']}">Edit</a>
                             </td> 
                             {/if}
                             

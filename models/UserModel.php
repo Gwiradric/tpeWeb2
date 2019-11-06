@@ -13,9 +13,9 @@ class UserModel
         );
     }
 
-    function insertUser($username, $password) {
-        $sentence = $this->db->prepare('INSERT INTO users (username, password) VALUE (?, ?)');
-        $sentence->execute(array($username, $password));
+    function insertUser($username, $password, $admin = 0) {
+        $sentence = $this->db->prepare('INSERT INTO users (username, password, admin) VALUE (?, ?, ?)');
+        $sentence->execute(array($username, $password, $admin));
     }
 
     function getUsers() {

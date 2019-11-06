@@ -65,14 +65,14 @@ class MovieController extends SecuredController
     {
         $movies = $this->model->getMovies();
         $this->link = "../";
-        $this->view->showMovies($this->title, $this->link, $movies, $this->isAdmin, $this->username);
+        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->isAdmin, $this->username);
     }
 
     public function showMoviesGenre($params)
     {
         $movies = $this->model->getMoviesGenre($params[0]);
         $this->link = "../";
-        $this->view->showMovies($this->title, $this->link, $movies, $this->isAdmin, $this->username);
+        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->isAdmin, $this->username);
     }
 
     public function addMovieForm()

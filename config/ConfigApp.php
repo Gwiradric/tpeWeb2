@@ -27,6 +27,7 @@ class ConfigApp
         'insert-user' => 'UserController#insertUser',
         'login' => 'LoginController#login',
         'check-login' => 'LoginController#checkLogin',
-        'logout' => 'LoginController#logout'
+        'logout' => 'LoginController#logout',
+        'users' => 'UserController#showUsers'
     ];
 }

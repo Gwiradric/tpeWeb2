@@ -75,7 +75,7 @@ class GenreController extends SecuredController
     public function home()
     {
         $genres = $this->model->getGenres();
-        $this->view->home($this->title, $this->link, $genres, $this->isAdmin, $this->username);
+        $this->view->home($this->title, $this->isAdmin, $this->link, $genres, $this->isAdmin, $this->username);
     }
 
     public function addGenreForm()

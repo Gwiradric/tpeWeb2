@@ -17,10 +17,11 @@ class MovieView
         $smarty->display('templates/movie.tpl');
     }
 
-    public function showMovies($title, $link, $movies, $login, $username)
+    public function showMovies($title, $isAdmin, $link, $movies, $login, $username)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
+        $smarty->assign('isAdmin', $isAdmin);
         $smarty->assign('link', $link);
         $smarty->assign('movies', $movies);
         $smarty->assign('login', $login);

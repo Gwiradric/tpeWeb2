@@ -7,7 +7,7 @@
     <h3>List of Genres</h3>
     
     <div class="row">
-            {if $login}
+            {if $isAdmin}
                 <div class="col-sm-10 mt-2">
             {else}
                 <div class="col-sm-12 mt-2">
@@ -17,7 +17,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Description</th>
-                                {if $login}
+                                {if $isAdmin}
                                 <th scope="col">Options</th>
                                 {/if}
                             </tr>
@@ -25,12 +25,12 @@
                         <tbody>
                             {foreach from=$genres item=genre}
                             <tr>
-                                <th scope="row"><a href='movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
+                                <th scope="row"><a href='{$link}movies/{$genre["id_genre"]}'>{$genre["name"]}</a></th>
                                 <td>{$genre["description"]}</td>
-                                {if $login}
+                                {if $isAdmin}
                                     <td>
-                                        <a href='./delete-genre/{$genre["id_genre"]}'>Delete</a> |
-                                        <a href='./edit-genre/{$genre["id_genre"]}'>Edit</a>
+                                        <a href='{$link}delete-genre/{$genre["id_genre"]}'>Delete</a> |
+                                        <a href='{$link}edit-genre/{$genre["id_genre"]}'>Edit</a>
                                     </td>
                                 {/if}
                             </tr>
@@ -38,7 +38,7 @@
                         </tbody>
                     </table>
                 </div>
-            {if $login}
+            {if $isAdmin}
                 <div class="col-sm-2">
                     <table class="table">
                         <thead>
@@ -48,10 +48,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><a href="add-genre">Add Genre</a></td>
+                                <td><a href="{$link}add-genre">Add Genre</a></td>
                             </tr>
                             <tr>
-                                <td><a href="add-movie">Add Movie</a></td>
+                                <td><a href="{$link}add-movie">Add Movie</a></td>
+                            </tr>
+                            <tr>
+                                <td><a href='{$link}/users/'>Users</a></td>
                             </tr>
                         </tbody>
                     </table>

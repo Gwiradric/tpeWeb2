@@ -13,6 +13,7 @@ class UserController extends SecuredController
 
     public function __construct()
     {
+        parent::__construct();
         $this->title = "Movie Club";
         $this->action = "insert-user";
         $this->link = "./";
@@ -41,5 +42,16 @@ class UserController extends SecuredController
     {
         $this->subtitle = 'Register';
         $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action);
+    }
+
+    public function showUsers() {
+        if ($this->isAdmin) {
+            $this->subtitle = 'Users';
+            $users = $this->model->getUsers();
+            $this->link = "../";
+            $this->view->showUsers($this->title, $this->link, $this->subtitle, $this->username, $this->isAdmin, $users);
+        } else {
+            header(HOME);
+        }
     }
 }
