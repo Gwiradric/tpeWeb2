@@ -29,4 +29,14 @@ class UserModel
         $sentence->execute(array($username));
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
+
+    function updateUser($id, $admin) {
+        $sentence = $this->db->prepare('UPDATE users SET admin = ? WHERE id_user = ?');
+        $sentence->execute(array($admin, $id));
+    }
+
+    function deleteUser($id) {
+        $sentence = $this->db->prepare('DELETE FROM users WHERE id_user = ?');
+        $sentence->execute(array($id));
+    }
 }

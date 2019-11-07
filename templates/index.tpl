@@ -54,7 +54,7 @@
                                 <td><a href="{$link}add-movie">Add Movie</a></td>
                             </tr>
                             <tr>
-                                <td><a href='{$link}/users/'>Users</a></td>
+                                <td><a href='{$link}users/'>Users</a></td>
                             </tr>
                         </tbody>
                     </table>

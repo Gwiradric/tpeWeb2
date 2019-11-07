@@ -2,6 +2,7 @@
 $port = ":80";
 define('HOME', 'Location: http://' . $_SERVER["SERVER_NAME"] . $port . dirname($_SERVER["PHP_SELF"]));
 define('MOVIES', 'Location: http://' . $_SERVER["SERVER_NAME"] . $port . dirname($_SERVER["PHP_SELF"]) . '/movies/');
+define('USERS', 'Location: http://' . $_SERVER["SERVER_NAME"] . $port . dirname($_SERVER["PHP_SELF"]) . '/users/');
 
 class ConfigApp
 {
@@ -28,6 +29,8 @@ class ConfigApp
         'login' => 'LoginController#login',
         'check-login' => 'LoginController#checkLogin',
         'logout' => 'LoginController#logout',
-        'users' => 'UserController#showUsers'
+        'users' => 'UserController#showUsers',
+        'user-privileges' => 'UserController#userPrivileges',
+        'delete-user' => 'UserController#deleteUser'
     ];
 }

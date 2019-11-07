@@ -55,4 +55,24 @@ class UserController extends SecuredController
             header(HOME);
         }
     }
+
+    public function userPrivileges($params) {
+        if ($this->isAdmin) {
+            $id = $params[0];
+            if ($params[1] == 0)
+                $admin = 1;
+            else
+                $admin = 0;
+            $this->model->updateUser($id, $admin);
+        }
+        header(USERS);
+    }
+
+    public function deleteUser($params) {
+        if ($this->isAdmin) {
+            $id = $params[0];
+            $this->model->deleteUser($id);
+        }
+        header(USERS);
+    }
 }
