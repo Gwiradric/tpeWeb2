@@ -58,21 +58,21 @@ class MovieController extends SecuredController
         $movie = $this->model->getMovie($id[0]);
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
         $this->link = "../";
-        $this->view->showMovie($this->title, $this->link, $movie[0], $this->isAdmin, $this->username, $genre[0]['name']);
+        $this->view->showMovie($this->title, $this->link, $movie[0], $this->login, $this->username, $genre[0]['name']);
     }
 
     public function showMovies($params)
     {
         $movies = $this->model->getMovies();
         $this->link = "../";
-        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->isAdmin, $this->username);
+        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->login, $this->username);
     }
 
     public function showMoviesGenre($params)
     {
         $movies = $this->model->getMoviesGenre($params[0]);
         $this->link = "../";
-        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->isAdmin, $this->username);
+        $this->view->showMovies($this->title, $this->isAdmin, $this->link, $movies, $this->login, $this->username);
     }
 
     public function addMovieForm()
@@ -83,7 +83,7 @@ class MovieController extends SecuredController
             $link = "./";
             $action = "insert-movie";
             $this->subtitle = 'Add movie form';
-            $this->view->movieForm($this->title, $this->subtitle, $this->isAdmin, $this->username, $link, $genres, $movie, $action);
+            $this->view->movieForm($this->title, $this->subtitle, $this->login, $this->username, $link, $genres, $movie, $action);
         }
     }
 
@@ -95,7 +95,7 @@ class MovieController extends SecuredController
             $this->subtitle = 'Edit movie form';
             $link = "../";
             $action = "edit-movies";
-            $this->view->movieForm($this->title, $this->subtitle, $this->isAdmin, $this->username, $link, $genres, $movie[0], $action, $id_movie[0], $movie[0]['img']);
+            $this->view->movieForm($this->title, $this->subtitle, $this->login, $this->username, $link, $genres, $movie[0], $action, $id_movie[0], $movie[0]['img']);
         }
 
     }

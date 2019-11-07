@@ -31,7 +31,8 @@ class UserController extends SecuredController
         if (empty($user[0]) && (isset($username, $password))) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $this->model->insertUser($username, $hash);
-            header(HOME);
+            $loginController = new LoginController();
+            $loginController->checklogin($username, $password);
         } else {
             $this->subtitle = 'Register';
             $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, 'Username is already used, please try use another one');

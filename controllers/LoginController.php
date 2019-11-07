@@ -27,18 +27,23 @@ class LoginController extends SecuredController
         $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 
-    public function checkLogin()
+    public function checkLogin($username = "", $password = "")
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        if (($username == "") && ($password == "")) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+        }
 
         $user = $this->model->getUserUsername($username);
         
         if (isset($user[0])) {
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
-                $_SESSION["username"] = $username;
-                $_SESSION["id_user"] = $user[0]['id_user'];
+                // $_SESSION["username"] = $username;
+                // $_SESSION["id_user"] = $user[0]['id_user'];
+
+                $_SESSION['user'] = array($username, $user[0]['admin']);
+
                 header(HOME);
             } else {
                 $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");

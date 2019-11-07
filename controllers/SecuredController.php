@@ -3,20 +3,30 @@
 class SecuredController
 {
     protected $isAdmin;
+    protected $login;
     protected $username;
 
     function __construct()
     {
-        $this->isAdmin = $this->checkLogin();
+        session_start();
+        $this->username = $this->getUsername();
+        $this->login = $this->checkLogin();
+        $this->isAdmin = $this->isAdmin();
+    }
+
+    function getUsername() {
+        if (isset($_SESSION['user']))
+            return ($_SESSION['user'][0]);
     }
 
     function checkLogin()
     {
-        session_start();
-        if (isset($_SESSION['username'], $_SESSION['id_user'])) {
-            $this->username = $_SESSION['username'];
-            return true;
+        return (isset($_SESSION['user']));
+    }
+
+    function isAdmin() {
+        if (isset($_SESSION['user'])) {
+            return ($_SESSION['user'][1]);
         }
-        return false;
     }
 }
