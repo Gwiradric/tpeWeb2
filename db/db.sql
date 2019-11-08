@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-11-2019 a las 01:38:59
+-- Tiempo de generación: 08-11-2019 a las 20:49:09
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -88,16 +88,17 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `admin` tinyint(1) NOT NULL
+  `admin` tinyint(1) NOT NULL,
+  `code` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `admin`) VALUES
-(1, 'fedefuhr', '$2y$10$dXO0i0WT3BCQo.bbMovKUekc9Du4Iw3LINi6e4CLnrrVEhy7imyWi', 1),
-(24, 'test', '$2y$10$UDttfIbeZ60vdiKzaHL1XOMnhWiy4wFAoHsG3fFBTn3Q6.yOL52eK', 1);
+INSERT INTO `users` (`id_user`, `username`, `password`, `admin`, `code`) VALUES
+(28, 'federico.fuhr.ff@gmail.com', '$2y$10$r1YRBHiL6ky9M9NYVIyT5ekDeLkN79HBv54KgOulyKFhf5/Up29iS', 1, '1573241588CMQAHHDe'),
+(30, 'gwiradric.ps3@gmail.com', '$2y$10$ieTRdCtDjEvCbSk5LnaDd.LOgd4euqUX3vx7.Oki0aE.n2TSL2EEi', 0, '1573242305DWWbIOaa');
 
 --
 -- Índices para tablas volcadas
@@ -130,19 +131,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Restricciones para tablas volcadas
