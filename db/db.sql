@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-10-2019 a las 19:50:49
+-- Tiempo de generación: 08-11-2019 a las 01:38:59
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.8
 
@@ -75,7 +75,8 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 (22, 39, 'Shutter Island', 'Shutter Island is a 2010 American neo-noir psychological thriller film directed by Martin Scorsese and written by Laeta Kalogridis, based on Dennis Lehane\'s 2003 novel of the same name. Leonardo DiCaprio stars as U.S. Marshal Edward \"Teddy\" Daniels who is investigating a psychiatric facility on Shutter Island after one of the patients goes missing.', 2010, 87, 6),
 (23, 37, 'Géminis', 'Lucia and Daniel have three children: Ezequiel, who has gone to live in Spain, Jeremias and, their youngest, Meme. Lucia, a pretentious woman, believes she can control everything according to the criteria and habits of a typical wealthy Argentinean family. She is blind to the fact that Jeremias and Meme are conducting an illicit relationship under her own roof. Ezequiel arrives home from Spain with his fiancée, Montse, to get married, much to the great joy of his proud parents. The young couple\'s presence reveals the fragility of the order of things that had seemed so perfect. Love becomes a s', 2010, 29, 7),
 (24, 38, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62, 8),
-(28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78, 1);
+(28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78, 1),
+(37, 1, 'Resident Evil: Apocalypse', 's a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76, 0);
 
 -- --------------------------------------------------------
 
@@ -86,16 +87,17 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`) VALUES
-(1, 'fedefuhr', '$2y$10$dXO0i0WT3BCQo.bbMovKUekc9Du4Iw3LINi6e4CLnrrVEhy7imyWi'),
-(2, 'pepe', '$2y$10$eBKLILx6VNYubaN5vls96uPnEgKB9K/nWLyK7VF/VHoJVGRNFklxe');
+INSERT INTO `users` (`id_user`, `username`, `password`, `admin`) VALUES
+(1, 'fedefuhr', '$2y$10$dXO0i0WT3BCQo.bbMovKUekc9Du4Iw3LINi6e4CLnrrVEhy7imyWi', 1),
+(24, 'test', '$2y$10$UDttfIbeZ60vdiKzaHL1XOMnhWiy4wFAoHsG3fFBTn3Q6.yOL52eK', 1);
 
 --
 -- Índices para tablas volcadas
@@ -128,19 +130,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Restricciones para tablas volcadas
