@@ -42,4 +42,5 @@ class UserView
 
         $smarty->display('templates/recover-password.tpl');
     }
+
 }

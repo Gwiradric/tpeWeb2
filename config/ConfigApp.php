@@ -33,6 +33,7 @@ class ConfigApp
         'user-privileges' => 'UserController#userPrivileges',
         'delete-user' => 'UserController#deleteUser',
         'recover-password' => 'LoginController#recoverPassword',
-        'send-message' => 'LoginController#sendMessage'
+        'send-message' => 'LoginController#sendMessage',
+        'reset-password' => 'LoginController#resetPassword'
     ];
 }

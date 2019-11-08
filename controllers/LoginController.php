@@ -7,7 +7,7 @@ require_once './phpmailer/Exception.php';
 require_once './phpmailer/PHPMailer.php';
 require_once './phpmailer/SMTP.php';
 
-require_once "./views/LoginView.php";
+require_once "./views/UserView.php";
 require_once "./models/UserModel.php";
 
 class LoginController extends SecuredController
@@ -125,7 +125,13 @@ class LoginController extends SecuredController
         }
     }
 
-    
+    public function resetPassword(){
+        $message = "";
+        $subtitle = "Reset Password";
+        $link = "../";
+        $this->action = "update-password";
+        $this->view->userForm($this->title, $link, $this->login, $subtitle, $this->action, $message);
+    }
 
     public function recoverPassword($message = '')
     {
