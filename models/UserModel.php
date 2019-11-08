@@ -40,8 +40,19 @@ class UserModel
         $sentence->execute(array($code, $id));
     }
 
+    function getUserCode($code) {
+        $sentence = $this->db->prepare('SELECT * FROM users WHERE code = ?');
+        $sentence->execute(array($code));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
     function deleteUser($id) {
         $sentence = $this->db->prepare('DELETE FROM users WHERE id_user = ?');
         $sentence->execute(array($id));
+    }
+
+    function updatePasswordUser($id, $password) {
+        $sentence = $this->db->prepare('UPDATE users SET password = ? WHERE id_user = ?');
+        $sentence->execute(array($password, $id));
     }
 }

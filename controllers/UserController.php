@@ -42,7 +42,12 @@ class UserController extends SecuredController
     public function addUser()
     {
         $this->subtitle = 'Register';
-        $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action);
+        $user = array(
+            'id_user' => '',
+            'username' => '',
+            'password' => '',
+        );
+        $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 
     public function showUsers() {
@@ -74,5 +79,18 @@ class UserController extends SecuredController
             $this->model->deleteUser($id);
         }
         header(USERS);
+    }
+
+    public function resetPassword() {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $user = $this->model->getUserUsername($username);
+
+        if (!empty($user[0]) && (isset($username, $password))) {
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+            $this->model->updatePasswordUser($user[0]['id_user'], $hash);
+        }
+        header(HOME);
     }
 }

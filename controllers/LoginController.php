@@ -31,7 +31,12 @@ class LoginController extends SecuredController
 
     public function login()
     {
-        $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action);
+        $user = array(
+            'id_user' => '',
+            'username' => '',
+            'password' => '',
+        );
+        $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 
     public function checkLogin($username = "", $password = "")
@@ -51,10 +56,20 @@ class LoginController extends SecuredController
 
                 header(HOME);
             } else {
-                $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");
+                $user = array(
+                    'id_user' => '',
+                    'username' => '',
+                    'password' => '',
+                );
+                $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");
             }
         } else {
-            $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
+            $user = array(
+                'id_user' => '',
+                'username' => '',
+                'password' => '',
+            );
+            $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
         }
     }
 
@@ -96,8 +111,8 @@ class LoginController extends SecuredController
                     $mail->isSMTP(); // Send using SMTP
                     $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
                     $mail->SMTPAuth = true; // Enable SMTP authentication
-                    $mail->Username = 'gwiradric.ps3@gmail.com'; // SMTP username
-                    $mail->Password = 'Elviejo12345'; // SMTP password
+                    $mail->Username = 'movie.club.latam@gmail.com'; // SMTP username
+                    $mail->Password = 'movieclub123'; // SMTP password
                     $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
                     $mail->Port = 587; // TCP port to connect to
 
@@ -125,12 +140,19 @@ class LoginController extends SecuredController
         }
     }
 
-    public function resetPassword(){
-        $message = "";
-        $subtitle = "Reset Password";
-        $link = "../";
-        $this->action = "update-password";
-        $this->view->userForm($this->title, $link, $this->login, $subtitle, $this->action, $message);
+    public function resetPassword($params){
+        $code = $params[0];
+
+        if (isset($code)) {
+            $user = $this->model->getUserCode($code);
+    
+            $message = "";
+            $subtitle = "Reset Password";
+            $link = "../";
+            $this->action = "update-password";
+            $this->view->userForm($this->title, $user[0], $link, $this->login, $subtitle, $this->action, $message);
+
+        }
     }
 
     public function recoverPassword($message = '')

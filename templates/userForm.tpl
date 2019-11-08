@@ -6,11 +6,18 @@
 
     <h2>{$subtitle}</h2>
 
-    <form method="post" action={$action}>
+    <form method="post" action={$link}{$action}>
         
-        <div class="form-group">
-            <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="username" required>
-        </div>
+        {if $subtitle eq "Reset Password"}
+            <input type="hidden" name="username" value="{$user['username']}">
+            <div class="form-group">
+                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" value="{$user['username']}" disabled>
+            </div>
+        {else}
+            <div class="form-group">
+                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="username" value="{$user['username']}" required>
+            </div>
+        {/if}
         
         <div class="form-group">
             <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
