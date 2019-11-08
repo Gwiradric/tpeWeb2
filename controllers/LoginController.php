@@ -58,6 +58,23 @@ class LoginController extends SecuredController
         }
     }
 
+    public function createRandomCode()
+    {
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789";
+        srand((double)microtime()*1000000);
+        $i = 0;
+        $pass = '' ;
+    
+        while ($i <= 7) {
+            $num = rand() % 33;
+            $tmp = substr($chars, $num, 1);
+            $pass = $pass . $tmp;
+            $i++;
+        }
+    
+        return time().$pass;
+    }
+
     public function sendMessage()
     {
         $username = $_POST['username'];
@@ -65,10 +82,13 @@ class LoginController extends SecuredController
         if (isset($username)) {
             
             $user = $this->model->getUserUsername($username);
-            
+
+            $code = $this->createRandomCode();
 
             if (isset($user[0])) {
                 $mail = new PHPMailer(true);
+
+                $this->model->updateCode($code, $user[0]['id_user']);
 
                 try {
                     //Server settings
@@ -87,9 +107,9 @@ class LoginController extends SecuredController
 
                     // Content
                     $mail->isHTML(true); // Set email format to HTML
-                    $mail->Subject = 'Here is the subject';
-                    $mail->Body = 'This is the HTML message body <b>in bold!</b>';
-                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    $mail->Subject = 'Recovery Password';
+                    $mail->Body = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
+
 
                     $mail->send();
                     $message = 'Message has been sent';
@@ -104,6 +124,8 @@ class LoginController extends SecuredController
             }
         }
     }
+
+    
 
     public function recoverPassword($message = '')
     {

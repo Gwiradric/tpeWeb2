@@ -63,7 +63,7 @@ class UserController extends SecuredController
                 $admin = 1;
             else
                 $admin = 0;
-            $this->model->updateUser($id, $admin);
+            $this->model->updateUserPrivileges($id, $admin);
         }
         header(USERS);
     }

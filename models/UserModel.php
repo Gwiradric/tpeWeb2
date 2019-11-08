@@ -13,9 +13,9 @@ class UserModel
         );
     }
 
-    function insertUser($username, $password, $admin = 0) {
-        $sentence = $this->db->prepare('INSERT INTO users (username, password, admin) VALUE (?, ?, ?)');
-        $sentence->execute(array($username, $password, $admin));
+    function insertUser($username, $password, $admin = 0, $code = "") {
+        $sentence = $this->db->prepare('INSERT INTO users (username, password, admin, code) VALUE (?, ?, ?, ?)');
+        $sentence->execute(array($username, $password, $admin, $code));
     }
 
     function getUsers() {
@@ -30,9 +30,14 @@ class UserModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function updateUser($id, $admin) {
+    function updateUserPrivileges($id, $admin) {
         $sentence = $this->db->prepare('UPDATE users SET admin = ? WHERE id_user = ?');
         $sentence->execute(array($admin, $id));
+    }
+
+    function updateCode($code, $id) {
+        $sentence = $this->db->prepare('UPDATE users SET code = ? WHERE id_user = ?');
+        $sentence->execute(array($code, $id));
     }
 
     function deleteUser($id) {
