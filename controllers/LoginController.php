@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
+require_once './phpmailer/Exception.php';
+require_once './phpmailer/PHPMailer.php';
+require_once './phpmailer/SMTP.php';
+
 require_once "./views/LoginView.php";
 require_once "./models/UserModel.php";
 
@@ -35,12 +42,10 @@ class LoginController extends SecuredController
         }
 
         $user = $this->model->getUserUsername($username);
-        
+
         if (isset($user[0])) {
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
-                // $_SESSION["username"] = $username;
-                // $_SESSION["id_user"] = $user[0]['id_user'];
 
                 $_SESSION['user'] = array($username, $user[0]['admin']);
 
@@ -51,6 +56,59 @@ class LoginController extends SecuredController
         } else {
             $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
         }
+    }
+
+    public function sendMessage()
+    {
+        $username = $_POST['username'];
+
+        if (isset($username)) {
+            
+            $user = $this->model->getUserUsername($username);
+            
+
+            if (isset($user[0])) {
+                $mail = new PHPMailer(true);
+
+                try {
+                    //Server settings
+                    $mail->SMTPDebug = 0; // Enable verbose debug output
+                    $mail->isSMTP(); // Send using SMTP
+                    $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
+                    $mail->SMTPAuth = true; // Enable SMTP authentication
+                    $mail->Username = 'gwiradric.ps3@gmail.com'; // SMTP username
+                    $mail->Password = 'Elviejo12345'; // SMTP password
+                    $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+                    $mail->Port = 587; // TCP port to connect to
+
+                    //Recipients
+                    $mail->setFrom('gwiradric.ps3@gmail.com', 'Movie Club');
+                    $mail->addAddress($username); // Add a recipient
+
+                    // Content
+                    $mail->isHTML(true); // Set email format to HTML
+                    $mail->Subject = 'Here is the subject';
+                    $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                    $mail->send();
+                    $message = 'Message has been sent';
+                    $this->recoverPassword($message);
+                } catch (Exception $e) {
+                    $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                    $this->recoverPassword($message);
+                }
+            } else {
+                $message = "This user doesn't exist";
+                $this->recoverPassword($message);
+            }
+        }
+    }
+
+    public function recoverPassword($message = '')
+    {
+        $subtitle = "Recover password";
+        $this->view->showRecoverPassword($this->title, $subtitle, $this->link, $this->login, $message);
     }
 
     public function logout()

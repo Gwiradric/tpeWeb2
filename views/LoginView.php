@@ -13,4 +13,12 @@ class LoginView
         
         $smarty->display('templates/login.tpl');
     }
+
+    function showRecoverPassword($title, $subtitle, $message = '') {
+        $smarty = new Smarty();
+        $smarty->assign('title', $title);
+        $smarty->assign('subtitle', $subtitle);
+
+        $smarty->display('templates/recover-password.tpl');
+    }
 }

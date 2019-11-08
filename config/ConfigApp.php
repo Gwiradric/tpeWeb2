@@ -31,6 +31,8 @@ class ConfigApp
         'logout' => 'LoginController#logout',
         'users' => 'UserController#showUsers',
         'user-privileges' => 'UserController#userPrivileges',
-        'delete-user' => 'UserController#deleteUser'
+        'delete-user' => 'UserController#deleteUser',
+        'recover-password' => 'LoginController#recoverPassword',
+        'send-message' => 'LoginController#sendMessage'
     ];
 }
