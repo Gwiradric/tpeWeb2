@@ -43,6 +43,12 @@ class LoginController extends SecuredController
 
         $user = $this->model->getUserUsername($username);
 
+        $userEmpty = array(
+            'id_user' => '',
+            'username' => '',
+            'password' => '',
+        );
+
         if (isset($user[0])) {
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
@@ -51,20 +57,10 @@ class LoginController extends SecuredController
 
                 header(HOME);
             } else {
-                $user = array(
-                    'id_user' => '',
-                    'username' => '',
-                    'password' => '',
-                );
-                $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");
+                $this->view->userForm($this->title, $userEmpty, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");
             }
         } else {
-            $user = array(
-                'id_user' => '',
-                'username' => '',
-                'password' => '',
-            );
-            $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
+            $this->view->userForm($this->title, $userEmpty, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
         }
     }
 
@@ -99,9 +95,10 @@ class LoginController extends SecuredController
                 $this->model->updateCode($code, $user[0]['id_user']);
                 
                 $mailer = new Mailer();
-                $mailBody = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
-            
-                $message = $mailer->sendMail($username, $mailBody);
+                $body = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
+                $subject = 'Recover Password';
+
+                $message = $mailer->sendMail($username, $subject, $body);
                 $this->recoverPassword($message);
             } else {
                 $message = "This user doesn't exist";

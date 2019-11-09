@@ -16,7 +16,7 @@ class Mailer
         $this->mail = new PHPMailer(true);
     }
 
-    function sendMail($username, $mailBody) {
+    function sendMail($username, $subject, $body) {
         try {
             //Server settings
             $this->mail->SMTPDebug = 0; // Enable verbose debug output
@@ -34,8 +34,8 @@ class Mailer
 
             // Content
             $this->mail->isHTML(true); // Set email format to HTML
-            $this->mail->Subject = 'Recovery Password';
-            $this->mail->Body = $mailBody;
+            $this->mail->Subject = $subject;
+            $this->mail->Body = $body;
 
 
             $this->mail->send();
