@@ -1,12 +1,7 @@
 <?php
 
-use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailer;
 
-require_once './phpmailer/Exception.php';
-require_once './phpmailer/PHPMailer.php';
-require_once './phpmailer/SMTP.php';
-
+require_once "./helper/Mailer.php";
 require_once "./views/UserView.php";
 require_once "./models/UserModel.php";
 
@@ -101,38 +96,13 @@ class LoginController extends SecuredController
             $code = $this->createRandomCode();
 
             if (isset($user[0])) {
-                $mail = new PHPMailer(true);
-
                 $this->model->updateCode($code, $user[0]['id_user']);
-
-                try {
-                    //Server settings
-                    $mail->SMTPDebug = 0; // Enable verbose debug output
-                    $mail->isSMTP(); // Send using SMTP
-                    $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
-                    $mail->SMTPAuth = true; // Enable SMTP authentication
-                    $mail->Username = 'movie.club.latam@gmail.com'; // SMTP username
-                    $mail->Password = 'movieclub123'; // SMTP password
-                    $mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-                    $mail->Port = 587; // TCP port to connect to
-
-                    //Recipients
-                    $mail->setFrom('gwiradric.ps3@gmail.com', 'Movie Club');
-                    $mail->addAddress($username); // Add a recipient
-
-                    // Content
-                    $mail->isHTML(true); // Set email format to HTML
-                    $mail->Subject = 'Recovery Password';
-                    $mail->Body = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
-
-
-                    $mail->send();
-                    $message = 'Message has been sent';
-                    $this->recoverPassword($message);
-                } catch (Exception $e) {
-                    $message = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-                    $this->recoverPassword($message);
-                }
+                
+                $mailer = new Mailer();
+                $mailBody = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
+            
+                $message = $mailer->sendMail($username, $mailBody);
+                $this->recoverPassword($message);
             } else {
                 $message = "This user doesn't exist";
                 $this->recoverPassword($message);
@@ -146,11 +116,13 @@ class LoginController extends SecuredController
         if (isset($code)) {
             $user = $this->model->getUserCode($code);
     
-            $message = "";
-            $subtitle = "Reset Password";
-            $link = "../";
-            $this->action = "update-password";
-            $this->view->userForm($this->title, $user[0], $link, $this->login, $subtitle, $this->action, $message);
+            if (isset($user)) {
+                $message = "";
+                $subtitle = "Reset Password";
+                $link = "../";
+                $this->action = "update-password";
+                $this->view->userForm($this->title, $user[0], $link, $this->login, $subtitle, $this->action, $message);
+            }
 
         }
     }
