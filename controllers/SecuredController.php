@@ -4,17 +4,17 @@ class SecuredController
 {
     protected $isAdmin;
     protected $login;
-    protected $username;
+    protected $email;
 
     function __construct()
     {
         session_start();
-        $this->username = $this->getUsername();
+        $this->email = $this->getEmail();
         $this->login = $this->checkLogin();
         $this->isAdmin = $this->isAdmin();
     }
 
-    function getUsername() {
+    function getEmail() {
         if (isset($_SESSION['user']))
             return ($_SESSION['user'][0]);
     }

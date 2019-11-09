@@ -28,24 +28,24 @@ class LoginController extends SecuredController
     {
         $user = array(
             'id_user' => '',
-            'username' => '',
+            'email' => '',
             'password' => '',
         );
         $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 
-    public function checkLogin($username = "", $password = "")
+    public function checkLogin($email = "", $password = "")
     {
-        if (($username == "") && ($password == "")) {
-            $username = $_POST['username'];
+        if (($email == "") && ($password == "")) {
+            $email = $_POST['email'];
             $password = $_POST['password'];
         }
 
-        $user = $this->model->getUserUsername($username);
+        $user = $this->model->getUserEmail($email);
 
         $userEmpty = array(
             'id_user' => '',
-            'username' => '',
+            'email' => '',
             'password' => '',
         );
 
@@ -53,11 +53,11 @@ class LoginController extends SecuredController
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
 
-                $_SESSION['user'] = array($username, $user[0]['admin']);
+                $_SESSION['user'] = array($email, $user[0]['admin']);
 
                 header(HOME);
             } else {
-                $this->view->userForm($this->title, $userEmpty, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Username or password are incorrect");
+                $this->view->userForm($this->title, $userEmpty, $this->link, $this->isAdmin, $this->subtitle, $this->action, "Email or password are incorrect");
             }
         } else {
             $this->view->userForm($this->title, $userEmpty, $this->link, $this->isAdmin, $this->subtitle, $this->action, "User not found");
@@ -83,11 +83,11 @@ class LoginController extends SecuredController
 
     public function sendMessage()
     {
-        $username = $_POST['username'];
+        $email = $_POST['email'];
 
-        if (isset($username)) {
+        if (isset($email)) {
             
-            $user = $this->model->getUserUsername($username);
+            $user = $this->model->getUserEmail($email);
 
             $code = $this->createRandomCode();
 
@@ -98,7 +98,7 @@ class LoginController extends SecuredController
                 $body = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
                 $subject = 'Recover Password';
 
-                $message = $mailer->sendMail($username, $subject, $body);
+                $message = $mailer->sendMail($email, $subject, $body);
                 $this->recoverPassword($message);
             } else {
                 $message = "This user doesn't exist";

@@ -19,7 +19,7 @@
                 {foreach from=$users item=user}
                 <tr>
                     <th>
-                        {$user["username"]}
+                        {$user["email"]}
                     </th>
                         {if $user["admin"] eq 1}
                             <td>TRUE</td>

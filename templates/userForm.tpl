@@ -9,13 +9,13 @@
     <form method="post" action={$link}{$action}>
         
         {if $subtitle eq "Reset Password"}
-            <input type="hidden" name="username" value="{$user['username']}">
+            <input type="hidden" name="email" value="{$user['email']}">
             <div class="form-group">
-                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" value="{$user['username']}" disabled>
+                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" value="{$user['email']}" disabled>
             </div>
         {else}
             <div class="form-group">
-                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="username" value="{$user['username']}" required>
+                <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="email" value="{$user['email']}" required>
             </div>
         {/if}
         

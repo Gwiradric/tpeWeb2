@@ -13,9 +13,9 @@ class UserModel
         );
     }
 
-    function insertUser($username, $password, $admin = 0, $code = "") {
-        $sentence = $this->db->prepare('INSERT INTO users (username, password, admin, code) VALUE (?, ?, ?, ?)');
-        $sentence->execute(array($username, $password, $admin, $code));
+    function insertUser($email, $password, $admin = 0, $code = "") {
+        $sentence = $this->db->prepare('INSERT INTO users (email, password, admin, code) VALUE (?, ?, ?, ?)');
+        $sentence->execute(array($email, $password, $admin, $code));
     }
 
     function getUsers() {
@@ -24,9 +24,9 @@ class UserModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function getUserUsername($username) {
-        $sentence = $this->db->prepare('SELECT * FROM users WHERE username = ?');
-        $sentence->execute(array($username));
+    function getUserEmail($email) {
+        $sentence = $this->db->prepare('SELECT * FROM users WHERE email = ?');
+        $sentence->execute(array($email));
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 

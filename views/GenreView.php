@@ -5,7 +5,7 @@ require_once('libs/Smarty.class.php');
 class GenreView
 {
 
-    public function home($title, $isAdmin, $link, $genres, $login, $username)
+    public function home($title, $isAdmin, $link, $genres, $login, $email)
     {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
@@ -13,12 +13,12 @@ class GenreView
         $smarty->assign('link', $link);
         $smarty->assign('genres', $genres);
         $smarty->assign('login', $login);
-        $smarty->assign('username', $username);
+        $smarty->assign('email', $email);
 
         $smarty->display('templates/index.tpl');
     }
 
-    public function genreForm($title, $subtitle, $login, $username, $link, $action, $genre, $id = -1, $message = "") {
+    public function genreForm($title, $subtitle, $login, $email, $link, $action, $genre, $id = -1, $message = "") {
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('subtitle', $subtitle);
@@ -26,7 +26,7 @@ class GenreView
         $smarty->assign('genre', $genre);
         $smarty->assign('link', $link);
         $smarty->assign('id', $id);
-        $smarty->assign('username', $username);
+        $smarty->assign('email', $email);
         $smarty->assign('login', $login);
         $smarty->assign('message', $message);
 

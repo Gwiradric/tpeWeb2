@@ -18,14 +18,14 @@ class UserView
         $smarty->display('templates/userForm.tpl');
     }
 
-    function showUsers($title, $link, $subtitle, $username, $login, $users) {
+    function showUsers($title, $link, $subtitle, $email, $login, $users) {
         $smarty = new Smarty();
 
         $smarty->assign('users', $users);
         $smarty->assign('title', $title);
         $smarty->assign('link', $link);
         $smarty->assign('login', $login);
-        $smarty->assign('username', $username);
+        $smarty->assign('email', $email);
         $smarty->assign('subtitle', $subtitle);
 
         $smarty->display('templates/users.tpl');

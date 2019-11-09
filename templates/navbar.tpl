@@ -18,7 +18,7 @@
             
             {if $login}
                 <span class="navbar-text">
-                    Welcome {$username}
+                    Welcome {$email}
                 </span>
                 <a class="btn btn-primary" href="{$link}logout" role="button">Logout</a>
                 {else}

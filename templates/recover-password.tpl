@@ -9,7 +9,7 @@
     <form method="post" action="{$link}send-message">
         
         <div class="form-group">
-            <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="username" required>
+            <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com" name="email" required>
         </div>
     
         <p class='text-danger'>{$message}</p>
