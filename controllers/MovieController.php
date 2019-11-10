@@ -20,25 +20,37 @@ class MovieController extends SecuredController
         $this->model = new MovieModel();
     }
 
+    private function isJPG($imagenesTipos){
+        foreach ($imagenesTipos as $tipo) {
+          if($tipo != 'image/jpeg') {
+            return false;
+          }
+        }
+        return true;
+    }
+
     public function insertMovie()
     {
         if ($this->isAdmin) {
-            
+            $pathTempImages = $_FILES['imagesToUpload']['tmp_name'];
+
             $name = $_POST['name'];
             $description = $_POST['description'];
             $id_genre = $_POST['id_genre'];
             $year = $_POST['year'];
             $rating = $_POST['rating'];
             $img = $_POST['img'];
+
             
-            if (isset($name, $description, $id_genre, $year, $rating, $img)) {
+            if (isset($name, $description, $id_genre, $year, $rating, $img, $pathTempImages)) {
 
                 $movie = $this->model->getMovieName($name);
                 
                 if (empty($movie[0])) {
-                    $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $img);
+                    if($this->isJPG($_FILES['imagesToUpload']['type'])) {
+                        $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $img, $pathTempImages);
+                    }
                 }
-
             }
             
             header(HOME);
@@ -57,8 +69,9 @@ class MovieController extends SecuredController
     {
         $movie = $this->model->getMovie($id[0]);
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
+        $images = $this->model->getImagesId($id[0]);
         $this->link = "../";
-        $this->view->showMovie($this->title, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name']);
+        $this->view->showMovie($this->title, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images);
     }
 
     public function showMovies($params)
@@ -103,7 +116,8 @@ class MovieController extends SecuredController
     public function editMovie()
     {
         if ($this->isAdmin) {
-            
+
+            $pathTempImages = $_FILES['imagesToUpload']['tmp_name'];
             $name = $_POST['name'];
             $id_movie = $_POST['id_movie'];
             $description = $_POST['description'];
@@ -115,12 +129,8 @@ class MovieController extends SecuredController
 
                 $movie = $this->model->getMovieName($name);
 
-                if (empty($movie[0])) {
-                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
-                } else {
-                    if ($movie[0]['id_movie'] == $id_movie) {
-                        $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
-                    }
+                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie)) {
+                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating, $pathTempImages);
                 }
 
             }

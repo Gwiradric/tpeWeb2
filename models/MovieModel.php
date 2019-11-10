@@ -37,9 +37,31 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function insertMovie($name, $id_genre, $description, $year, $rating, $img) {
+    function getImagesId($id) {
+        $sentence = $this->db->prepare('SELECT * FROM images WHERE fk_id_movie = ?');
+        $sentence->execute(array($id));
+        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+    }
+
+    function insertMovie($name, $id_genre, $description, $year, $rating, $img, $images) {
         $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating, img) VALUES (?, ?, ?, ?, ?, ?)');
         $sentence->execute([$name,$id_genre, $description, $year, $rating, $img]);
+        $id_movie = $this->db->lastInsertId();
+        $paths = $this->uploadImages($images);
+        $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
+        foreach ($paths as $path) {
+            $sentence_images->execute(array($id_movie, $path));
+        }
+    }
+
+    private function uploadImages($images){
+        $paths = [];
+        foreach ($images as $image) {
+          $destiny = 'img/' . uniqid() . '.jpg';
+          move_uploaded_file($image, $destiny);
+          $paths[]=$destiny;
+        }
+        return $paths;
     }
 
     function deleteMovie($id) {
@@ -59,8 +81,13 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function editMovie($id_movie, $id_genre, $name, $description, $year, $rating) {
+    function editMovie($id_movie, $id_genre, $name, $description, $year, $rating, $images) {
         $sentence = $this->db->prepare('UPDATE movies SET id_genre = ?, name = ?, description = ?, year = ?, rating = ? WHERE id_movie = ?');
         $sentence->execute(array($id_genre, $name, $description, $year, $rating, $id_movie));
+        $paths = $this->uploadImages($images);
+        $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
+        foreach ($paths as $path) {
+            $sentence_images->execute(array($id_movie, $path));
+        }
     }
 }
