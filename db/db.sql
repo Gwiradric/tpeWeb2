@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-11-2019 a las 04:41:07
+-- Tiempo de generación: 10-11-2019 a las 18:26:20
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -45,8 +45,7 @@ INSERT INTO `genres` (`id_genre`, `name`, `description`) VALUES
 (35, 'Science fiction', 'Is a genre of speculative fiction that typically deals with imaginative and futuristic concepts such as advanced science and technology, time travel, parallel universes, fictional worlds, space exploration, and extraterrestrial life. It has been called the '),
 (37, 'Action', ' Is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, and frantic chases. Action films tend to feature a resourceful hero struggling against incredible odds, which include life-threatening situations, a villain, or a pursuit which usually concludes in victory for the hero (though a small number of films in this genre have ended in the victory for the villain instead). '),
 (38, 'Drama', 'The drama genre is strongly based in a character, or characters, that are in conflict at a crucial moment in their lives. Most dramas revolve around families and often have tragic or painful resolutions.'),
-(39, 'Suspense', 'Suspense is a feeling of fascination and excitement mixed with apprehension, tension, and anxiety developed from an unpredictable, mysterious, and rousing source of entertainment. The term most often refers to an audience\'s perceptions in a dramatic work. Suspense is not exclusive to fiction.'),
-(62, '1', '1');
+(39, 'Suspense', 'Suspense is a feeling of fascination and excitement mixed with apprehension, tension, and anxiety developed from an unpredictable, mysterious, and rousing source of entertainment. The term most often refers to an audience\'s perceptions in a dramatic work. Suspense is not exclusive to fiction.');
 
 -- --------------------------------------------------------
 
@@ -65,7 +64,6 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
-(20, 2, 'img/5dc77d288c517.jpg'),
 (21, 3, 'img/5dc77d4d8a7dc.jpg'),
 (22, 12, 'img/5dc77d66a9650.jpg'),
 (23, 20, 'img/5dc77d7908418.jpg'),
@@ -78,7 +76,8 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (30, 12, 'img/5dc77f7d90147.jpg'),
 (31, 22, 'img/5dc77fe7cc424.jpg'),
 (32, 20, 'img/5dc77ffa5f520.jpg'),
-(33, 24, 'img/5dc780385ac35.jpg');
+(33, 24, 'img/5dc780385ac35.jpg'),
+(39, 2, 'img/5dc82419235e0.jpg');
 
 -- --------------------------------------------------------
 
@@ -176,7 +175,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
