@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-11-2019 a las 20:49:09
+-- Tiempo de generación: 10-11-2019 a las 04:41:07
 -- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Versión de PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -45,7 +45,40 @@ INSERT INTO `genres` (`id_genre`, `name`, `description`) VALUES
 (35, 'Science fiction', 'Is a genre of speculative fiction that typically deals with imaginative and futuristic concepts such as advanced science and technology, time travel, parallel universes, fictional worlds, space exploration, and extraterrestrial life. It has been called the '),
 (37, 'Action', ' Is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, and frantic chases. Action films tend to feature a resourceful hero struggling against incredible odds, which include life-threatening situations, a villain, or a pursuit which usually concludes in victory for the hero (though a small number of films in this genre have ended in the victory for the villain instead). '),
 (38, 'Drama', 'The drama genre is strongly based in a character, or characters, that are in conflict at a crucial moment in their lives. Most dramas revolve around families and often have tragic or painful resolutions.'),
-(39, 'Suspense', 'Suspense is a feeling of fascination and excitement mixed with apprehension, tension, and anxiety developed from an unpredictable, mysterious, and rousing source of entertainment. The term most often refers to an audience\'s perceptions in a dramatic work. Suspense is not exclusive to fiction.');
+(39, 'Suspense', 'Suspense is a feeling of fascination and excitement mixed with apprehension, tension, and anxiety developed from an unpredictable, mysterious, and rousing source of entertainment. The term most often refers to an audience\'s perceptions in a dramatic work. Suspense is not exclusive to fiction.'),
+(62, '1', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `images`
+--
+
+CREATE TABLE `images` (
+  `id_img` int(11) NOT NULL,
+  `fk_id_movie` int(11) NOT NULL,
+  `path` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `images`
+--
+
+INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
+(20, 2, 'img/5dc77d288c517.jpg'),
+(21, 3, 'img/5dc77d4d8a7dc.jpg'),
+(22, 12, 'img/5dc77d66a9650.jpg'),
+(23, 20, 'img/5dc77d7908418.jpg'),
+(24, 22, 'img/5dc77d9dcb4c4.jpg'),
+(25, 23, 'img/5dc77db038a93.jpg'),
+(26, 24, 'img/5dc77ddecb3b3.jpg'),
+(27, 28, 'img/5dc77df3d99d0.jpg'),
+(28, 37, 'img/5dc77ef455d24.jpg'),
+(29, 3, 'img/5dc77f75c9b15.jpg'),
+(30, 12, 'img/5dc77f7d90147.jpg'),
+(31, 22, 'img/5dc77fe7cc424.jpg'),
+(32, 20, 'img/5dc77ffa5f520.jpg'),
+(33, 24, 'img/5dc780385ac35.jpg');
 
 -- --------------------------------------------------------
 
@@ -59,24 +92,23 @@ CREATE TABLE `movies` (
   `name` varchar(50) NOT NULL,
   `description` varchar(600) NOT NULL,
   `year` int(11) NOT NULL,
-  `rating` int(11) NOT NULL,
-  `img` int(1) NOT NULL
+  `rating` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `movies`
 --
 
-INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`, `img`) VALUES
-(2, 1, 'Resident Evil', 'Resident Evil is a 2002 action horror film written and directed by Paul W. S. Anderson. The film stars Milla Jovovich, Michelle Rodriguez, Eric Mabius, James Purefoy, Martin Crewes, and Colin Salmon. It is the first installment in the Resident Evil film series, which is loosely based on the video game series of the same name.', 2002, 49, 2),
-(3, 5, 'Tarzan', 'Tarzan, a fictional character created by Edgar Rice Burroughs, first appeared in the 1912 novel Tarzan of the Apes, and then in twenty-three sequels. The character proved immensely popular and quickly made the jump to other media, first and most notably to comics and film. This article concerns Tarzan\'s appearance in film and other non-print media.', 1929, 21, 3),
-(12, 12, 'Hercules', 'Hercules is a 1997 American animated musical fantasy comedy film produced by Walt Disney Feature Animation for Walt Disney Pictures. The 35th Disney animated feature film and the eighth animated film produced during the Disney Renaissance, the film was directed by Ron Clements and John Musker. The film is loosely based on the legendary hero Heracles (known in the film by his Roman name, Hercules), the son of Zeus, in Greek mythology. ', 1997, 61, 4),
-(20, 35, 'Blade Runner 2049', 'Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what’s left of society into chaos. K’s discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.', 2017, 67, 5),
-(22, 39, 'Shutter Island', 'Shutter Island is a 2010 American neo-noir psychological thriller film directed by Martin Scorsese and written by Laeta Kalogridis, based on Dennis Lehane\'s 2003 novel of the same name. Leonardo DiCaprio stars as U.S. Marshal Edward \"Teddy\" Daniels who is investigating a psychiatric facility on Shutter Island after one of the patients goes missing.', 2010, 87, 6),
-(23, 37, 'Géminis', 'Lucia and Daniel have three children: Ezequiel, who has gone to live in Spain, Jeremias and, their youngest, Meme. Lucia, a pretentious woman, believes she can control everything according to the criteria and habits of a typical wealthy Argentinean family. She is blind to the fact that Jeremias and Meme are conducting an illicit relationship under her own roof. Ezequiel arrives home from Spain with his fiancée, Montse, to get married, much to the great joy of his proud parents. The young couple\'s presence reveals the fragility of the order of things that had seemed so perfect. Love becomes a s', 2010, 29, 7),
-(24, 38, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62, 8),
-(28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78, 1),
-(37, 1, 'Resident Evil: Apocalypse', 's a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76, 0);
+INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
+(2, 1, 'Resident Evil', 'Resident Evil is a 2002 action horror film written and directed by Paul W. S. Anderson. The film stars Milla Jovovich, Michelle Rodriguez, Eric Mabius, James Purefoy, Martin Crewes, and Colin Salmon. It is the first installment in the Resident Evil film series, which is loosely based on the video game series of the same name.', 2002, 49),
+(3, 5, 'Tarzan', 'Tarzan, a fictional character created by Edgar Rice Burroughs, first appeared in the 1912 novel Tarzan of the Apes, and then in twenty-three sequels. The character proved immensely popular and quickly made the jump to other media, first and most notably to comics and film. This article concerns Tarzan\'s appearance in film and other non-print media.', 1929, 21),
+(12, 12, 'Hercules', 'Hercules is a 1997 American animated musical fantasy comedy film produced by Walt Disney Feature Animation for Walt Disney Pictures. The 35th Disney animated feature film and the eighth animated film produced during the Disney Renaissance, the film was directed by Ron Clements and John Musker. The film is loosely based on the legendary hero Heracles (known in the film by his Roman name, Hercules), the son of Zeus, in Greek mythology. ', 1997, 61),
+(20, 35, 'Blade Runner 2049', 'Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what’s left of society into chaos. K’s discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.', 2017, 67),
+(22, 1, 'Shutter Island', 'Shutter Island is a 2010 American neo-noir psychological thriller film directed by Martin Scorsese and written by Laeta Kalogridis, based on Dennis Lehane\'s 2003 novel of the same name. Leonardo DiCaprio stars as U.S. Marshal Edward \"Teddy\" Daniels who is investigating a psychiatric facility on Shutter Island after one of the patients goes missing.', 2010, 87),
+(23, 1, 'Géminis', 'Lucia and Daniel have three children: Ezequiel, who has gone to live in Spain, Jeremias and, their youngest, Meme. Lucia, a pretentious woman, believes she can control everything according to the criteria and habits of a typical wealthy Argentinean family. She is blind to the fact that Jeremias and Meme are conducting an illicit relationship under her own roof. Ezequiel arrives home from Spain with his fiancée, Montse, to get married, much to the great joy of his proud parents. The young couple\'s presence reveals the fragility of the order of things that had seemed so perfect. Love becomes a s', 2010, 29),
+(24, 39, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62),
+(28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78),
+(37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76);
 
 -- --------------------------------------------------------
 
@@ -86,7 +118,7 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   `code` varchar(100) NOT NULL
@@ -96,9 +128,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `password`, `admin`, `code`) VALUES
-(28, 'federico.fuhr.ff@gmail.com', '$2y$10$r1YRBHiL6ky9M9NYVIyT5ekDeLkN79HBv54KgOulyKFhf5/Up29iS', 1, '1573241588CMQAHHDe'),
-(30, 'gwiradric.ps3@gmail.com', '$2y$10$ieTRdCtDjEvCbSk5LnaDd.LOgd4euqUX3vx7.Oki0aE.n2TSL2EEi', 0, '1573242305DWWbIOaa');
+INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
+(28, 'federico.fuhr.ff@gmail.com', '$2y$10$o6TvAbOAZIpY8mciUbxNyuQ1byB5.MUqIWT.SAMdyIrTUp7HaRyQG', 1, '1573339079EdQGbfLZ'),
+(30, 'gwiradric.ps3@gmail.com', '$2y$10$Z9dQYYwRT.Vz0sp1HTuFGuDoJZun5nv9DXRvq24puxMzYeRLmNkR2', 1, '1573333455IKWMURLY');
 
 --
 -- Índices para tablas volcadas
@@ -109,6 +141,13 @@ INSERT INTO `users` (`id_user`, `username`, `password`, `admin`, `code`) VALUES
 --
 ALTER TABLE `genres`
   ADD PRIMARY KEY (`id_genre`);
+
+--
+-- Indices de la tabla `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`id_img`),
+  ADD KEY `fk_id_movie` (`fk_id_movie`);
 
 --
 -- Indices de la tabla `movies`
@@ -131,23 +170,35 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
-  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT de la tabla `images`
+--
+ALTER TABLE `images`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `images`
+--
+ALTER TABLE `images`
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`fk_id_movie`) REFERENCES `movies` (`id_movie`);
 
 --
 -- Filtros para la tabla `movies`
