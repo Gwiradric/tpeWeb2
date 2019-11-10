@@ -56,9 +56,20 @@ class MovieController extends SecuredController
         }
     }
 
+    public function deleteImagePath($params) {
+        if ($this->isAdmin) {
+            $p1 = $params[0];
+            $p2 = $params[1];
+            $path = $p1 . "/" . $p2;
+            $this->model->deleteMovieImagePath($path);
+            header(HOME);
+        }
+    }
+
     public function deleteMovie($params)
     {
         if ($this->isAdmin) {
+            $this->model->deleteMovieImagesId($params[0]);
             $this->model->deleteMovie($params[0]);
             header(HOME);
         }
@@ -70,7 +81,7 @@ class MovieController extends SecuredController
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
         $images = $this->model->getImagesId($id[0]);
         $this->link = "../";
-        $this->view->showMovie($this->title, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images);
+        $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images);
     }
 
     public function showMovies($params)

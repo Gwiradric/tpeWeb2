@@ -64,9 +64,17 @@ class MovieModel
         return $paths;
     }
 
-    function deleteMovie($id) {
+    function deleteMovieImagePath($path) {
+        $sentence = $this->db->prepare('DELETE FROM images WHERE path = ?');
+        $sentence->execute(array($path));
+    }
+
+    function deleteMovieImagesId($id) {
         $sentence_image = $this->db->prepare('DELETE FROM images WHERE fk_id_movie = ?');
         $sentence_image->execute(array($id));
+    }
+
+    function deleteMovie($id) {
         $sentence = $this->db->prepare('DELETE FROM movies WHERE id_movie = ?');
         $sentence->execute(array($id));
     }

@@ -35,6 +35,7 @@ class ConfigApp
         'recover-password' => 'LoginController#recoverPassword',
         'send-message' => 'LoginController#sendMessage',
         'reset-password' => 'LoginController#resetPassword',
-        'update-password' => 'UserController#resetPassword'
+        'update-password' => 'UserController#resetPassword',
+        'remove-image' => 'MovieController#deleteImagePath'
     ];
 }

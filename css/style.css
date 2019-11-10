@@ -17,3 +17,7 @@ html, body {
  footer {
     position: relative;
  }
+
+ .images {
+   display:inline-block; 
+ }
