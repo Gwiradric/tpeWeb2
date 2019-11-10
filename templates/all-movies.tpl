@@ -16,7 +16,7 @@
                             <th scope="col">Rating</th>
 
                             {if $isAdmin}
-                                <th scope="col">Options</th>
+                            <th scope="col">Options</th>
                             {/if}
                         </tr>
                     </thead>
@@ -28,12 +28,12 @@
                             <td>{$movie["year"]}</td>
                             <td>{$movie["rating"]}</td>
                             {if $isAdmin}
-                               <td>
-                                <a href="{$link}delete-movie/{$movie['id_movie']}">Delete</a> | 
+                            <td>
+                                <a href="{$link}delete-movie/{$movie['id_movie']}">Delete</a> |
                                 <a href="{$link}edit-movie/{$movie['id_movie']}">Edit</a>
-                            </td> 
+                            </td>
                             {/if}
-                            
+
                         </tr>
                         {/foreach}
                     </tbody>

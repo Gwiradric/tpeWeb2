@@ -43,9 +43,9 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function insertMovie($name, $id_genre, $description, $year, $rating, $img, $images) {
-        $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating, img) VALUES (?, ?, ?, ?, ?, ?)');
-        $sentence->execute([$name,$id_genre, $description, $year, $rating, $img]);
+    function insertMovie($name, $id_genre, $description, $year, $rating, $images) {
+        $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating) VALUES (?, ?, ?, ?, ?)');
+        $sentence->execute([$name,$id_genre, $description, $year, $rating]);
         $id_movie = $this->db->lastInsertId();
         $paths = $this->uploadImages($images);
         $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
@@ -65,8 +65,10 @@ class MovieModel
     }
 
     function deleteMovie($id) {
-        $sentence = $this->db->prepare("delete from movies where id_movie = ?");
-        $sentence->execute([$id]);
+        $sentence_image = $this->db->prepare('DELETE FROM images WHERE fk_id_movie = ?');
+        $sentence_image->execute(array($id));
+        $sentence = $this->db->prepare('DELETE FROM movies WHERE id_movie = ?');
+        $sentence->execute(array($id));
     }
 
     function getMoviesGenre($id) {

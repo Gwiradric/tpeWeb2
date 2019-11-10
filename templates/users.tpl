@@ -21,15 +21,15 @@
                     <th>
                         {$user["email"]}
                     </th>
-                        {if $user["admin"] eq 1}
-                            <td>TRUE</td>
-                        {else}
-                            <td>FALSE</td>
-                        {/if}
-                        <td>
-                            <a href="{$link}user-privileges/{$user['id_user']}/{$user['admin']}">Change privileges</a> |
-                            <a href="{$link}delete-user/{$user['id_user']}">Delete</a></<a>
-                        </td>
+                    {if $user["admin"] eq 1}
+                    <td>TRUE</td>
+                    {else}
+                    <td>FALSE</td>
+                    {/if}
+                    <td>
+                        <a href="{$link}user-privileges/{$user['id_user']}/{$user['admin']}">Change privileges</a> |
+                        <a href="{$link}delete-user/{$user['id_user']}">Delete</a></<a>
+                    </td>
                 </tr>
                 {/foreach}
             </tbody>
