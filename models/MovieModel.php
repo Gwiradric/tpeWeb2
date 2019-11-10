@@ -80,7 +80,7 @@ class MovieModel
     }
 
     function getMoviesGenre($id) {
-        $sentence = $this->db->prepare('select * from movies where id_genre = ?');
+        $sentence = $this->db->prepare('SELECT * FROM movies WHERE id_genre = ?');
         $sentence->execute([$id]);
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
