@@ -6,13 +6,16 @@
     <div class="row">
 
       <div class="col-md-3">
+        {if $isAdmin}
+        <a href='{$link}remove-image/{$images[0]['path']}'>Remove logo</a>
+        {/if}
         <figure class="figure">
           <img src="{$link}{$images[0]['path']}" class="figure-img img-fluid rounded" alt="movie logo">
           <figcaption class="figure-caption text-right">{$movie['name']} logo.</figcaption>
         </figure>
       </div>
 
-      <div class="col-md-7">
+      <div class="col-md-9">
         <h1>{$movie['name']}</h1>
 
         <ul>
@@ -28,12 +31,14 @@
 
     <h5>Images</h5>
     {foreach from=$images item=image key=key}
-      <div class="images">
-        <img src="{$link}{$image['path']}" class="img-thumbnail" alt="...">
-        {if $isAdmin}
-          <a href='{$link}remove-image/{$image['path']}'>Remove</a>
-        {/if}
+      {if $key != 0}
+      <div class="images mt-1">
+          <img src="{$link}{$image['path']}" class="img-thumbnail" alt="...">
+          {if $isAdmin}
+            <a href='{$link}remove-image/{$image['path']}'>Remove</a>
+          {/if}
       </div>
+      {/if}
     {/foreach}
 
 </div>

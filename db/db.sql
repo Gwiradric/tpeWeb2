@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-11-2019 a las 18:26:20
+-- Tiempo de generación: 11-11-2019 a las 02:47:22
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -77,7 +77,12 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (31, 22, 'img/5dc77fe7cc424.jpg'),
 (32, 20, 'img/5dc77ffa5f520.jpg'),
 (33, 24, 'img/5dc780385ac35.jpg'),
-(39, 2, 'img/5dc82419235e0.jpg');
+(39, 2, 'img/5dc82419235e0.jpg'),
+(43, 55, 'img/5dc8b56f2dbe7.jpg'),
+(44, 55, 'img/5dc8b56f2dc5a.jpg'),
+(45, 55, 'img/5dc8b56f2dc88.jpg'),
+(46, 55, 'img/5dc8b56f2dcb2.jpg'),
+(47, 55, 'img/5dc8b56f2dcdb.jpg');
 
 -- --------------------------------------------------------
 
@@ -107,7 +112,8 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 (23, 1, 'Géminis', 'Lucia and Daniel have three children: Ezequiel, who has gone to live in Spain, Jeremias and, their youngest, Meme. Lucia, a pretentious woman, believes she can control everything according to the criteria and habits of a typical wealthy Argentinean family. She is blind to the fact that Jeremias and Meme are conducting an illicit relationship under her own roof. Ezequiel arrives home from Spain with his fiancée, Montse, to get married, much to the great joy of his proud parents. The young couple\'s presence reveals the fragility of the order of things that had seemed so perfect. Love becomes a s', 2010, 29),
 (24, 39, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62),
 (28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78),
-(37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76);
+(37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76),
+(55, 1, 'Kingdom Hearts', 'Su historia marca la continuación de la trama principal de la saga. Con una introducción algo desconcertante para algunos en la que controlamos a un personaje llamado Roxas en la ciudad de Crepúsculo hasta que conseguimos despertar a Sora y seguir con su aventura. Mientras que Riku avanza por su lado y Kairi permance secuestrada. Controlando a Sora durante toda la trama principal del juego iremos avanzando de la mano de Donald y Goofy. Seguiremos avanzando y viajando a bordo de la habitual nave Gumi para visitar mundos conocidos y mundos nuevos.', 2008, 100);
 
 -- --------------------------------------------------------
 
@@ -175,13 +181,13 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

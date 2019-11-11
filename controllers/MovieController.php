@@ -139,7 +139,7 @@ class MovieController extends SecuredController
 
                 $movie = $this->model->getMovieName($name);
 
-                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie)) {
+                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie) && ($pathTempImages[0] != "")) {
                     $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating, $pathTempImages);
                 }
 
