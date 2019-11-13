@@ -62,6 +62,7 @@ class MovieController extends SecuredController
             $p2 = $params[1];
             $path = $p1 . "/" . $p2;
             $this->model->deleteMovieImagePath($path);
+            unlink($path);
             header(HOME);
         }
     }
@@ -69,7 +70,11 @@ class MovieController extends SecuredController
     public function deleteMovie($params)
     {
         if ($this->isAdmin) {
+            $images = $this->model->getImagesId($params[0]);
             $this->model->deleteMovieImagesId($params[0]);
+            for ($i=0; $i < count($images); $i++) { 
+                unlink("./" . $images[$i]['path']);
+            }
             $this->model->deleteMovie($params[0]);
             header(HOME);
         }

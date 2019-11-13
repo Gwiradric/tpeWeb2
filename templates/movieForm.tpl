@@ -36,17 +36,10 @@
                 value='{$movie["rating"]}' required>
         </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-            </div>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon01"
-                    name="imagesToUpload[]" id="imagesToUpload" multiple>
-                <label class="custom-file-label" for="imagesToUpload">Choose file</label>
-            </div>
+        <div class="form-group">
+            <input type="file" name="imagesToUpload[]" id="imagesToUpload" multiple>
         </div>
-
+        
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
