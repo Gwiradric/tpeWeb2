@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-11-2019 a las 02:47:22
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.9
+-- Tiempo de generación: 14-11-2019 a las 03:33:50
+-- Versión del servidor: 10.4.8-MariaDB
+-- Versión de PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -82,7 +82,12 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (44, 55, 'img/5dc8b56f2dc5a.jpg'),
 (45, 55, 'img/5dc8b56f2dc88.jpg'),
 (46, 55, 'img/5dc8b56f2dcb2.jpg'),
-(47, 55, 'img/5dc8b56f2dcdb.jpg');
+(47, 55, 'img/5dc8b56f2dcdb.jpg'),
+(65, 58, 'img/5dcca1a707fa7.jpg'),
+(66, 58, 'img/5dcca1a70802f.jpg'),
+(67, 58, 'img/5dcca1a70806c.jpg'),
+(68, 58, 'img/5dcca1a7080a3.jpg'),
+(69, 58, 'img/5dcca1a7080d9.jpg');
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,8 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 (24, 39, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62),
 (28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78),
 (37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76),
-(55, 1, 'Kingdom Hearts', 'Su historia marca la continuación de la trama principal de la saga. Con una introducción algo desconcertante para algunos en la que controlamos a un personaje llamado Roxas en la ciudad de Crepúsculo hasta que conseguimos despertar a Sora y seguir con su aventura. Mientras que Riku avanza por su lado y Kairi permance secuestrada. Controlando a Sora durante toda la trama principal del juego iremos avanzando de la mano de Donald y Goofy. Seguiremos avanzando y viajando a bordo de la habitual nave Gumi para visitar mundos conocidos y mundos nuevos.', 2008, 100);
+(55, 1, 'Kingdom Hearts', 'Su historia marca la continuación de la trama principal de la saga. Con una introducción algo desconcertante para algunos en la que controlamos a un personaje llamado Roxas en la ciudad de Crepúsculo hasta que conseguimos despertar a Sora y seguir con su aventura. Mientras que Riku avanza por su lado y Kairi permance secuestrada. Controlando a Sora durante toda la trama principal del juego iremos avanzando de la mano de Donald y Goofy. Seguiremos avanzando y viajando a bordo de la habitual nave Gumi para visitar mundos conocidos y mundos nuevos.', 2008, 100),
+(58, 5, 'Jojo Bizarre Adventure', 'Each of series\' eight protagonists is a member of the Joestar family, whose mainline descendants invariably possess a star-shaped birthmark above their left shoulder blade and a name that can be abbreviated to the titular \"JoJo\". The plot of each part generally consists of this JoJo gathering a group of allies, mastering their supernatural ability, battling various enemies, and ultimately confronting the part\'s powerful main villain.', 1984, 100);
 
 -- --------------------------------------------------------
 
@@ -181,13 +187,13 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
