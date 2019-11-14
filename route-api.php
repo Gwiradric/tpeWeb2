@@ -10,11 +10,7 @@ define('USERS', 'Location: http://' . $_SERVER["SERVER_NAME"] . $port . dirname(
 $router = new Router();
 
 // rutas
-$router->addRoute("/tareas", "GET", "TaskApiController", "getTasks");
-$router->addRoute("/tareas/:ID", "GET", "TaskApiController", "getTask");
-$router->addRoute("/tareas/:ID", "DELETE", "TaskApiController", "deleteTask");
-$router->addRoute("/tareas", "POST", "TaskApiController", "addTask");
-$router->addRoute("/tareas/:ID", "PUT", "TaskApiController", "updateTask");
+$router->addRoute("/comments", "GET", "CommentsApiController", "getComments");
 
 //run
 $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
