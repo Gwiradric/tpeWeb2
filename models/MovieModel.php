@@ -20,13 +20,13 @@ class MovieModel
     }
 
     function getMovie($id) {
-        $sentence = $this->db->prepare('select * from movies where id_movie = ?');
-        $sentence->execute([$id]);
+        $sentence = $this->db->prepare('SELECT * FROM movies WHERE id_movie = ?');
+        $sentence->execute(array($id));
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
     function getMovies() {
-        $sentence = $this->db->prepare('select * from movies');
+        $sentence = $this->db->prepare('SELECT * FROM movies');
         $sentence->execute();
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
@@ -37,41 +37,10 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function getImagesId($id) {
-        $sentence = $this->db->prepare('SELECT * FROM images WHERE fk_id_movie = ?');
-        $sentence->execute(array($id));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
-    }
-
-    function insertMovie($name, $id_genre, $description, $year, $rating, $images) {
+    function insertMovie($name, $id_genre, $description, $year, $rating) {
         $sentence = $this->db->prepare('INSERT INTO movies (name, id_genre, description, year, rating) VALUES (?, ?, ?, ?, ?)');
-        $sentence->execute([$name,$id_genre, $description, $year, $rating]);
-        $id_movie = $this->db->lastInsertId();
-        $paths = $this->uploadImages($images);
-        $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
-        foreach ($paths as $path) {
-            $sentence_images->execute(array($id_movie, $path));
-        }
-    }
-
-    private function uploadImages($images){
-        $paths = [];
-        foreach ($images as $image) {
-          $destiny = 'img/' . uniqid() . '.jpg';
-          move_uploaded_file($image, $destiny);
-          $paths[]=$destiny;
-        }
-        return $paths;
-    }
-
-    function deleteMovieImagePath($path) {
-        $sentence = $this->db->prepare('DELETE FROM images WHERE path = ?');
-        $sentence->execute(array($path));
-    }
-
-    function deleteMovieImagesId($id) {
-        $sentence_image = $this->db->prepare('DELETE FROM images WHERE fk_id_movie = ?');
-        $sentence_image->execute(array($id));
+        $sentence->execute(array($name,$id_genre, $description, $year, $rating));
+        
     }
 
     function deleteMovie($id) {
@@ -81,7 +50,7 @@ class MovieModel
 
     function getMoviesGenre($id) {
         $sentence = $this->db->prepare('SELECT * FROM movies WHERE id_genre = ?');
-        $sentence->execute([$id]);
+        $sentence->execute(array($id));
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
@@ -91,13 +60,8 @@ class MovieModel
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function editMovie($id_movie, $id_genre, $name, $description, $year, $rating, $images) {
+    function editMovie($id_movie, $id_genre, $name, $description, $year, $rating) {
         $sentence = $this->db->prepare('UPDATE movies SET id_genre = ?, name = ?, description = ?, year = ?, rating = ? WHERE id_movie = ?');
         $sentence->execute(array($id_genre, $name, $description, $year, $rating, $id_movie));
-        $paths = $this->uploadImages($images);
-        $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
-        foreach ($paths as $path) {
-            $sentence_images->execute(array($id_movie, $path));
-        }
     }
 }

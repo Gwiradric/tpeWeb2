@@ -2,6 +2,7 @@
 
 require_once "./views/MovieView.php";
 require_once "./models/MovieModel.php";
+require_once "./models/ImageModel.php";
 require_once "SecuredController.php";
 
 class MovieController extends SecuredController
@@ -11,6 +12,7 @@ class MovieController extends SecuredController
     private $view;
     private $model;
     private $link;
+    private $modelImages;
 
     public function __construct()
     {
@@ -18,6 +20,7 @@ class MovieController extends SecuredController
         $this->title = "Movie Club";
         $this->view = new MovieView();
         $this->model = new MovieModel();
+        $this->modelImages = new ImageModel();
     }
 
     private function isJPG($imagenesTipos){
@@ -47,7 +50,9 @@ class MovieController extends SecuredController
                 
                 if (empty($movie[0])) {
                     if($this->isJPG($_FILES['imagesToUpload']['type'])) {
-                        $this->model->insertMovie($name, $id_genre, $description, $year, $rating, $pathTempImages);
+                        $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
+                        $movie = $this->model->getMovieName($name);
+                        $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
                     }
                 }
             }
@@ -61,7 +66,7 @@ class MovieController extends SecuredController
             $p1 = $params[0];
             $p2 = $params[1];
             $path = $p1 . "/" . $p2;
-            $this->model->deleteMovieImagePath($path);
+            $this->modelImages->deleteMovieImagePath($path);
             unlink($path);
             header(HOME);
         }
@@ -70,8 +75,8 @@ class MovieController extends SecuredController
     public function deleteMovie($params)
     {
         if ($this->isAdmin) {
-            $images = $this->model->getImagesId($params[0]);
-            $this->model->deleteMovieImagesId($params[0]);
+            $images = $this->modelImages->getImagesId($params[0]);
+            $this->modelImages->deleteMovieImagesId($params[0]);
             for ($i=0; $i < count($images); $i++) { 
                 unlink("./" . $images[$i]['path']);
             }
@@ -84,7 +89,7 @@ class MovieController extends SecuredController
     {
         $movie = $this->model->getMovie($id[0]);
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
-        $images = $this->model->getImagesId($id[0]);
+        $images = $this->modelImages->getImagesId($id[0]);
         $this->link = "../";
         $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images);
     }
@@ -145,7 +150,9 @@ class MovieController extends SecuredController
                 $movie = $this->model->getMovieName($name);
 
                 if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie) && ($pathTempImages[0] != "")) {
-                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating, $pathTempImages);
+                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                    $movie = $this->model->getMovieName($name);
+                    $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
                 }
 
             }
