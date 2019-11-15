@@ -1,6 +1,6 @@
 <?php
 
-require_once "JSONView.php";
+require_once "./api/views/JSONView.php";
 require_once "ApiController.php";
 require_once "./models/CommentsModel.php";
 

@@ -1,6 +1,6 @@
 <?php
 require_once('./helper/Router.php');
-require_once('./api/CommentsApiController.php');
+require_once('./api/controllers/CommentsApiController.php');
 
 // CONSTANTES PARA RUTEO
 define('HOME', 'Location: http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]));
