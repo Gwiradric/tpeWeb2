@@ -5,6 +5,7 @@ class SecuredController
     protected $isAdmin;
     protected $login;
     protected $email;
+    protected $id;
 
     function __construct()
     {
@@ -12,6 +13,12 @@ class SecuredController
         $this->email = $this->getEmail();
         $this->login = $this->checkLogin();
         $this->isAdmin = $this->isAdmin();
+        $this->id = $this->getId();
+    }
+
+    function getId() {
+        if (isset($_SESSION['user']))
+            return ($_SESSION['user'][2]);
     }
 
     function getEmail() {

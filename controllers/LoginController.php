@@ -53,7 +53,7 @@ class LoginController extends SecuredController
             if (password_verify($password, $user[0]['password'])) {
                 session_start();
 
-                $_SESSION['user'] = array($email, $user[0]['admin']);
+                $_SESSION['user'] = array($email, $user[0]['admin'], $user[0]['id_user']);
 
                 header(HOME);
             } else {
