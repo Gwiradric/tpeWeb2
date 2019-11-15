@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-11-2019 a las 03:33:50
+-- Tiempo de generación: 15-11-2019 a las 03:15:59
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_movies`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comments`
+--
+
+CREATE TABLE `comments` (
+  `id_comment` int(11) NOT NULL,
+  `comment` varchar(300) NOT NULL,
+  `score` int(1) NOT NULL,
+  `fk_id_movie` int(11) NOT NULL,
+  `fk_id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comments`
+--
+
+INSERT INTO `comments` (`id_comment`, `comment`, `score`, `fk_id_movie`, `fk_id_user`) VALUES
+(1, 'This movie is amazing!', 5, 55, 28),
+(5, 'Wow! I love it 2 UPDATED', 5, 55, 28);
 
 -- --------------------------------------------------------
 
@@ -148,6 +170,14 @@ INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
 --
 
 --
+-- Indices de la tabla `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id_comment`),
+  ADD KEY `fk_id_movie` (`fk_id_movie`),
+  ADD KEY `fk_id_user` (`fk_id_user`);
+
+--
 -- Indices de la tabla `genres`
 --
 ALTER TABLE `genres`
@@ -178,6 +208,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `genres`
 --
 ALTER TABLE `genres`
@@ -204,6 +240,13 @@ ALTER TABLE `users`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `fk_id_movie` FOREIGN KEY (`fk_id_movie`) REFERENCES `movies` (`id_movie`),
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`fk_id_user`) REFERENCES `users` (`id_user`);
 
 --
 -- Filtros para la tabla `images`
