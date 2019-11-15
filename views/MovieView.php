@@ -4,9 +4,10 @@ require_once('libs/Smarty.class.php');
 
 class MovieView
 {
-    public function showMovie($title, $isAdmin , $link, $movie, $login, $email, $genre, $images)
+    public function showMovie($title, $isAdmin , $link, $movie, $login, $email, $genre, $images, $id_user = "")
     {
         $smarty = new Smarty();
+        $smarty->assign('id_user', $id_user);
         $smarty->assign('title', $title);
         $smarty->assign('isAdmin', $isAdmin);
         $smarty->assign('link', $link);

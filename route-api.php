@@ -11,7 +11,7 @@ $router = new Router();
 
 // rutas
 $router->addRoute("comments", "GET", "CommentsApiController", "getComments");
-$router->addRoute("comments/:ID", "GET", "CommentsApiController", "getComment");
+$router->addRoute("comments/:ID", "GET", "CommentsApiController", "getCommentMovie");
 $router->addRoute("comments", "POST", "CommentsApiController", "addComment");
 $router->addRoute("comments/:ID", "DELETE", "CommentsApiController", "deleteComment");
 $router->addRoute("comments/:ID", "PUT", "CommentsApiController", "updateComment");

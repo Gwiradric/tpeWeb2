@@ -7,10 +7,22 @@ require_once "./models/CommentsModel.php";
 class CommentsApiController extends ApiController
 {
 
-    function getComment($params = []) {
+    function getCommentId($params = []) {
         $id = $params[':ID'];
 
-        $comment = $this->model->getComment($id);
+        $comment = $this->model->getCommentId($id);
+        
+        if ($comment) {
+            $this->view->response($comment, 200);
+        } else {
+            $this->view->response("Error getting task", 500);
+        }
+    }
+
+    function getCommentMovie($params = []) {
+        $id = $params[':ID'];
+
+        $comment = $this->model->getCommentMovie($id);
         
         if ($comment) {
             $this->view->response($comment, 200);

@@ -91,7 +91,8 @@ class MovieController extends SecuredController
         $genre = $this->model->getGenreId($movie[0]['id_genre']);
         $images = $this->modelImages->getImagesId($id[0]);
         $this->link = "../";
-        $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images);
+        $id_user = $this->id;
+        $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images, $id_user);
     }
 
     public function showMovies($params)
