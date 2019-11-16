@@ -1,9 +1,8 @@
-<section id="comments">
-    <ul class="list-comments">
-    </ul>
-</section>
+{include file="../js/templates/comments-vue.tpl"}
 
-<h3>Insert your comment</h3>
+{if $login}
+<div class="mt-3">
+<h5>Insert your comment</h5>
 <form id="form-comments" action="insert-comment" method="post">
     
     <div class="form-group">
@@ -21,8 +20,14 @@
             <option>5</option>
         </select>
     </div>
+    
+    <button type="submit" id="sendComment" class="btn btn-primary">Submit</button>
 </form>
+</div>
 
-<button type="submit" class="btn btn-primary">Submit</button>
+{/if}
+
 
 </div>
+
+<script src="../js/comment.js"></script>

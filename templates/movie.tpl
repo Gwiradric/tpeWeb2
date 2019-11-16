@@ -2,7 +2,7 @@
 
 {include file="navbar.tpl"}
 
-<div class="container mt-3" data-id_movie = "{$movie['id_movie']}" data-id_user = "{$id_user}">
+<div class="container mt-3" id="movie-data" data-id_movie = "{$movie['id_movie']}" data-id_user = "{$id_user}">
     <div class="row">
 
       <div class="col-md-3">

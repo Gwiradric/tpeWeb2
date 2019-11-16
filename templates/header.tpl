@@ -14,6 +14,9 @@
 
     <link rel="icon" type="image/png" href="{$link}img/favicon.png">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
     <title>{$title}</title>
 </head>
 
