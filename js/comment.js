@@ -1,11 +1,21 @@
 "use strict"
 
-document.querySelector("#form-comments").addEventListener('submit', addComment);
+let form = document.querySelector("#form-comments");
+let deleteButton = document.getElementById("remove-comment");
+
+if (form != null) {
+    form.addEventListener('submit', addComment);
+}
+
+if (deleteButton != null) {
+    deleteButton.addEventListener('click', deleteComment);
+}
 
 let app = new Vue({
     el: "#template-vue-comments",
     data: {
         subtitle: "Comments of the movie",
+        average: 0,
         comments: [], 
         auth: true
     }
@@ -19,7 +29,14 @@ function getComments() {
     fetch(url)
     .then(response => response.json())
     .then(comments => {
-        app.comments = comments; // similar a $this->smarty->assign("tasks", $tasks)
+        if (comments != "Error getting task") {
+            app.comments = comments;
+            let sum = 0;
+            for (let i = 0; i < comments.length; i++) {
+                sum += parseInt(comments[i]['score']);
+            }
+            app.average = (sum / comments.length).toFixed();
+        }
     })
     .catch(error => console.log(error));
 }
@@ -31,11 +48,9 @@ function addComment(e) {
     let dataComment = document.getElementById("movie-data");
 
     let data = {
-        comment:  "test",
-        score:  "1",
-
-        // comment:  (document.querySelector("input[name=comment]")).value,
-        // score:  (document.querySelector("input[name=score]")).value,
+        comment:  document.getElementById("comment-text").value,
+        user: document.getElementById("user").value,
+        score:  document.getElementById("score-select").value,
         id_movie:  dataComment.dataset.id_movie,
         id_user:  dataComment.dataset.id_user
     }
@@ -53,6 +68,22 @@ function addComment(e) {
      .catch(error => console.log(error));
 }
 
+async function deleteComment() {
+    //this function is responsible for editing the information on the server
+    console.log('entro');
 
+    let url = "../api/comments/" + data.dataset.id_comment;
+    data = document.getElementById("delete-comment");
+    
+    try {
+      await fetch(url + data.dataset.id_comment, {
+        "method": "DELETE",
+      });
+      getComments();
+    }
+    catch (t) {
+      console.log(t);
+    }
+  }
 
 getComments();

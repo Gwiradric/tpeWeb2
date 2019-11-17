@@ -1,13 +1,12 @@
-{include file="../js/templates/comments-vue.tpl"}
-
 {if $login}
 <div class="mt-3">
 <h5>Insert your comment</h5>
 <form id="form-comments" action="insert-comment" method="post">
-    
+    <input type="hidden" id="user" value="{$email}">
+
     <div class="form-group">
         <label for="comment-text">Comment</label>
-        <textarea class="form-control" id="comment-text" name="comment" rows="3"></textarea>
+        <textarea class="form-control" id="comment-text" name="comment" rows="3" required></textarea>
     </div>
 
     <div class="form-group">
@@ -27,7 +26,5 @@
 
 {/if}
 
-
 </div>
-
-<script src="../js/comment.js"></script>
+</div>

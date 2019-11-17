@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 15-11-2019 a las 03:15:59
+-- Tiempo de generación: 17-11-2019 a las 19:32:00
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -30,19 +30,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `id_comment` int(11) NOT NULL,
+  `user` varchar(100) NOT NULL,
   `comment` varchar(300) NOT NULL,
   `score` int(1) NOT NULL,
   `fk_id_movie` int(11) NOT NULL,
   `fk_id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `comments`
---
-
-INSERT INTO `comments` (`id_comment`, `comment`, `score`, `fk_id_movie`, `fk_id_user`) VALUES
-(1, 'This movie is amazing!', 5, 55, 28),
-(5, 'Wow! I love it 2 UPDATED', 5, 55, 28);
 
 -- --------------------------------------------------------
 
@@ -163,7 +156,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
 (28, 'federico.fuhr.ff@gmail.com', '$2y$10$o6TvAbOAZIpY8mciUbxNyuQ1byB5.MUqIWT.SAMdyIrTUp7HaRyQG', 1, '1573339079EdQGbfLZ'),
-(30, 'gwiradric.ps3@gmail.com', '$2y$10$Z9dQYYwRT.Vz0sp1HTuFGuDoJZun5nv9DXRvq24puxMzYeRLmNkR2', 1, '1573333455IKWMURLY');
+(30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 1, '1574005171agAbVcOb'),
+(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '');
 
 --
 -- Índices para tablas volcadas
@@ -211,7 +205,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `genres`
@@ -223,19 +217,19 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas

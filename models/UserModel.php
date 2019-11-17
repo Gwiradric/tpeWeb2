@@ -18,6 +18,12 @@ class UserModel
         $sentence->execute(array($email, $password, $admin, $code));
     }
 
+    function getUserId($id) {
+        $sentence = $this->db->prepare('SELECT * FROM users WHERE id_user = ?');
+        $sentence->execute(array($id));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
+    }
+
     function getUsers() {
         $sentence = $this->db->prepare('SELECT * FROM users');
         $sentence->execute();

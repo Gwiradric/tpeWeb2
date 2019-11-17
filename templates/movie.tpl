@@ -35,12 +35,16 @@
       <div class="images mt-1">
           <img src="{$link}{$image['path']}" class="img-thumbnail" alt="...">
           {if $isAdmin}
-            <a href='{$link}remove-image/{$image['path']}'>Remove</a>
+            <br><a href='{$link}remove-image/{$image['path']}'>Remove</a>
           {/if}
       </div>
       {/if}
     {/foreach}
 
-{include file="comments.tpl"}
+{include file="../js/templates/comments-vue.tpl"}
+
+{include file="comment-form.tpl"}
+
+<script src="{$link}js/comment.js"></script>
 
 {include file="footer.tpl"}
