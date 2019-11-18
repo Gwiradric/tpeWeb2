@@ -3,9 +3,6 @@
 
     <h5>{{ subtitle }}</h5>
 
-    
-
-
     <div class="row">
         <div class="col-md-8">
             <ul class="list-group list-group-flush">
@@ -23,15 +20,11 @@
         </div>
         
         <div class="col-md-4">
-            <h6>User score:</h6>
-            {{ average }}
-            <h1><span class="blue">3</span></h1>
+            <h3>User score:</h3>
+            <span class="green" v-if="average > 2.5">{{ average }}</span>
+            <span class="red" v-else>{{ average }}</span>
         </div>
     </div>
-
-
-
-    
 
 </section>
 {/literal}
