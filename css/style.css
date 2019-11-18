@@ -1,29 +1,27 @@
 .logo {
-   width: 100%;
-   height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 img {
-   width: 270px;
-   height: 270px;
+  width: 270px;
+  height: 270px;
 }
 
-/*Lo primero, todo el cuerpo que ocupe el 100%*/
-html, body {    
-    height: 100%;
- }
-  
- /*Lo segundo, el container, con algura mínima del 100% y un margen inferior negativo igual al alto que queramos darle al pie*/
- .container {
-    min-height: 100%;
-    position: relative;
- }
-  
- /*Lo tercero, el pie con la altura deseada (igual al margen negativo de antes)*/
- footer {
-    position: relative;
- }
+html,
+body {
+  height: 100%;
+}
 
- .images {
-   display:inline-block; 
- }
+.container {
+  min-height: 100%;
+  position: relative;
+}
+
+footer {
+  position: relative;
+}
+
+.images {
+  display: inline-block;
+}
