@@ -21,7 +21,7 @@ let app = new Vue({
   }
 });
 
-function getComments() {
+async function getComments() {
   let data = document.getElementById("movie-data");
   let url = "../api/comments/" + data.dataset.id_movie;
 
@@ -35,12 +35,22 @@ function getComments() {
           sum += parseInt(comments[i]["score"]);
         }
         app.average = sum / comments.length;
+        setTimeout(deleteButtons, 1000);
       }
     })
     .catch(error => console.log(error));
 }
 
-function addComment(e) {
+function deleteButtons() {
+  let b = document.querySelectorAll("#remove-comment");
+  b.forEach(b => {
+    b.addEventListener("click", function() {
+      deleteComment(b.dataset.id_comment);
+    });
+  });
+}
+
+async function addComment(e) {
   e.preventDefault();
 
   let dataComment = document.getElementById("movie-data");
@@ -53,8 +63,6 @@ function addComment(e) {
     id_user: dataComment.dataset.id_user
   };
 
-  console.log(data);
-
   fetch("../api/comments", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -66,14 +74,13 @@ function addComment(e) {
     .catch(error => console.log(error));
 }
 
-async function deleteComment() {
+async function deleteComment(number) {
   //this function is responsible for editing the information on the server
 
-  let url = "../api/comments/" + data.dataset.id_comment;
-  data = document.getElementById("delete-comment");
+  let url = "../api/comments/" + number;
 
   try {
-    await fetch(url + data.dataset.id_comment, {
+    await fetch(url, {
       method: "DELETE"
     });
     getComments();

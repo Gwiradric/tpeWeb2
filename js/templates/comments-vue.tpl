@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" v-for="comment in comments">
-                    <span><b>{{ comment.user}}</b> gives <b>{{comment.score}}</b> stars and says: <br>{{ comment.comment }}
+                    <span><b>{{ comment.user}}</b> gives <b>{{comment.score}}</b> stars and says: <br>{{ comment.comment }}</span>
                         {/literal}
                         {if $isAdmin == '1'}
                             {literal}

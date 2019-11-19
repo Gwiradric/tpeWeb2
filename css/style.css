@@ -28,7 +28,7 @@ footer {
 
 /* Círculos de colores numerados */
 span.red {
-  font-size: 80px;
+  font-size: 75px;
   background: red;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
@@ -46,7 +46,7 @@ span.red {
 }
 
 span.grey {
-  font-size: 80px;
+  font-size: 75px;
   background: #cccccc;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
@@ -64,7 +64,7 @@ span.grey {
 }
 
 span.green {
-  font-size: 80px;
+  font-size: 75px;
   background: #5ea226;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
@@ -82,7 +82,7 @@ span.green {
 }
 
 span.blue {
-  font-size: 80px;
+  font-size: 75px;
   background: #5178d0;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
@@ -100,7 +100,7 @@ span.blue {
 }
 
 span.pink {
-  font-size: 80px;
+  font-size: 75px;
   background: #ef0bd8;
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;
