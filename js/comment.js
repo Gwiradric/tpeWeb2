@@ -18,6 +18,13 @@ let app = new Vue({
     average: 0,
     comments: [],
     auth: true
+  },
+  computed: {
+    size: {
+      get: function() {
+        return this.comments.length;
+      }
+    }
   }
 });
 
@@ -34,7 +41,7 @@ async function getComments() {
         for (let i = 0; i < comments.length; i++) {
           sum += parseInt(comments[i]["score"]);
         }
-        app.average = sum / comments.length;
+        app.average = Math.round((sum / comments.length) * 10) / 10;
         setTimeout(deleteButtons, 1000);
       }
     })
