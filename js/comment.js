@@ -35,15 +35,13 @@ async function getComments() {
   fetch(url)
     .then(response => response.json())
     .then(comments => {
-      if (comments != "Error getting task") {
-        app.comments = comments;
-        let sum = 0;
-        for (let i = 0; i < comments.length; i++) {
-          sum += parseInt(comments[i]["score"]);
-        }
-        app.average = Math.round((sum / comments.length) * 10) / 10;
-        setTimeout(deleteButtons, 1000);
+      app.comments = comments;
+      let sum = 0;
+      for (let i = 0; i < comments.length; i++) {
+        sum += parseInt(comments[i]["score"]);
       }
+      app.average = Math.round((sum / comments.length) * 10) / 10;
+      setTimeout(deleteButtons, 1000);
     })
     .catch(error => console.log(error));
 }
