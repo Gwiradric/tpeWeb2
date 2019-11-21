@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <a class="navbar-brand" href='{$link}'>
         <img class="logo" src="{$link}img/movie-logo.png" alt="movie-logo">
     </a>
