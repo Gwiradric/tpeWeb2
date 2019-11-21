@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
     <a class="navbar-brand" href='{$link}'>
         <img class="logo" src="{$link}img/movie-logo.png" alt="movie-logo">
     </a>
@@ -17,8 +17,8 @@
         </ul>
 
         {if $login}
-        <span class="navbar-text">Welcome {$email}</span>
-        <a class="btn btn-primary" href="{$link}logout" role="button">Logout</a>
+        <span class="navbar-text"><b>Welcome {$email}</b></span>
+        <a class="btn btn-primary ml-2" href="{$link}logout" role="button">Logout</a>
         {else}
         <div>
             <a class="btn btn-primary" href="{$link}login" role="button">Login</a>
