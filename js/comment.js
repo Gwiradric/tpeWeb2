@@ -60,17 +60,10 @@ function deleteButtons() {
 async function addComment(e) {
   e.preventDefault();
 
-  let today = new Date();
-  let dd = String(today.getDate()).padStart(2, "0");
-  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  let yyyy = today.getFullYear();
-  today = yyyy + "-" + mm + "-" + dd;
-
   let dataComment = document.getElementById("movie-data");
 
   let data = {
     comment: document.getElementById("comment-text").value,
-    date: today,
     user: document.getElementById("user").value,
     score: document.getElementById("score-select").value,
     id_movie: dataComment.dataset.id_movie,

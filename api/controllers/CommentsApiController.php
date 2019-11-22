@@ -48,7 +48,7 @@ class CommentsApiController extends ApiController
     {
         $comment = $this->getData();
 
-        $commentId = $this->model->insertComment($comment->comment, $comment->date, $comment->user, $comment->score, $comment->id_movie, $comment->id_user);
+        $commentId = $this->model->insertComment($comment->comment, $comment->user, $comment->score, $comment->id_movie, $comment->id_user);
 
         $newComment = $this->model->getComment($commentId);
 
