@@ -32,9 +32,9 @@ class CommentsModel
         return ($sentence->fetchAll(PDO::FETCH_OBJ));
     }
 
-    function insertComment($comment, $user, $score, $id_movie, $id_user) {
-        $sentence = $this->db->prepare('INSERT INTO comments (comment, user, score, fk_id_movie, fk_id_user) VALUES (?, ?, ?, ?, ?)');
-        $sentence->execute(array($comment, $user, $score, $id_movie, $id_user));
+    function insertComment($comment, $date, $user, $score, $id_movie, $id_user) {
+        $sentence = $this->db->prepare('INSERT INTO comments (comment, date, user, score, fk_id_movie, fk_id_user) VALUES (?, ?, ?, ?, ?, ?)');
+        $sentence->execute(array($comment, $date, $user, $score, $id_movie, $id_user));
         return ($this->db->lastInsertId());
     }
 

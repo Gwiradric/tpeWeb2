@@ -25,23 +25,25 @@
 
       <ul class="list-group list-group-flush">
         <li class="list-group-item" v-for="comment in comments">
-          {/literal} {if $isAdmin == '1'} {literal}
-            <button
-              type="button"
-              class="close"
-              id="remove-comment"
-              aria-label="Close"
-              :data-id_comment="comment.id_comment"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          {/literal} {/if} {literal}
 
-          <span
-            ><b>{{ comment.user }}</b> gives <b>{{ comment.score }}</b> stars
-            and says:</span
+          <div class="clearfix">
+            <span class="float-left"
+              ><b>{{ comment.user }}</b> gives <b>{{ comment.score }}</b> stars
+              and says:</span
+            >
+            <span class="text-secondary float-right">{{ comment.date }}</span>
+          </div>
+          {/literal} {if $isAdmin == '1'} {literal}
+          <button
+            type="button"
+            class="close"
+            id="remove-comment"
+            aria-label="Close"
+            :data-id_comment="comment.id_comment"
           >
-          <br />
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {/literal} {/if} {literal}
           <p>{{ comment.comment }}</p>
         </li>
       </ul>

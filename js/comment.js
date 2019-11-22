@@ -2,7 +2,6 @@
 
 let form = document.querySelector("#form-comments");
 let deleteButton = document.getElementById("remove-comment");
-let orderButton = document.getElementById("order-button");
 
 if (form != null) {
   form.addEventListener("submit", addComment);
@@ -10,10 +9,6 @@ if (form != null) {
 
 if (deleteButton != null) {
   deleteButton.addEventListener("click", deleteComment);
-}
-
-if (orderButton != null) {
-  orderButton.addEventListener("click", orderCommentsBy);
 }
 
 let app = new Vue({
@@ -41,13 +36,13 @@ async function getComments() {
     .then(response => response.json())
     .then(comments => {
       app.comments = comments;
-      
+
       let sum = 0;
       for (let i = 0; i < comments.length; i++) {
         sum += parseInt(comments[i]["score"]);
       }
       app.average = Math.round((sum / comments.length) * 10) / 10;
-      
+
       setTimeout(deleteButtons, 1000);
     })
     .catch(error => console.log(error));
@@ -65,10 +60,17 @@ function deleteButtons() {
 async function addComment(e) {
   e.preventDefault();
 
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, "0");
+  let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  let yyyy = today.getFullYear();
+  today = yyyy + "-" + mm + "-" + dd;
+
   let dataComment = document.getElementById("movie-data");
 
   let data = {
     comment: document.getElementById("comment-text").value,
+    date: today,
     user: document.getElementById("user").value,
     score: document.getElementById("score-select").value,
     id_movie: dataComment.dataset.id_movie,
@@ -100,7 +102,5 @@ async function deleteComment(number) {
     console.log(t);
   }
 }
-
-
 
 getComments();
