@@ -1,5 +1,5 @@
 {literal}
-<section class="mt-3" id="template-vue-comments" v-if="comments.length">
+<section class="mt-5" id="template-vue-comments" v-if="comments.length">
   <div class="row">
     <div class="col-md-8">
       <div class="clearfix">

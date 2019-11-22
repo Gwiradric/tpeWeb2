@@ -2,20 +2,26 @@
 
 {include file="navbar.tpl"}
 
-<div class="container mt-3">
+<div class="container mt-4 col-lg-3 col-md-3 col-xs-12">
 
-    <h2>{$subtitle}</h2>
+    <div class="text-center">
+        <h2>{$subtitle}</h2>
+    </div>
 
-    <form method="post" action="{$link}send-message">
+    <form class="mt-3" method="post" action="{$link}send-message">
 
         <div class="form-group">
             <input type="email" class="form-control" id="user" aria-describedby="user" placeholder="Name@example.com"
                 name="email" required>
         </div>
 
-        <p class='text-danger'>{$message}</p>
+        <div class="text-center">
+            <p class='text-danger'>{$message}</p>
+        </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 </div>
 

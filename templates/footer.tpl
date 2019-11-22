@@ -11,7 +11,7 @@
     crossorigin="anonymous"></script>
 
 <!-- Footer -->
-<footer class="page-footer font-small bg-primary mt-3">
+<footer class="page-footer font-small bg-primary mt-5">
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2019 Copyright: {$title}

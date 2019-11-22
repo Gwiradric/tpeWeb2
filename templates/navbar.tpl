@@ -9,15 +9,15 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="{$link}">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-white" href="{$link}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{$link}all-movies/">All Movies</a>
+                <a class="nav-link text-white" href="{$link}all-movies/">All Movies</a>
             </li>
         </ul>
 
         {if $login}
-        <span class="navbar-text"><b>Welcome {$email}</b></span>
+        <span class="navbar-text text-white"><b>Welcome {$email}</b></span>
         <a class="btn btn-primary ml-2" href="{$link}logout" role="button">Logout</a>
         {else}
         <div>
