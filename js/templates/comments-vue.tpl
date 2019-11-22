@@ -15,10 +15,10 @@
             Order by
           </button>
           <div class="dropdown-menu" id="order-button">
-            <a class="dropdown-item" href="#">Top scores</a>
-            <a class="dropdown-item" href="#">Worst scores</a>
-            <a class="dropdown-item" href="#">Newest comment</a>
-            <a class="dropdown-item" href="#">Older comment</a>
+            <button class="dropdown-item" type="button">Top scores</button>
+            <button class="dropdown-item" type="button">Worst scores</button>
+            <button class="dropdown-item" type="button">Newest comments</button>
+            <button class="dropdown-item" type="button">Older comments</button>
           </div>
         </div>
       </div>

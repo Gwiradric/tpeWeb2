@@ -67,18 +67,18 @@ class LoginController extends SecuredController
     public function createRandomCode()
     {
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz0123456789";
-        srand((double)microtime()*1000000);
+        srand((float) microtime() * 1000000);
         $i = 0;
-        $pass = '' ;
-    
+        $pass = '';
+
         while ($i <= 7) {
             $num = rand() % 33;
             $tmp = substr($chars, $num, 1);
             $pass = $pass . $tmp;
             $i++;
         }
-    
-        return time().$pass;
+
+        return time() . $pass;
     }
 
     public function sendMessage()
@@ -86,16 +86,19 @@ class LoginController extends SecuredController
         $email = $_POST['email'];
 
         if (isset($email)) {
-            
+
             $user = $this->model->getUserEmail($email);
 
             $code = $this->createRandomCode();
 
             if (isset($user[0])) {
                 $this->model->updateCode($code, $user[0]['id_user']);
-                
+
                 $mailer = new Mailer();
-                $body = 'Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>';
+                $body = 'Hello!
+                <br>To recover your account please enter the following link:
+                <br>Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>
+                <br>If you did not ask to recover it, ignore this message.';
                 $subject = 'Recover Password';
 
                 $message = $mailer->sendMail($email, $subject, $body);
@@ -107,12 +110,13 @@ class LoginController extends SecuredController
         }
     }
 
-    public function resetPassword($params){
+    public function resetPassword($params)
+    {
         $code = $params[0];
 
         if (isset($code)) {
             $user = $this->model->getUserCode($code);
-    
+
             if (isset($user)) {
                 $message = "";
                 $subtitle = "Reset Password";
@@ -120,7 +124,6 @@ class LoginController extends SecuredController
                 $this->action = "update-password";
                 $this->view->userForm($this->title, $user[0], $link, $this->login, $subtitle, $this->action, $message);
             }
-
         }
     }
 

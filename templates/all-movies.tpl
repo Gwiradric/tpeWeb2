@@ -26,7 +26,7 @@
                             <th scope="row"><a href="{$link}movie/{$movie['id_movie']}">{$movie["name"]}</a></th>
                             <td>{$movie["description"]}</td>
                             <td>{$movie["year"]}</td>
-                            <td>{$movie["rating"]}</td>
+                            <td>{$movie["rating"]} / 100</td>
                             {if $isAdmin}
                             <td>
                                 <a href="{$link}delete-movie/{$movie['id_movie']}">Delete</a> |

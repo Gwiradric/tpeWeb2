@@ -27,12 +27,12 @@
         </div>
 
         <div class="form-group">
-            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year"
+            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" min="1960" max="2019"
                 value='{$movie["year"]}' required>
         </div>
 
         <div class="form-group">
-            <input type="number" class="form-control" id="rating" placeholder="Rating" name="rating"
+            <input type="number" class="form-control" id="rating" placeholder="Rating" name="rating" min="1" max="100"
                 value='{$movie["rating"]}' required>
         </div>
 
