@@ -23,11 +23,12 @@ class MovieController extends SecuredController
         $this->modelImages = new ImageModel();
     }
 
-    private function isJPG($imagenesTipos){
+    private function isJPG($imagenesTipos)
+    {
         foreach ($imagenesTipos as $tipo) {
-          if($tipo != 'image/jpeg') {
-            return false;
-          }
+            if ($tipo != 'image/jpeg') {
+                return false;
+            }
         }
         return true;
     }
@@ -43,25 +44,26 @@ class MovieController extends SecuredController
             $year = $_POST['year'];
             $rating = $_POST['rating'];
 
-            
+
             if (isset($name, $description, $id_genre, $year, $rating, $pathTempImages)) {
 
                 $movie = $this->model->getMovieName($name);
-                
+
                 if (empty($movie[0])) {
-                    if($this->isJPG($_FILES['imagesToUpload']['type'])) {
+                    if ($this->isJPG($_FILES['imagesToUpload']['type'])) {
                         $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
                         $movie = $this->model->getMovieName($name);
                         $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
                     }
                 }
             }
-            
+
             header(HOME);
         }
     }
 
-    public function deleteImagePath($params) {
+    public function deleteImagePath($params)
+    {
         if ($this->isAdmin) {
             $p1 = $params[0];
             $p2 = $params[1];
@@ -77,7 +79,7 @@ class MovieController extends SecuredController
         if ($this->isAdmin) {
             $images = $this->modelImages->getImagesId($params[0]);
             $this->modelImages->deleteMovieImagesId($params[0]);
-            for ($i=0; $i < count($images); $i++) { 
+            for ($i = 0; $i < count($images); $i++) {
                 unlink("./" . $images[$i]['path']);
             }
             $this->model->deleteMovie($params[0]);
@@ -131,7 +133,6 @@ class MovieController extends SecuredController
             $action = "edit-movies";
             $this->view->movieForm($this->title, $this->subtitle, $this->login, $this->email, $link, $genres, $movie[0], $action, $id_movie[0]);
         }
-
     }
 
     public function editMovie()
@@ -150,16 +151,18 @@ class MovieController extends SecuredController
 
                 $movie = $this->model->getMovieName($name);
 
-                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie) && ($pathTempImages[0] != "")) {
-                    $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
-                    $movie = $this->model->getMovieName($name);
-                    $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
+                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie)) {
+                    if ($pathTempImages[0] != "") {
+                        $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                        $movie = $this->model->getMovieName($name);
+                        $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
+                    } else {
+                        $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
+                    }
                 }
-
             }
-            
+
             header(HOME);
         }
-
     }
 }
