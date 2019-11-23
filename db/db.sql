@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-11-2019 a las 19:32:00
+-- Tiempo de generación: 23-11-2019 a las 02:28:46
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -30,12 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `comments` (
   `id_comment` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp(),
   `user` varchar(100) NOT NULL,
   `comment` varchar(300) NOT NULL,
   `score` int(1) NOT NULL,
   `fk_id_movie` int(11) NOT NULL,
   `fk_id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comments`
+--
+
+INSERT INTO `comments` (`id_comment`, `date`, `user`, `comment`, `score`, `fk_id_movie`, `fk_id_user`) VALUES
+(143, '2019-11-22 19:59:34', 'federico.fuhr.ff@gmail.com', 'I love it', 5, 55, 28);
 
 -- --------------------------------------------------------
 
@@ -87,11 +95,6 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (26, 24, 'img/5dc77ddecb3b3.jpg'),
 (27, 28, 'img/5dc77df3d99d0.jpg'),
 (28, 37, 'img/5dc77ef455d24.jpg'),
-(29, 3, 'img/5dc77f75c9b15.jpg'),
-(30, 12, 'img/5dc77f7d90147.jpg'),
-(31, 22, 'img/5dc77fe7cc424.jpg'),
-(32, 20, 'img/5dc77ffa5f520.jpg'),
-(33, 24, 'img/5dc780385ac35.jpg'),
 (39, 2, 'img/5dc82419235e0.jpg'),
 (43, 55, 'img/5dc8b56f2dbe7.jpg'),
 (44, 55, 'img/5dc8b56f2dc5a.jpg'),
@@ -101,8 +104,7 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (65, 58, 'img/5dcca1a707fa7.jpg'),
 (66, 58, 'img/5dcca1a70802f.jpg'),
 (67, 58, 'img/5dcca1a70806c.jpg'),
-(68, 58, 'img/5dcca1a7080a3.jpg'),
-(69, 58, 'img/5dcca1a7080d9.jpg');
+(68, 58, 'img/5dcca1a7080a3.jpg');
 
 -- --------------------------------------------------------
 
@@ -124,7 +126,7 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
-(2, 1, 'Resident Evil', 'Resident Evil is a 2002 action horror film written and directed by Paul W. S. Anderson. The film stars Milla Jovovich, Michelle Rodriguez, Eric Mabius, James Purefoy, Martin Crewes, and Colin Salmon. It is the first installment in the Resident Evil film series, which is loosely based on the video game series of the same name.', 2002, 49),
+(2, 1, 'Resident Evil', 'Resident Evil is a 2002 action horror film written and directed by Paul W. S. Anderson. The film stars Milla Jovovich, Michelle Rodriguez, Eric Mabius, James Purefoy, Martin Crewes, and Colin Salmon. It is the first installment in the Resident Evil film series, which is loosely based on the video game series of the same name. Carlos', 2002, 49),
 (3, 5, 'Tarzan', 'Tarzan, a fictional character created by Edgar Rice Burroughs, first appeared in the 1912 novel Tarzan of the Apes, and then in twenty-three sequels. The character proved immensely popular and quickly made the jump to other media, first and most notably to comics and film. This article concerns Tarzan\'s appearance in film and other non-print media.', 1929, 21),
 (12, 12, 'Hercules', 'Hercules is a 1997 American animated musical fantasy comedy film produced by Walt Disney Feature Animation for Walt Disney Pictures. The 35th Disney animated feature film and the eighth animated film produced during the Disney Renaissance, the film was directed by Ron Clements and John Musker. The film is loosely based on the legendary hero Heracles (known in the film by his Roman name, Hercules), the son of Zeus, in Greek mythology. ', 1997, 61),
 (20, 35, 'Blade Runner 2049', 'Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what’s left of society into chaos. K’s discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.', 2017, 67),
@@ -133,7 +135,7 @@ INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `ra
 (24, 39, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62),
 (28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78),
 (37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76),
-(55, 1, 'Kingdom Hearts', 'Su historia marca la continuación de la trama principal de la saga. Con una introducción algo desconcertante para algunos en la que controlamos a un personaje llamado Roxas en la ciudad de Crepúsculo hasta que conseguimos despertar a Sora y seguir con su aventura. Mientras que Riku avanza por su lado y Kairi permance secuestrada. Controlando a Sora durante toda la trama principal del juego iremos avanzando de la mano de Donald y Goofy. Seguiremos avanzando y viajando a bordo de la habitual nave Gumi para visitar mundos conocidos y mundos nuevos.', 2008, 100),
+(55, 5, 'Kingdom Hearts', 'Su historia marca la continuación de la trama principal de la saga. Con una introducción algo desconcertante para algunos en la que controlamos a un personaje llamado Roxas en la ciudad de Crepúsculo hasta que conseguimos despertar a Sora y seguir con su aventura. Mientras que Riku avanza por su lado y Kairi permance secuestrada. Controlando a Sora durante toda la trama principal del juego iremos avanzando de la mano de Donald y Goofy. Seguiremos avanzando y viajando a bordo de la habitual nave Gumi para visitar mundos conocidos y mundos nuevos.', 2008, 100),
 (58, 5, 'Jojo Bizarre Adventure', 'Each of series\' eight protagonists is a member of the Joestar family, whose mainline descendants invariably possess a star-shaped birthmark above their left shoulder blade and a name that can be abbreviated to the titular \"JoJo\". The plot of each part generally consists of this JoJo gathering a group of allies, mastering their supernatural ability, battling various enemies, and ultimately confronting the part\'s powerful main villain.', 1984, 100);
 
 -- --------------------------------------------------------
@@ -155,9 +157,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
-(28, 'federico.fuhr.ff@gmail.com', '$2y$10$o6TvAbOAZIpY8mciUbxNyuQ1byB5.MUqIWT.SAMdyIrTUp7HaRyQG', 1, '1573339079EdQGbfLZ'),
+(28, 'federico.fuhr.ff@gmail.com', '$2y$10$GjSu7rbu4l4VUwjaXKcvQ.ouHwIVz3t45AO9nrxbI9weSHRB7z9Su', 1, '1574450797cFaRVUgF'),
 (30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 1, '1574005171agAbVcOb'),
-(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '');
+(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '1574450787JLRCaTZR');
 
 --
 -- Índices para tablas volcadas
@@ -205,7 +207,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- AUTO_INCREMENT de la tabla `genres`
@@ -217,13 +219,13 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
