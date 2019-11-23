@@ -17,7 +17,6 @@
               >
               <span class="text-secondary float-right">{{ comment.date }}</span>
             </div>
-            {/literal} {if $isAdmin == '1'} {literal}
             <button
               v-if="admin==1"
               v-on:click="deleteComment(comment.id_comment)"
@@ -29,7 +28,6 @@
             >
               <span aria-hidden="true">&times;</span>
             </button>
-            {/literal} {/if} {literal}
             <p>{{ comment.comment }}</p>
           </li>
         </ul>
