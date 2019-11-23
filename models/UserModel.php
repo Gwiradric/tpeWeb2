@@ -33,7 +33,7 @@ class UserModel
     function getUserEmail($email) {
         $sentence = $this->db->prepare('SELECT * FROM users WHERE email = ?');
         $sentence->execute(array($email));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function updateUserPrivileges($id, $admin) {
@@ -49,7 +49,7 @@ class UserModel
     function getUserCode($code) {
         $sentence = $this->db->prepare('SELECT * FROM users WHERE code = ?');
         $sentence->execute(array($code));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function deleteUser($id) {

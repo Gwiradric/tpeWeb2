@@ -7,14 +7,14 @@ require_once "./models/CommentsModel.php";
 class CommentsApiController extends ApiController
 {
 
-    function getCommentId($params = [])
+    function getCommentsId($params = [])
     {
         $id = $params[':ID'];
 
-        $comment = $this->model->getCommentId($id);
+        $comments = $this->model->getCommentsId($id);
 
-        if (is_array($comment)) {
-            $this->view->response($comment, 200);
+        if (is_array($comments)) {
+            $this->view->response($comments, 200);
         } else {
             $this->view->response("Error getting comments", 500);
         }
@@ -24,10 +24,10 @@ class CommentsApiController extends ApiController
     {
         $id = $params[':ID'];
 
-        $comment = $this->model->getCommentMovie($id);
+        $comments = $this->model->getCommentsMovie($id);
 
-        if (is_array($comment)) {
-            $this->view->response($comment, 200);
+        if (is_array($comments)) {
+            $this->view->response($comments, 200);
         } else {
             $this->view->response("Error getting comments", 500);
         }
@@ -72,17 +72,4 @@ class CommentsApiController extends ApiController
         }
     }
 
-    function updateComment($params = [])
-    {
-        $comment_id = $params[':ID'];
-        $comment = $this->model->getComment($comment_id);
-
-        if ($comment) {
-            $body = $this->getData();
-            $newComment = $this->model->updateComment($comment_id, $body->comment, $body->score, $body->id_movie, $body->id_user);
-            $this->view->response("Done", 200);
-        } else {
-            $this->view->response("Error updating comment", 404);
-        }
-    }
 }

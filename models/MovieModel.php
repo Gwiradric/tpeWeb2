@@ -16,13 +16,13 @@ class MovieModel
     function getMovieName($name) {
         $sentence = $this->db->prepare('SELECT * FROM movies WHERE name = ?');
         $sentence->execute(array($name));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function getMovie($id) {
         $sentence = $this->db->prepare('SELECT * FROM movies WHERE id_movie = ?');
         $sentence->execute(array($id));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function getMovies() {
@@ -34,7 +34,7 @@ class MovieModel
     function getGenreId($id) {
         $sentence = $this->db->prepare('SELECT name FROM genres WHERE id_genre = ?');
         $sentence->execute(array($id));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function insertMovie($name, $id_genre, $description, $year, $rating) {

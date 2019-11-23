@@ -49,11 +49,11 @@ class LoginController extends SecuredController
             'password' => '',
         );
 
-        if (isset($user[0])) {
-            if (password_verify($password, $user[0]['password'])) {
+        if (!empty($user)) {
+            if (password_verify($password, $user['password'])) {
                 session_start();
 
-                $_SESSION['user'] = array($email, $user[0]['admin'], $user[0]['id_user']);
+                $_SESSION['user'] = array($email, $user['admin'], $user['id_user']);
 
                 header(HOME);
             } else {
@@ -91,8 +91,8 @@ class LoginController extends SecuredController
 
             $code = $this->createRandomCode();
 
-            if (isset($user[0])) {
-                $this->model->updateCode($code, $user[0]['id_user']);
+            if (isset($user)) {
+                $this->model->updateCode($code, $user['id_user']);
 
                 $mailer = new Mailer();
                 $body = 'Hello!
@@ -122,7 +122,7 @@ class LoginController extends SecuredController
                 $subtitle = "Reset Password";
                 $link = "../";
                 $this->action = "update-password";
-                $this->view->userForm($this->title, $user[0], $link, $this->login, $subtitle, $this->action, $message);
+                $this->view->userForm($this->title, $user, $link, $this->login, $subtitle, $this->action, $message);
             }
         }
     }

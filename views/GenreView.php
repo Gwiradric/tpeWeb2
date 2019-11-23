@@ -22,12 +22,12 @@ class GenreView
         $smarty = new Smarty();
         $smarty->assign('title', $title);
         $smarty->assign('subtitle', $subtitle);
+        $smarty->assign('login', $login);
+        $smarty->assign('email', $email);
+        $smarty->assign('link', $link);
         $smarty->assign('action', $action);
         $smarty->assign('genre', $genre);
-        $smarty->assign('link', $link);
         $smarty->assign('id', $id);
-        $smarty->assign('email', $email);
-        $smarty->assign('login', $login);
         $smarty->assign('message', $message);
 
         $smarty->display('templates/genreForm.tpl');

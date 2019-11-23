@@ -49,11 +49,11 @@ class MovieController extends SecuredController
 
                 $movie = $this->model->getMovieName($name);
 
-                if (empty($movie[0])) {
+                if (empty($movie)) {
                     if ($this->isJPG($_FILES['imagesToUpload']['type'])) {
                         $this->model->insertMovie($name, $id_genre, $description, $year, $rating);
                         $movie = $this->model->getMovieName($name);
-                        $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
+                        $this->modelImages->insertImages($movie['id_movie'], $pathTempImages);
                     }
                 }
             }
@@ -90,11 +90,11 @@ class MovieController extends SecuredController
     public function showMovie($id)
     {
         $movie = $this->model->getMovie($id[0]);
-        $genre = $this->model->getGenreId($movie[0]['id_genre']);
+        $genre = $this->model->getGenreId($movie['id_genre']);
         $images = $this->modelImages->getImagesId($id[0]);
         $this->link = "../";
         $id_user = $this->id;
-        $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie[0], $this->login, $this->email, $genre[0]['name'], $images, $id_user);
+        $this->view->showMovie($this->title, $this->isAdmin, $this->link, $movie, $this->login, $this->email, $genre['name'], $images, $id_user);
     }
 
     public function showMovies($params)
@@ -131,7 +131,7 @@ class MovieController extends SecuredController
             $this->subtitle = 'Edit movie form';
             $link = "../";
             $action = "edit-movies";
-            $this->view->movieForm($this->title, $this->subtitle, $this->login, $this->email, $link, $genres, $movie[0], $action, $id_movie[0]);
+            $this->view->movieForm($this->title, $this->subtitle, $this->login, $this->email, $link, $genres, $movie, $action, $id_movie[0]);
         }
     }
 
@@ -151,11 +151,11 @@ class MovieController extends SecuredController
 
                 $movie = $this->model->getMovieName($name);
 
-                if ((empty($movie[0])) || ($movie[0]['id_movie'] == $id_movie)) {
+                if ((empty($movie)) || ($movie['id_movie'] == $id_movie)) {
                     if ($pathTempImages[0] != "") {
                         $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
                         $movie = $this->model->getMovieName($name);
-                        $this->modelImages->insertImages($movie[0]['id_movie'], $pathTempImages);
+                        $this->modelImages->insertImages($movie['id_movie'], $pathTempImages);
                     } else {
                         $this->model->editMovie($id_movie, $id_genre, $name, $description, $year, $rating);
                     }

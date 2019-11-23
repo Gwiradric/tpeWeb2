@@ -16,13 +16,13 @@ class GenreModel
     function getGenreName($name) {
         $sentence = $this->db->prepare('SELECT * FROM genres WHERE name = ?');
         $sentence->execute(array($name));
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function getGenre($id) {
         $sentence = $this->db->prepare('SELECT * FROM genres WHERE id_genre = ?');
         $sentence->execute([$id]);
-        return ($sentence->fetchAll(PDO::FETCH_ASSOC));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
     function getGenres() {

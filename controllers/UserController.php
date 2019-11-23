@@ -28,14 +28,20 @@ class UserController extends SecuredController
 
         $user = $this->model->getUserEmail($email);
 
-        if (empty($user[0]) && (isset($email, $password))) {
+        if (empty($user) && (isset($email, $password))) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $this->model->insertUser($email, $hash);
             $loginController = new LoginController();
             $loginController->checklogin($email, $password);
         } else {
             $this->subtitle = 'Register';
-            $this->view->userForm($this->title, $this->link, $this->isAdmin, $this->subtitle, $this->action, 'Email is already used, please try use another one');
+            $this->subtitle = 'Register';
+            $user = array(
+                'id_user' => '',
+                'email' => '',
+                'password' => '',
+            );
+            $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action, 'This email is already used, please try use another one');
         }
     }
 
@@ -50,7 +56,8 @@ class UserController extends SecuredController
         $this->view->userForm($this->title, $user, $this->link, $this->isAdmin, $this->subtitle, $this->action);
     }
 
-    public function showUsers() {
+    public function showUsers()
+    {
         if ($this->isAdmin) {
             $this->subtitle = 'Users';
             $users = $this->model->getUsers();
@@ -61,7 +68,8 @@ class UserController extends SecuredController
         }
     }
 
-    public function userPrivileges($params) {
+    public function userPrivileges($params)
+    {
         if ($this->isAdmin) {
             $id = $params[0];
             if ($params[1] == 0)
@@ -73,7 +81,8 @@ class UserController extends SecuredController
         header(USERS);
     }
 
-    public function deleteUser($params) {
+    public function deleteUser($params)
+    {
         if ($this->isAdmin) {
             $id = $params[0];
             $this->model->deleteUser($id);
@@ -81,15 +90,16 @@ class UserController extends SecuredController
         header(USERS);
     }
 
-    public function resetPassword() {
+    public function resetPassword()
+    {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         $user = $this->model->getUserEmail($email);
 
-        if (!empty($user[0]) && (isset($email, $password))) {
+        if (!empty($user) && (isset($email, $password))) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
-            $this->model->updatePasswordUser($user[0]['id_user'], $hash);
+            $this->model->updatePasswordUser($user['id_user'], $hash);
         }
         header(HOME);
     }

@@ -29,9 +29,10 @@ class GenreController extends SecuredController
             $description = $_POST['description'];
 
             if (isset($name, $description)) {
+
                 $genre = $this->model->getGenreName($name);
 
-                if (empty($genre[0])) {
+                if (empty($genre)) {
                     $this->model->insertGenre($name, $description);
                 }
 
@@ -60,10 +61,10 @@ class GenreController extends SecuredController
 
                 $genre = $this->model->getGenreName($name);
 
-                if (empty($genre[0])) {
+                if (empty($genre)) {
                     $this->model->editGenre($id_genre, $name, $description);
                 } else {
-                    if (($genre[0]["id_genre"] == $id_genre)) {
+                    if (($genre["id_genre"] == $id_genre)) {
                         $this->model->editGenre($id_genre, $name, $description);
                     }
                 }
@@ -96,7 +97,7 @@ class GenreController extends SecuredController
             $this->subtitle = "Edit genre form";
             $link = "../";
             $action = "update-genre";
-            $this->view->genreForm($this->title, $this->subtitle, $this->login, $this->email, $link, $action, $genre[0], $id[0]);
+            $this->view->genreForm($this->title, $this->subtitle, $this->login, $this->email, $link, $action, $genre, $id[0]);
         }
 
     }

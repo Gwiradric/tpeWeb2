@@ -35,7 +35,9 @@
       <div class="images mt-1">
           <img src="{$link}{$image['path']}" class="img-thumbnail" alt="...">
           {if $isAdmin}
-            <br><a href='{$link}remove-image/{$image['path']}'>Remove</a>
+            <div class="text-center">
+            <a href='{$link}remove-image/{$image['path']}'>Remove</a>
+            </div>
           {/if}
       </div>
       {/if}
