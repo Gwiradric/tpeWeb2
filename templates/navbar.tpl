@@ -26,7 +26,7 @@
     </ul>
 
     {if $login}
-    <span class="navbar-text text-white"><b>Welcome {$email}</b></span>
+    <span class="navbar-text text-white"><b>Welcome <span id="data-email" data-email ="{$email}">{$email}</span></b></span>
     <a class="btn btn-primary ml-2" href="{$link}logout" role="button"
       >Logout</a
     >
