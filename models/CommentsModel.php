@@ -25,7 +25,13 @@ class CommentsModel
         $sentence->execute(array($id_movie));
         return ($sentence->fetchAll(PDO::FETCH_OBJ));
     }
-
+    
+    function getCommentsMovieOrderBy($id_movie, $field, $order) {
+        $sentence = $this->db->prepare('SELECT * FROM comments WHERE fk_id_movie = ? ORDER BY ' . $field . " " . $order);
+        $sentence->execute(array($id_movie));
+        return ($sentence->fetchAll(PDO::FETCH_OBJ));
+    }
+    
     function getComments() {
         $sentence = $this->db->prepare('SELECT * FROM comments');
         $sentence->execute();

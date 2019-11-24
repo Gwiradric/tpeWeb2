@@ -1,19 +1,22 @@
 {literal}
 
 <div id="template-vue-comments">
-  <section class="mt-5"  v-if="comments.length">
+  <div>
+  <section class="mt-5" v-if="comments.length">
     <div class="row">
       <div class="col-md-8">
         
         <div class="clearfix">
           <h5 class="float-left mb-4">{{ subtitle }}</h5>
           <div class="btn-group float-right">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button  type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Order by
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item">Newest comments</a>
-              <a class="dropdown-item">Older comments</a>
+              <a class="dropdown-item" v-on:click="orderBy(options[1], options[3])">Newest comments</a>
+              <a class="dropdown-item" v-on:click="orderBy(options[1], options[2])">Older comments</a>
+              <a class="dropdown-item" v-on:click="orderBy(options[0], options[3])">Top scores</a>
+              <a class="dropdown-item" v-on:click="orderBy(options[0], options[2])">Worst scores</a>
             </div>
           </div>
         </div>

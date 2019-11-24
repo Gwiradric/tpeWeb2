@@ -20,11 +20,30 @@ class CommentsApiController extends ApiController
         }
     }
 
-    function getCommentMovie($params = [])
+    function getCommentsMovie($params = [])
     {
         $id = $params[':ID'];
 
         $comments = $this->model->getCommentsMovie($id);
+
+        if (is_array($comments)) {
+            $this->view->response($comments, 200);
+        } else {
+            $this->view->response("Error getting comments", 500);
+        }
+    }
+
+    function getCommentsMovieOrderBy($params = [])
+    {
+        $id = $params[':ID'];
+
+        if (!empty($_GET["field"]) && (!empty($_GET["order"]))) {
+            $field = $_GET["field"];
+            $order = $_GET["order"];
+            $comments = $this->model->getCommentsMovieOrderBy($id, $field, $order);
+        } else {
+            $comments = $this->model->getCommentsMovie($id);
+        }
 
         if (is_array($comments)) {
             $this->view->response($comments, 200);
@@ -71,5 +90,4 @@ class CommentsApiController extends ApiController
             $this->view->response("Deleted", 200);
         }
     }
-
 }

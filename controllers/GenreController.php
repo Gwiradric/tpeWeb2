@@ -99,7 +99,5 @@ class GenreController extends SecuredController
             $action = "update-genre";
             $this->view->genreForm($this->title, $this->subtitle, $this->login, $this->email, $link, $action, $genre, $id[0]);
         }
-
     }
-
 }

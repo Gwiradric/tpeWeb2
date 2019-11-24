@@ -12,11 +12,13 @@ class Mailer
 {
     private $mail;
 
-    function __construct() {
+    function __construct()
+    {
         $this->mail = new PHPMailer(true);
     }
 
-    function sendMail($username, $subject, $body) {
+    function sendMail($username, $subject, $body)
+    {
         try {
             //Server settings
             $this->mail->SMTPDebug = 0; // Enable verbose debug output

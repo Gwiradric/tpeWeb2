@@ -14,23 +14,26 @@ class ImageModel
         );
     }
 
-    private function uploadImages($images){
+    private function uploadImages($images)
+    {
         $paths = [];
         foreach ($images as $image) {
-          $destiny = 'img/' . uniqid() . '.jpg';
-          move_uploaded_file($image, $destiny);
-          $paths[]=$destiny;
+            $destiny = 'img/' . uniqid() . '.jpg';
+            move_uploaded_file($image, $destiny);
+            $paths[] = $destiny;
         }
         return $paths;
     }
 
-    function getImagesId($id) {
+    function getImagesId($id)
+    {
         $sentence = $this->db->prepare('SELECT * FROM images WHERE fk_id_movie = ?');
         $sentence->execute(array($id));
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function insertImages($id, $images) {
+    function insertImages($id, $images)
+    {
         $paths = $this->uploadImages($images);
         $sentence_images = $this->db->prepare('INSERT INTO images(fk_id_movie, path) VALUES (?, ?)');
         foreach ($paths as $path) {
@@ -38,12 +41,14 @@ class ImageModel
         }
     }
 
-    function deleteMovieImagePath($path) {
+    function deleteMovieImagePath($path)
+    {
         $sentence = $this->db->prepare('DELETE FROM images WHERE path = ?');
         $sentence->execute(array($path));
     }
 
-    function deleteMovieImagesId($id) {
+    function deleteMovieImagesId($id)
+    {
         $sentence_image = $this->db->prepare('DELETE FROM images WHERE fk_id_movie = ?');
         $sentence_image->execute(array($id));
     }

@@ -16,12 +16,14 @@ class SecuredController
         $this->id = $this->getId();
     }
 
-    function getId() {
+    function getId()
+    {
         if (isset($_SESSION['user']))
             return ($_SESSION['user'][2]);
     }
 
-    function getEmail() {
+    function getEmail()
+    {
         if (isset($_SESSION['user']))
             return ($_SESSION['user'][0]);
     }
@@ -31,7 +33,8 @@ class SecuredController
         return (isset($_SESSION['user']));
     }
 
-    function isAdmin() {
+    function isAdmin()
+    {
         if (isset($_SESSION['user'])) {
             return ($_SESSION['user'][1]);
         }

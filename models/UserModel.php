@@ -4,7 +4,8 @@ class UserModel
 {
     private $db;
 
-    function __construct() {
+    function __construct()
+    {
         $this->db = new PDO(
             'mysql:host=localhost;'
                 . 'dbname=db_movies;charset=utf8',
@@ -13,51 +14,60 @@ class UserModel
         );
     }
 
-    function insertUser($email, $password, $admin = 0, $code = "") {
+    function insertUser($email, $password, $admin = 0, $code = "")
+    {
         $sentence = $this->db->prepare('INSERT INTO users (email, password, admin, code) VALUE (?, ?, ?, ?)');
         $sentence->execute(array($email, $password, $admin, $code));
     }
 
-    function getUserId($id) {
+    function getUserId($id)
+    {
         $sentence = $this->db->prepare('SELECT * FROM users WHERE id_user = ?');
         $sentence->execute(array($id));
         return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
-    function getUsers() {
+    function getUsers()
+    {
         $sentence = $this->db->prepare('SELECT * FROM users');
         $sentence->execute();
         return ($sentence->fetchAll(PDO::FETCH_ASSOC));
     }
 
-    function getUserEmail($email) {
+    function getUserEmail($email)
+    {
         $sentence = $this->db->prepare('SELECT * FROM users WHERE email = ?');
         $sentence->execute(array($email));
         return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
-    function updateUserPrivileges($id, $admin) {
+    function updateUserPrivileges($id, $admin)
+    {
         $sentence = $this->db->prepare('UPDATE users SET admin = ? WHERE id_user = ?');
         $sentence->execute(array($admin, $id));
     }
 
-    function updateCode($code, $id) {
+    function updateCode($code, $id)
+    {
         $sentence = $this->db->prepare('UPDATE users SET code = ? WHERE id_user = ?');
         $sentence->execute(array($code, $id));
     }
 
-    function getUserCode($code) {
+    function getUserCode($code)
+    {
         $sentence = $this->db->prepare('SELECT * FROM users WHERE code = ?');
         $sentence->execute(array($code));
         return ($sentence->fetch(PDO::FETCH_ASSOC));
     }
 
-    function deleteUser($id) {
+    function deleteUser($id)
+    {
         $sentence = $this->db->prepare('DELETE FROM users WHERE id_user = ?');
         $sentence->execute(array($id));
     }
 
-    function updatePasswordUser($id, $password) {
+    function updatePasswordUser($id, $password)
+    {
         $sentence = $this->db->prepare('UPDATE users SET password = ? WHERE id_user = ?');
         $sentence->execute(array($password, $id));
     }

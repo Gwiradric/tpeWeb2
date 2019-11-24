@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       comments: [],
       admin: null,
       login: document.getElementById("movie-data").dataset.login,
+      options: ["score", "date", "asc", "desc"],
       auth: true
     },
     computed: {
@@ -46,8 +47,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
 
       deleteComment: async function deleteComment(number) {
-        //this function is responsible for editing the information on the server
-
         let url = "../api/comments/" + number;
 
         try {
@@ -59,13 +58,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         } catch (t) {
           console.log(t);
         }
+      },
+
+      orderBy: function orderBy(field, order) {
+        let data = document.getElementById("movie-data");
+        let url = "../api/comments/" + data.dataset.id_movie + "?field=" + field + "&order=" + order;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(comments => {
+            app.comments = comments;
+          })
+          .catch(error => console.log(error));
       }
     }
   });
 
-
   app.admin = document.getElementById("movie-data").dataset.admin;
-  
+
   if (app.login != "") {
     app.user = document.getElementById("data-email").dataset.email;
   }
