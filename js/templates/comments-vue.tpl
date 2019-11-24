@@ -1,18 +1,29 @@
 {literal}
+
 <div id="template-vue-comments">
   <section class="mt-5"  v-if="comments.length">
     <div class="row">
       <div class="col-md-8">
+        
         <div class="clearfix">
           <h5 class="float-left mb-4">{{ subtitle }}</h5>
+          <div class="btn-group float-right">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Order by
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item">Newest comments</a>
+              <a class="dropdown-item">Older comments</a>
+            </div>
+          </div>
         </div>
-
+        
         <ul class="list-group list-group-flush">
           <li class="list-group-item" v-for="comment in comments">
 
             <div class="clearfix">
               <span class="float-left"
-                ><b>{{ user }}</b> gives <b>{{ comment.score }}</b> stars
+                ><b>{{ comment.user }}</b> gives <b>{{ comment.score }}</b> stars
                 and says:</span
               >
               <span class="text-secondary float-right">{{ comment.date }}</span>

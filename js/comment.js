@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             method: "DELETE"
           });
           getComments();
+          getAverage();
         } catch (t) {
           console.log(t);
         }
