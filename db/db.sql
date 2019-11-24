@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-11-2019 a las 02:28:46
+-- Tiempo de generación: 25-11-2019 a las 00:46:43
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -43,7 +43,42 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id_comment`, `date`, `user`, `comment`, `score`, `fk_id_movie`, `fk_id_user`) VALUES
-(143, '2019-11-22 19:59:34', 'federico.fuhr.ff@gmail.com', 'I love it', 5, 55, 28);
+(197, '2019-11-23 20:42:20', 'federico.fuhr.ff@gmail.com', 'I love it!', 5, 55, 28),
+(198, '2019-11-23 20:43:03', 'federico.fuhr@live.com', 'Me too', 4, 55, 32),
+(199, '2019-11-23 20:45:30', 'gwiradric.ps3@gmail.com', 'Mmmmmm....', 2, 55, 30),
+(204, '2019-11-24 15:08:35', 'federico.fuhr.ff@gmail.com', 'No me gusto', 2, 55, 28),
+(205, '2019-11-24 15:08:42', 'federico.fuhr.ff@gmail.com', 'Esta Genial', 5, 55, 28),
+(206, '2019-11-24 15:08:52', 'federico.fuhr.ff@gmail.com', 'F por Final Fantasy', 3, 55, 28),
+(207, '2019-11-24 15:09:05', 'federico.fuhr.ff@gmail.com', 'Sad', 1, 55, 28),
+(208, '2019-11-24 15:09:13', 'federico.fuhr.ff@gmail.com', 'Genialaso', 5, 55, 28),
+(209, '2019-11-24 19:57:40', 'federico.fuhr.ff@gmail.com', 'Jotaro is the best!', 5, 58, 28),
+(210, '2019-11-24 20:02:40', 'federico.fuhr.ff@gmail.com', 'Nice movie', 3, 3, 28),
+(211, '2019-11-24 20:06:02', 'federico.fuhr.ff@gmail.com', 'The movie is very boring', 1, 2, 28),
+(212, '2019-11-24 20:11:49', 'federico.fuhr.ff@gmail.com', ':D', 4, 12, 28),
+(213, '2019-11-24 20:30:46', 'federico.fuhr.ff@gmail.com', 'Mehhh...', 2, 20, 28),
+(214, '2019-11-24 20:35:44', 'federico.fuhr.ff@gmail.com', 'I love it!', 4, 22, 28),
+(215, '2019-11-24 20:37:34', 'federico.fuhr.ff@gmail.com', '*.*', 4, 28, 28),
+(216, '2019-11-24 20:39:26', 'federico.fuhr.ff@gmail.com', 'Horrible...', 1, 37, 28),
+(217, '2019-11-24 20:40:10', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 2, 34),
+(218, '2019-11-24 20:40:15', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 3, 34),
+(219, '2019-11-24 20:40:21', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 12, 34),
+(220, '2019-11-24 20:40:29', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 20, 34),
+(221, '2019-11-24 20:40:36', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 22, 34),
+(222, '2019-11-24 20:40:40', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 24, 34),
+(223, '2019-11-24 20:40:50', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 28, 34),
+(224, '2019-11-24 20:40:55', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 37, 34),
+(225, '2019-11-24 20:41:02', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 55, 34),
+(226, '2019-11-24 20:41:07', 'hater@hater.com', 'This movie is a piece of sh**!!', 1, 58, 34),
+(227, '2019-11-24 20:41:57', 'federico.fuhr@live.com', 'Enjoyable', 3, 2, 32),
+(228, '2019-11-24 20:42:05', 'federico.fuhr@live.com', 'Enjoyable', 3, 3, 32),
+(229, '2019-11-24 20:42:10', 'federico.fuhr@live.com', 'Enjoyable', 3, 12, 32),
+(230, '2019-11-24 20:42:16', 'federico.fuhr@live.com', 'Enjoyable', 3, 20, 32),
+(231, '2019-11-24 20:42:23', 'federico.fuhr@live.com', 'Enjoyable', 3, 22, 32),
+(232, '2019-11-24 20:42:35', 'federico.fuhr@live.com', 'Enjoyable', 3, 24, 32),
+(233, '2019-11-24 20:42:42', 'federico.fuhr@live.com', 'Enjoyable', 3, 28, 32),
+(234, '2019-11-24 20:42:47', 'federico.fuhr@live.com', 'Enjoyable', 3, 37, 32),
+(235, '2019-11-24 20:42:54', 'federico.fuhr@live.com', 'Enjoyable', 3, 55, 32),
+(238, '2019-11-24 20:45:01', 'federico.fuhr@live.com', 'Enjoyable', 3, 58, 32);
 
 -- --------------------------------------------------------
 
@@ -87,11 +122,8 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
-(21, 3, 'img/5dc77d4d8a7dc.jpg'),
-(22, 12, 'img/5dc77d66a9650.jpg'),
 (23, 20, 'img/5dc77d7908418.jpg'),
 (24, 22, 'img/5dc77d9dcb4c4.jpg'),
-(25, 23, 'img/5dc77db038a93.jpg'),
 (26, 24, 'img/5dc77ddecb3b3.jpg'),
 (27, 28, 'img/5dc77df3d99d0.jpg'),
 (28, 37, 'img/5dc77ef455d24.jpg'),
@@ -104,7 +136,40 @@ INSERT INTO `images` (`id_img`, `fk_id_movie`, `path`) VALUES
 (65, 58, 'img/5dcca1a707fa7.jpg'),
 (66, 58, 'img/5dcca1a70802f.jpg'),
 (67, 58, 'img/5dcca1a70806c.jpg'),
-(68, 58, 'img/5dcca1a7080a3.jpg');
+(68, 58, 'img/5dcca1a7080a3.jpg'),
+(85, 3, 'img/5ddb0b839620b.jpg'),
+(86, 3, 'img/5ddb0bedb61ce.jpg'),
+(87, 3, 'img/5ddb0bedb6201.jpg'),
+(88, 3, 'img/5ddb0bedb6217.jpg'),
+(89, 3, 'img/5ddb0bedb622c.jpg'),
+(90, 2, 'img/5ddb0c6c3064f.jpg'),
+(91, 2, 'img/5ddb0c6c30687.jpg'),
+(92, 2, 'img/5ddb0c6c306a0.jpg'),
+(93, 2, 'img/5ddb0ca5d347c.jpg'),
+(98, 12, 'img/5ddb0dcd0d062.jpg'),
+(102, 12, 'img/5ddb0e0060a10.jpg'),
+(103, 12, 'img/5ddb0e0060aa1.jpg'),
+(105, 12, 'img/5ddb0e234aa6a.jpg'),
+(106, 20, 'img/5ddb12802bbba.jpg'),
+(107, 20, 'img/5ddb12802bc3a.jpg'),
+(108, 20, 'img/5ddb12802bc82.jpg'),
+(109, 20, 'img/5ddb12802bcc0.jpg'),
+(110, 22, 'img/5ddb1344d73dd.jpg'),
+(111, 22, 'img/5ddb1344d745e.jpg'),
+(112, 22, 'img/5ddb1344d7496.jpg'),
+(113, 22, 'img/5ddb1344d74ce.jpg'),
+(114, 24, 'img/5ddb13c09e371.jpg'),
+(115, 24, 'img/5ddb13c09e3d0.jpg'),
+(116, 24, 'img/5ddb13c09e3f6.jpg'),
+(117, 24, 'img/5ddb13c09e418.jpg'),
+(118, 28, 'img/5ddb142daffdb.jpg'),
+(119, 28, 'img/5ddb142db0060.jpg'),
+(120, 28, 'img/5ddb142db00a4.jpg'),
+(121, 28, 'img/5ddb142db00bb.jpg'),
+(122, 37, 'img/5ddb149ce2568.jpg'),
+(123, 37, 'img/5ddb149ce25a7.jpg'),
+(124, 37, 'img/5ddb149ce25be.jpg'),
+(125, 37, 'img/5ddb149ce25d4.jpg');
 
 -- --------------------------------------------------------
 
@@ -127,11 +192,10 @@ CREATE TABLE `movies` (
 
 INSERT INTO `movies` (`id_movie`, `id_genre`, `name`, `description`, `year`, `rating`) VALUES
 (2, 1, 'Resident Evil', 'Resident Evil is a 2002 action horror film written and directed by Paul W. S. Anderson. The film stars Milla Jovovich, Michelle Rodriguez, Eric Mabius, James Purefoy, Martin Crewes, and Colin Salmon. It is the first installment in the Resident Evil film series, which is loosely based on the video game series of the same name. Carlos', 2002, 49),
-(3, 5, 'Tarzan', 'Tarzan, a fictional character created by Edgar Rice Burroughs, first appeared in the 1912 novel Tarzan of the Apes, and then in twenty-three sequels. The character proved immensely popular and quickly made the jump to other media, first and most notably to comics and film. This article concerns Tarzan\'s appearance in film and other non-print media.', 1929, 21),
+(3, 12, 'Tarzan', 'Tarzan, a fictional character created by Edgar Rice Burroughs, first appeared in the 1912 novel Tarzan of the Apes, and then in twenty-three sequels. The character proved immensely popular and quickly made the jump to other media, first and most notably to comics and film. This article concerns Tarzan\'s appearance in film and other non-print media.', 1999, 57),
 (12, 12, 'Hercules', 'Hercules is a 1997 American animated musical fantasy comedy film produced by Walt Disney Feature Animation for Walt Disney Pictures. The 35th Disney animated feature film and the eighth animated film produced during the Disney Renaissance, the film was directed by Ron Clements and John Musker. The film is loosely based on the legendary hero Heracles (known in the film by his Roman name, Hercules), the son of Zeus, in Greek mythology. ', 1997, 61),
 (20, 35, 'Blade Runner 2049', 'Thirty years after the events of the first film, a new blade runner, LAPD Officer K, unearths a long-buried secret that has the potential to plunge what’s left of society into chaos. K’s discovery leads him on a quest to find Rick Deckard, a former LAPD blade runner who has been missing for 30 years.', 2017, 67),
-(22, 1, 'Shutter Island', 'Shutter Island is a 2010 American neo-noir psychological thriller film directed by Martin Scorsese and written by Laeta Kalogridis, based on Dennis Lehane\'s 2003 novel of the same name. Leonardo DiCaprio stars as U.S. Marshal Edward \"Teddy\" Daniels who is investigating a psychiatric facility on Shutter Island after one of the patients goes missing.', 2010, 87),
-(23, 1, 'Géminis', 'Lucia and Daniel have three children: Ezequiel, who has gone to live in Spain, Jeremias and, their youngest, Meme. Lucia, a pretentious woman, believes she can control everything according to the criteria and habits of a typical wealthy Argentinean family. She is blind to the fact that Jeremias and Meme are conducting an illicit relationship under her own roof. Ezequiel arrives home from Spain with his fiancée, Montse, to get married, much to the great joy of his proud parents. The young couple\'s presence reveals the fragility of the order of things that had seemed so perfect. Love becomes a s', 2010, 29),
+(22, 39, 'Shutter Island', 'Shutter Island is a 2010 American neo-noir psychological thriller film directed by Martin Scorsese and written by Laeta Kalogridis, based on Dennis Lehane\'s 2003 novel of the same name. Leonardo DiCaprio stars as U.S. Marshal Edward \"Teddy\" Daniels who is investigating a psychiatric facility on Shutter Island after one of the patients goes missing.', 2010, 87),
 (24, 39, 'Wounds', 'Wounds is a 2019 psychological horror film written and directed by Babak Anvari and starring Armie Hammer, Dakota Johnson, and Zazie Beetz. The film is based on the novella The Visible Filth by Nathan Ballingrud.', 2019, 62),
 (28, 1, 'Silent Hill', 'Silent Hill is a 2006 French-Canadian psychological horror film directed by Christophe Gans and written by Roger Avary, Gans, and Nicolas Boukhrief. The film is an adaptation of Konami\'s 1999 video game Silent Hill. It stars Radha Mitchell, Sean Bean, Laurie Holden, Deborah Kara Unger, Kim Coates, Tanya Allen, Alice Krige, and Jodelle Ferland.', 2006, 78),
 (37, 1, 'Resident Evil: Apocalypse', 'Is a 2004 action horror film[9] directed by Alexander Witt and written by Paul W. S. Anderson. A direct sequel to Resident Evil (2002), it is the second installment in the Resident Evil film series, which is loosely based on the video game series of the same name. The film marks Witt\'s feature directorial debut; Anderson, the director of the first film, turned down the job due to other commitments, though stayed on as one of its producers. Milla Jovovich reprises her role as Alice, and is joined by Sienna Guillory as Jill Valentine and Oded Fehr as Carlos Oliveira. ', 2004, 76),
@@ -159,7 +223,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
 (28, 'federico.fuhr.ff@gmail.com', '$2y$10$GjSu7rbu4l4VUwjaXKcvQ.ouHwIVz3t45AO9nrxbI9weSHRB7z9Su', 1, '1574450797cFaRVUgF'),
 (30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 1, '1574005171agAbVcOb'),
-(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '1574450787JLRCaTZR');
+(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '1574450787JLRCaTZR'),
+(33, 'test@test.com', '$2y$10$Az3isHL/q1PFW8g/A0jM8OfgJZG7pbvs4Pi75qjvVm.DQ/BUqPTOW', 0, ''),
+(34, 'hater@hater.com', '$2y$10$6fKIWgQCEO5lN2UN5exyVuROtgjGps3EXXz2k9S9ojrx6wSqI3O/6', 0, '');
 
 --
 -- Índices para tablas volcadas
@@ -207,7 +273,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
 
 --
 -- AUTO_INCREMENT de la tabla `genres`
@@ -219,7 +285,7 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
@@ -231,7 +297,7 @@ ALTER TABLE `movies`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas
