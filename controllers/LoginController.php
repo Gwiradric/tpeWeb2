@@ -1,6 +1,6 @@
 <?php
 
-
+require_once "./helper/Helper.php";
 require_once "./helper/Mailer.php";
 require_once "./views/UserView.php";
 require_once "./models/UserModel.php";
@@ -91,11 +91,14 @@ class LoginController extends SecuredController
 
             $code = $this->createRandomCode();
 
+            $date = date("Y-m-d H:i:s", strtotime('+24 hours'));
+
             if (isset($user)) {
-                $this->model->updateCode($code, $user['id_user']);
+                $this->model->updateCode($date, $code, $user['id_user']);
 
                 $mailer = new Mailer();
                 $body = 'Hello!
+                <br>We receive a request from ' . Helper::getOS() . ' in ' . Helper::getBrowser() . ' browser to recover the password
                 <br>To recover your account please enter the following link:
                 <br>Recovery link <a href="http://' . $_SERVER["SERVER_NAME"] . dirname($_SERVER["PHP_SELF"]) . '/reset-password/' . $code . '">HERE</a>
                 <br>If you did not ask to recover it, ignore this message.';
@@ -118,11 +121,19 @@ class LoginController extends SecuredController
             $user = $this->model->getUserCode($code);
 
             if (isset($user)) {
+
+                $current = date("Y-m-d H:i:s");
+
+                if (strtotime($current) < strtotime($user["date"])) {
+
                 $message = "";
                 $subtitle = "Reset Password";
                 $link = "../";
                 $this->action = "update-password";
                 $this->view->userForm($this->title, $user, $link, $this->login, $subtitle, $this->action, $message);
+              } else {
+                header(HOME);
+              }
             }
         }
     }

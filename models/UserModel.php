@@ -47,10 +47,10 @@ class UserModel
         $sentence->execute(array($admin, $id));
     }
 
-    function updateCode($code, $id)
+    function updateCode($date, $code, $id)
     {
-        $sentence = $this->db->prepare('UPDATE users SET code = ? WHERE id_user = ?');
-        $sentence->execute(array($code, $id));
+        $sentence = $this->db->prepare('UPDATE users SET date = ?, code = ? WHERE id_user = ?');
+        $sentence->execute(array($date, $code, $id));
     }
 
     function getUserCode($code)
