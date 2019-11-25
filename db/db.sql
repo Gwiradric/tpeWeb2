@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-11-2019 a las 00:46:43
+-- Tiempo de generación: 25-11-2019 a las 22:38:16
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -213,19 +213,19 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `admin` tinyint(1) NOT NULL,
-  `code` varchar(100) NOT NULL
+  `code` varchar(100) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`) VALUES
-(28, 'federico.fuhr.ff@gmail.com', '$2y$10$GjSu7rbu4l4VUwjaXKcvQ.ouHwIVz3t45AO9nrxbI9weSHRB7z9Su', 1, '1574450797cFaRVUgF'),
-(30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 1, '1574005171agAbVcOb'),
-(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 0, '1574450787JLRCaTZR'),
-(33, 'test@test.com', '$2y$10$Az3isHL/q1PFW8g/A0jM8OfgJZG7pbvs4Pi75qjvVm.DQ/BUqPTOW', 0, ''),
-(34, 'hater@hater.com', '$2y$10$6fKIWgQCEO5lN2UN5exyVuROtgjGps3EXXz2k9S9ojrx6wSqI3O/6', 0, '');
+INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`, `date`) VALUES
+(28, 'federico.fuhr.ff@gmail.com', '$2y$10$IrUnr3na1yr8JWOBikAUKuN8SEVgOhft.tIwcj8.jjSGDNFnqLIaO', 1, '1574713231ZRTBYLIf', '2019-11-26'),
+(30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 0, '1574005171agAbVcOb', '0000-00-00'),
+(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 1, '1574450787JLRCaTZR', '0000-00-00'),
+(34, 'hater@hater.com', '$2y$10$6fKIWgQCEO5lN2UN5exyVuROtgjGps3EXXz2k9S9ojrx6wSqI3O/6', 0, '', '0000-00-00');
 
 --
 -- Índices para tablas volcadas
@@ -273,7 +273,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
 
 --
 -- AUTO_INCREMENT de la tabla `genres`
@@ -285,19 +285,19 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
@@ -307,8 +307,8 @@ ALTER TABLE `users`
 -- Filtros para la tabla `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_id_movie` FOREIGN KEY (`fk_id_movie`) REFERENCES `movies` (`id_movie`),
-  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`fk_id_user`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `fk_id_movie` FOREIGN KEY (`fk_id_movie`) REFERENCES `movies` (`id_movie`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_id_user` FOREIGN KEY (`fk_id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `images`

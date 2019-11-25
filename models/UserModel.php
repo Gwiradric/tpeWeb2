@@ -16,8 +16,9 @@ class UserModel
 
     function insertUser($email, $password, $admin = 0, $code = "")
     {
-        $sentence = $this->db->prepare('INSERT INTO users (email, password, admin, code) VALUE (?, ?, ?, ?)');
-        $sentence->execute(array($email, $password, $admin, $code));
+        $date = date("Y-m-d H:i:s");
+        $sentence = $this->db->prepare('INSERT INTO users (email, password, admin, code, date) VALUE (?, ?, ?, ?, ?)');
+        $sentence->execute(array($email, $password, $admin, $code, $date));
     }
 
     function getUserId($id)
