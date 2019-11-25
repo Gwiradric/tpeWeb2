@@ -72,11 +72,13 @@ class UserController extends SecuredController
     {
         if ($this->isAdmin) {
             $id = $params[0];
-            if ($params[1] == 0)
-                $admin = 1;
-            else
-                $admin = 0;
-            $this->model->updateUserPrivileges($id, $admin);
+            if ($this->id != $id) {
+                if ($params[1] == 0)
+                    $admin = 1;
+                else
+                    $admin = 0;
+                $this->model->updateUserPrivileges($id, $admin);
+            }
         }
         header(USERS);
     }
@@ -85,7 +87,10 @@ class UserController extends SecuredController
     {
         if ($this->isAdmin) {
             $id = $params[0];
-            $this->model->deleteUser($id);
+            if ($this->id != $id) {
+                $this->model->deleteUser($id);
+            }
+            
         }
         header(USERS);
     }
