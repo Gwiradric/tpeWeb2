@@ -11,6 +11,7 @@ $router = new Router();
 
 // rutas
 
+$router->addRoute("comments/:ID/average", "GET", "CommentsApiController", "getAverage");
 $router->addRoute("comments", "GET", "CommentsApiController", "getComments");
 $router->addRoute("comments", "GET", "CommentsApiController", "getComments");
 $router->addRoute("comments/:ID", "GET", "CommentsApiController", "getCommentsMovieOrderBy");

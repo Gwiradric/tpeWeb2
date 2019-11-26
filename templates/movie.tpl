@@ -6,9 +6,6 @@
     <div class="row">
 
       <div class="col-md-3">
-        {if $isAdmin}
-        <a href='{$link}remove-image/{$images[0]['path']}'>Remove logo</a>
-        {/if}
         <figure class="figure">
           <img src="{$link}{$images[0]['path']}" class="figure-img img-fluid rounded" alt="movie logo">
           <figcaption class="figure-caption text-right">{$movie['name']} logo.</figcaption>

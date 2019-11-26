@@ -94,16 +94,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function getAverage() {
     let data = document.getElementById("movie-data");
-    let url = "../api/comments/" + data.dataset.id_movie;
+    let url = "../api/comments/" + data.dataset.id_movie + "/average";
 
     fetch(url)
       .then(response => response.json())
-      .then(comments => {
-        let sum = 0;
-        for (let i = 0; i < comments.length; i++) {
-          sum += parseInt(comments[i]["score"]);
-        }
-        app.average = Math.round((sum / comments.length) * 10) / 10;
+      .then(average => {
+        app.average = average;
       })
       .catch(error => console.log(error));
   }

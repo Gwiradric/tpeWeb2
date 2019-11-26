@@ -38,6 +38,13 @@ class CommentsModel
         return ($sentence->fetchAll(PDO::FETCH_OBJ));
     }
 
+    function getAverage($id)
+    {
+        $sentence = $this->db->prepare('SELECT AVG(score) AS average FROM comments WHERE fk_id_movie = ?');
+        $sentence->execute(array($id));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
+    }
+
     function insertComment($comment, $user, $score, $id_movie, $id_user) {
         $sentence = $this->db->prepare('INSERT INTO comments (comment, user, score, fk_id_movie, fk_id_user) VALUES (?, ?, ?, ?, ?)');
         $sentence->execute(array($comment, $user, $score, $id_movie, $id_user));

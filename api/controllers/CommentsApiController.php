@@ -6,6 +6,18 @@ require_once "./models/CommentsModel.php";
 
 class CommentsApiController extends ApiController
 {
+    function getAverage($params = [])
+    {
+        $id = $params[':ID'];
+
+        $average = $this->model->getAverage($id);
+
+        if (is_array($average)) {
+            $this->view->response($average["average"], 200);
+        } else {
+            $this->view->response("Error getting average", 500);
+        }
+    }
 
     function getCommentsId($params = [])
     {
