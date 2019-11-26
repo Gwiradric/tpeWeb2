@@ -60,6 +60,9 @@ class CommentsApiController extends ApiController
 
             if ($whiteList->isSafe($data))
                 $comments = $this->model->getCommentsMovieOrderBy($id, $field, $order);
+            else
+                $comments = null;
+
         } else {
             $comments = $this->model->getCommentsMovie($id);
         }
