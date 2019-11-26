@@ -2,25 +2,27 @@
 
 class WhiteList
 {
-    private $sentences;
+    private $fields;
+    private $orders;
 
     function __construct()
     {
-        $this->sentences = [
+        $this->fields = [
             "date",
-            "score",
+            "score"
+        ];
+
+        $this->orders = [
             "desc",
             "asc"
         ];
     }
 
-    function isSafe($data) {
-        $result = true;
-        for ($i=0; $i < count($data); $i++) { 
-            # code...
-            if (!in_array($data[$i], $this->sentences))
-                $result = false;
-        }
-        return $result;
+    function isSafeField($field) {
+        return (in_array($field, $this->fields));
+    }
+
+    function isSafeOrder($order) {
+        return (in_array($order, $this->orders));
     }
 }

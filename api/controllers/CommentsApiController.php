@@ -54,11 +54,9 @@ class CommentsApiController extends ApiController
             $field = $_GET["field"];
             $order = $_GET["order"];
 
-            $data = array($field, $order);
-
             $whiteList = new WhiteList();
 
-            if ($whiteList->isSafe($data))
+            if ($whiteList->isSafeField($field) && $whiteList->isSafeOrder($order))
                 $comments = $this->model->getCommentsMovieOrderBy($id, $field, $order);
             else
                 $comments = null;
