@@ -1,5 +1,6 @@
 <?php
 
+require_once "./helper/WhiteList.php";
 require_once "./api/views/JSONView.php";
 require_once "ApiController.php";
 require_once "./models/CommentsModel.php";
@@ -52,7 +53,13 @@ class CommentsApiController extends ApiController
         if (!empty($_GET["field"]) && (!empty($_GET["order"]))) {
             $field = $_GET["field"];
             $order = $_GET["order"];
-            $comments = $this->model->getCommentsMovieOrderBy($id, $field, $order);
+
+            $data = array($field, $order);
+
+            $whiteList = new WhiteList();
+
+            if ($whiteList->isSafe($data))
+                $comments = $this->model->getCommentsMovieOrderBy($id, $field, $order);
         } else {
             $comments = $this->model->getCommentsMovie($id);
         }

@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: JSON.stringify(data)
         })
           .then(response => {
-            getComments();
-            getAverage();
+            app.getComments();
+            app.getAverage();
           })
           .catch(error => console.log(error));
       },
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           await fetch(url, {
             method: "DELETE"
           });
-          getComments();
-          getAverage();
+          app.getComments();
+          app.getAverage();
         } catch (t) {
           console.log(t);
         }
@@ -62,12 +62,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       orderBy: function orderBy(field, order) {
         let data = document.getElementById("movie-data");
-        let url = "../api/comments/" + data.dataset.id_movie + "?field=" + field + "&order=" + order;
+        let url =
+          "../api/comments/" +
+          data.dataset.id_movie +
+          "?field=" +
+          field +
+          "&order=" +
+          order;
 
         fetch(url)
           .then(response => response.json())
           .then(comments => {
             app.comments = comments;
+          })
+          .catch(error => console.log(error));
+      },
+
+      getComments: async function getComments() {
+        let data = document.getElementById("movie-data");
+        let url = "../api/comments/" + data.dataset.id_movie;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(comments => {
+            app.comments = comments;
+          })
+          .catch(error => console.log(error));
+      },
+
+      getAverage: async function getAverage() {
+        let data = document.getElementById("movie-data");
+        let url = "../api/comments/" + data.dataset.id_movie + "/average";
+
+        fetch(url)
+          .then(response => response.json())
+          .then(average => {
+            app.average = Math.round( average * 10 ) / 10;;
           })
           .catch(error => console.log(error));
       }
@@ -80,30 +110,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     app.user = document.getElementById("data-email").dataset.email;
   }
 
-  async function getComments() {
-    let data = document.getElementById("movie-data");
-    let url = "../api/comments/" + data.dataset.id_movie;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(comments => {
-        app.comments = comments;
-      })
-      .catch(error => console.log(error));
-  }
-
-  async function getAverage() {
-    let data = document.getElementById("movie-data");
-    let url = "../api/comments/" + data.dataset.id_movie + "/average";
-
-    fetch(url)
-      .then(response => response.json())
-      .then(average => {
-        app.average = average;
-      })
-      .catch(error => console.log(error));
-  }
-
-  getComments();
-  getAverage();
+  app.getComments();
+  app.getAverage();
 });
