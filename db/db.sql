@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-11-2019 a las 22:38:16
+-- Tiempo de generación: 26-11-2019 a las 15:57:13
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -50,7 +50,6 @@ INSERT INTO `comments` (`id_comment`, `date`, `user`, `comment`, `score`, `fk_id
 (205, '2019-11-24 15:08:42', 'federico.fuhr.ff@gmail.com', 'Esta Genial', 5, 55, 28),
 (206, '2019-11-24 15:08:52', 'federico.fuhr.ff@gmail.com', 'F por Final Fantasy', 3, 55, 28),
 (207, '2019-11-24 15:09:05', 'federico.fuhr.ff@gmail.com', 'Sad', 1, 55, 28),
-(208, '2019-11-24 15:09:13', 'federico.fuhr.ff@gmail.com', 'Genialaso', 5, 55, 28),
 (209, '2019-11-24 19:57:40', 'federico.fuhr.ff@gmail.com', 'Jotaro is the best!', 5, 58, 28),
 (210, '2019-11-24 20:02:40', 'federico.fuhr.ff@gmail.com', 'Nice movie', 3, 3, 28),
 (211, '2019-11-24 20:06:02', 'federico.fuhr.ff@gmail.com', 'The movie is very boring', 1, 2, 28),
@@ -78,7 +77,9 @@ INSERT INTO `comments` (`id_comment`, `date`, `user`, `comment`, `score`, `fk_id
 (233, '2019-11-24 20:42:42', 'federico.fuhr@live.com', 'Enjoyable', 3, 28, 32),
 (234, '2019-11-24 20:42:47', 'federico.fuhr@live.com', 'Enjoyable', 3, 37, 32),
 (235, '2019-11-24 20:42:54', 'federico.fuhr@live.com', 'Enjoyable', 3, 55, 32),
-(238, '2019-11-24 20:45:01', 'federico.fuhr@live.com', 'Enjoyable', 3, 58, 32);
+(238, '2019-11-24 20:45:01', 'federico.fuhr@live.com', 'Enjoyable', 3, 58, 32),
+(245, '2019-11-25 21:54:49', 'federico.fuhr.ff@gmail.com', 'Me encanto!', 5, 55, 28),
+(254, '2019-11-25 21:59:31', 'federico.fuhr.ff@gmail.com', 'Mmmm...', 1, 12, 28);
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ CREATE TABLE `users` (
   `password` varchar(100) NOT NULL,
   `admin` tinyint(1) NOT NULL,
   `code` varchar(100) NOT NULL,
-  `date` date NOT NULL
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -222,10 +223,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `password`, `admin`, `code`, `date`) VALUES
-(28, 'federico.fuhr.ff@gmail.com', '$2y$10$IrUnr3na1yr8JWOBikAUKuN8SEVgOhft.tIwcj8.jjSGDNFnqLIaO', 1, '1574713231ZRTBYLIf', '2019-11-26'),
-(30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 0, '1574005171agAbVcOb', '0000-00-00'),
-(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 1, '1574450787JLRCaTZR', '0000-00-00'),
-(34, 'hater@hater.com', '$2y$10$6fKIWgQCEO5lN2UN5exyVuROtgjGps3EXXz2k9S9ojrx6wSqI3O/6', 0, '', '0000-00-00');
+(28, 'federico.fuhr.ff@gmail.com', '$2y$10$keGob74JQLgXYylJzm5zt.iljPianmd1CQWVHK1mdu9tqpNGGRJkO', 1, '1574720870YCVUUceO', '2019-11-26 00:00:00'),
+(30, 'gwiradric.ps3@gmail.com', '$2y$10$XutAJa6OpBaGheMaeOGav.sJS20PfNRf6aEZ/mkdQcTxpR0NFbIcy', 0, '1574005171agAbVcOb', '0000-00-00 00:00:00'),
+(32, 'federico.fuhr@live.com', '$2y$10$TPjQqcxeJlVYsIGdyApAL.QT5iVcTOW2EM2XA199dKOMvUS5SrKSy', 1, '1574450787JLRCaTZR', '0000-00-00 00:00:00'),
+(34, 'hater@hater.com', '$2y$10$6fKIWgQCEO5lN2UN5exyVuROtgjGps3EXXz2k9S9ojrx6wSqI3O/6', 0, '', '0000-00-00 00:00:00'),
+(38, 'test@test.com', '$2y$10$gs0S.Z8xs.S6jeZ6.sa4O.3PzrzxVkWAVkiWtPXfs5sNkBQp6FibS', 0, '', '2019-11-26 00:56:13');
 
 --
 -- Índices para tablas volcadas
@@ -273,7 +275,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT de la tabla `genres`
@@ -285,19 +287,19 @@ ALTER TABLE `genres`
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_movie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Restricciones para tablas volcadas
