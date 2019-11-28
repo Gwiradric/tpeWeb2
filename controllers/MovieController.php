@@ -71,7 +71,7 @@ class MovieController extends SecuredController
             $id_movie = $this->modelImages->getIdMoviePath($path);
             $this->modelImages->deleteMovieImagePath($path);
             unlink($path);
-            header(HOME);
+            header(MOVIE . $id_movie["fk_id_movie"]);
         }
     }
 
