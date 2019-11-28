@@ -38,6 +38,7 @@
 
         <div class="form-group">
             <input type="file" name="imagesToUpload[]" id="imagesToUpload" multiple>
+            <br><span class="text-danger">Enter at least one image. <br>Only .jpg images are accepted.</span>
         </div>
         
         <button type="submit" class="btn btn-primary">Submit</button>

@@ -25,6 +25,13 @@ class ImageModel
         return $paths;
     }
 
+    function getIdMoviePath($path)
+    {
+        $sentence = $this->db->prepare('SELECT fk_id_movie FROM images WHERE path = ?');
+        $sentence->execute(array($path));
+        return ($sentence->fetch(PDO::FETCH_ASSOC));
+    }
+
     function getImagesId($id)
     {
         $sentence = $this->db->prepare('SELECT * FROM images WHERE fk_id_movie = ?');
