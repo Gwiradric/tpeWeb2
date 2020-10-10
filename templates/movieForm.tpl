@@ -15,7 +15,7 @@
                 required>
         </div>
 
-        <textarea class="form-control" aria-label="With textarea" placeholder="Description" name="description"
+        <textarea class="form-control" aria-label="With textarea" placeholder="Description (Max length 600 chars)" name="description"
             maxlength="600" required>{$movie["description"]}</textarea>
 
         <div class="mt-2 form-group">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" min="1960" max="2019"
+            <input type="number" class="form-control" id="movieYear" placeholder="Year" name="year" min="1960"
                 value='{$movie["year"]}' required>
         </div>
 
