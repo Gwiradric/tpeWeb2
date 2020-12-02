@@ -24,18 +24,13 @@ class GenreController extends SecuredController
     public function insertGenre()
     {
         if ($this->isAdmin) {
-
             $name = $_POST['name'];
             $description = $_POST['description'];
-
             if (isset($name, $description)) {
-
                 $genre = $this->model->getGenreName($name);
-
                 if (empty($genre)) {
                     $this->model->insertGenre($name, $description);
                 }
-
                 header(HOME);
             }
         }
@@ -52,15 +47,11 @@ class GenreController extends SecuredController
     public function editGenre()
     {
         if ($this->isAdmin) {
-
             $id_genre = $_POST['id_genre'];
             $name = $_POST['name'];
             $description = $_POST['description'];
-
             if (isset($name, $description)) {
-
                 $genre = $this->model->getGenreName($name);
-
                 if (empty($genre)) {
                     $this->model->editGenre($id_genre, $name, $description);
                 } else {

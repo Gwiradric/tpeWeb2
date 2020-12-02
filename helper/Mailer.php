@@ -25,8 +25,8 @@ class Mailer
             $this->mail->isSMTP(); // Send using SMTP
             $this->mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
             $this->mail->SMTPAuth = true; // Enable SMTP authentication
-            $this->mail->Username = 'movie.club.latam@gmail.com'; // SMTP username
-            $this->mail->Password = 'movieclub123'; // SMTP password
+            $this->mail->Username = ''; // SMTP username
+            $this->mail->Password = ''; // SMTP password
             $this->mail->SMTPSecure = 'tls'; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
             $this->mail->Port = 587; // TCP port to connect to
 
